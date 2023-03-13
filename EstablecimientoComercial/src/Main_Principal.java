@@ -32,12 +32,27 @@ public class Main_Principal {
         do{
             option=read.nextInt();
         }while((option<0)&&(option>5));
-        in.close();
+        read.close();
         return option;
     }
 
     public static void Admin(){
-        
+        Scanner read = new Scanner(System.in); 
+        /*long password;
+        System.out.println("Ingrese su contraseña");
+        do{
+            password=read.nextLong();
+        }while(password<0);
+        abrir.archivo("direccion");
+        while(no sea final de archivo){
+            leer.archivo()
+            if(password==archivo.contrasenia){
+            sout("Bienvenido "+archivo.nombre);
+            z=1;
+            }
+        }
+        */
+        read.close();
     }
 }
 
