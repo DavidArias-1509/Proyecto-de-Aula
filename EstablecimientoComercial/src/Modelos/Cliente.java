@@ -7,7 +7,7 @@ package Modelos;
 public class Cliente {
     private String nombre;
     private int identificacion;
-    private int telefono;
+    private long telefono;
     private String email;
     private int puntos;
     private double deudas;
@@ -15,7 +15,7 @@ public class Cliente {
     public Cliente(){
         this("Null",0,0,"Null@");
     }
-    public Cliente(String nombre, int identificacion, int telefono, String email) {
+    public Cliente(String nombre, int identificacion, long telefono, String email) {
         this.nombre = nombre;
         this.identificacion = identificacion;
         this.telefono = telefono;
@@ -32,7 +32,7 @@ public class Cliente {
         return identificacion;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
@@ -56,7 +56,7 @@ public class Cliente {
         this.identificacion = identificacion;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
@@ -75,7 +75,7 @@ public class Cliente {
     @Override
     public String toString(){
         return "Nombre: "+this.nombre+ "\nTelefono: "+this.telefono +"\nCedula: "+this.identificacion+ "\nPuntos: "+this.puntos
-                +"\nDeuda: "+this.deudas;
+                +"\nDeuda: "+this.deudas+"\n*********************";
     }
     
     

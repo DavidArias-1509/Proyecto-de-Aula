@@ -11,7 +11,7 @@ package Modelos;
 public class Empleado {
         private String nombre;
         private int identificacion;
-        private int telefono;
+        private long telefono;
         private String email; 
         private String sexo;
         private String direccion;
@@ -21,7 +21,7 @@ public class Empleado {
     public Empleado(){
         this("Null", 0,0,"Null@","Unsigned","Unsigned",0);
     }
-    public Empleado(String nombre, int identificacion, int telefono, String email, String sexo, String direccion, int edad) {
+    public Empleado(String nombre, int identificacion, long telefono, String email, String sexo, String direccion, int edad) {
         this.nombre = nombre;
         this.identificacion = identificacion;
         this.telefono = telefono;
@@ -40,7 +40,7 @@ public class Empleado {
         return identificacion;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
@@ -72,7 +72,7 @@ public class Empleado {
         this.identificacion = identificacion;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
@@ -96,7 +96,12 @@ public class Empleado {
         this.salarioBase = salarioBase;
     }
     
-    
+        @Override
+    public String toString(){
+        return "Nombre. "+this.nombre+"\nIdentificacion: "+this.identificacion+"\nTelefono "+this.telefono+
+                "Direccion: "+this.direccion+"\nEdad: "+this.edad+"\nSexo: "+this.sexo+"\nEmail: "+this.email+
+                "\nSalario Base: "+this.salarioBase+"\n*******";
+    }
         
         
 }   
