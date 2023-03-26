@@ -98,7 +98,7 @@ public class Empleado {
     
         @Override
     public String toString(){
-        return "Nombre. "+this.nombre+"\nIdentificacion: "+this.identificacion+"\nTelefono "+this.telefono+
+        return "Vendedor \nNombre. "+this.nombre+"\nIdentificacion: "+this.identificacion+"\nTelefono "+this.telefono+
                 "Direccion: "+this.direccion+"\nEdad: "+this.edad+"\nSexo: "+this.sexo+"\nEmail: "+this.email+
                 "\nSalario Base: "+this.salarioBase+"\n*******";
     }
