@@ -2,6 +2,7 @@ package vista;
 
 import Modelos.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 /**
  *
  * @author david
@@ -16,14 +17,25 @@ public class Main_Principal {
         
         Producto P001 = new Producto("Arroz Diana P", 1234, 30,12300);
         P001.setDescripcion("3Kg de Arroz seleccionado de alta calidad \nContiene vitaminas y minerales");
+        
+        Producto P002 = new Producto("Magui", 1432, 30,500);
+        P001.setDescripcion("Consume de pollo");
+        
+        Producto P003 = new Producto("Frutiño", 1243, 30,600);
+        P001.setDescripcion("Bebida saborizante instantanea");
         //System.out.println(P001.toString());
         
         Empleado E001 = new Empleado("Francisco Jose", 23457897,3226763839L,"frjose@hotmail.com","Masculino","Calle 56",43);
         E001.setSalarioBase(3456789);
         //System.out.println(E001.toString());
         
+        ArrayList<Producto> listaProductos = new ArrayList();
+        listaProductos.add(P003);
+        listaProductos.add(P002);
+        
         Venta V001 = new Venta(C001,E001,10,LocalDate.now());
         V001.registrarProducto(P001);
+        V001.registrarProducto(listaProductos);
         imprimirFactura(V001);
     }
     
