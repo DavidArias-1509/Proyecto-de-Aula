@@ -21,5 +21,6 @@ public class Main_Principal {
         E001.setSalarioBase(3456789);
         System.out.println(E001.toString());
         
+        
     }
 }

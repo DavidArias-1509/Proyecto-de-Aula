@@ -95,14 +95,26 @@ public class Distribuidor {
      * @return the valorCargamento
      */
     public double getValorCargamento() {
-        return valorCargamento;
+        return this.valorCargamento;
     }
 
     /**
      * @return the deudaDistribuidor
      */
     public double getDeudaDistribuidor() {
-        return deudaDistribuidor;
+        return this.deudaDistribuidor;
     }
+    
+    public void cargarPoductos (Producto p){
+        this.cargamento.add(p);
+        this.valorCargamento += p.getPrecio();
+    }
+
+    
+    @Override
+    public String toString() {
+        return "Distribuidor{" + "nombre=" + nombre + ", salida=" + salida + ", destino=" + destino + ", fechaSalida=" + fechaSalida + ", fechaEntrega=" + fechaEntrega + ", cargamento=" + cargamento + ", valorCargamento=" + valorCargamento + ", deudaDistribuidor=" + deudaDistribuidor + '}';
+    }
+    
     
 }
