@@ -45,11 +45,20 @@ public class Balance {
         this.periodo = periodo;
     }
     
-    public void agregarVenta(){
-        
+    public void agregarVenta(Venta sale){
+        if(this.consultarVenta(()==null){
+            
+        }
     }
     
-    public Venta consultarVenta(Venta sale){
+    public Venta consultarVenta(long code){
+        if(this.ventas!=null){
+            for(Venta s: this.ventas){
+                if(){
+                    return s;
+                }
+            }
+        }
         return null;
     }
     
