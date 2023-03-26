@@ -45,10 +45,21 @@ public class Balance {
         this.periodo = periodo;
     }
     
+    public void agregarVenta(){
+        
+    }
     
+    public Venta consultarVenta(Venta sale){
+        return null;
+    }
     
-    
+   public void registarEmpleado(){
+       
+   }
    
+   public Empleado consultarEmpleado(Empleado employee){
+       return null;
+   }
     
     
 }
