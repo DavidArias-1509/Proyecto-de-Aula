@@ -1,6 +1,7 @@
 package vista;
 
 import Modelos.*;
+import java.time.LocalDate;
 /**
  *
  * @author david
@@ -21,6 +22,24 @@ public class Main_Principal {
         E001.setSalarioBase(3456789);
         System.out.println(E001.toString());
         
+        Venta V001 = new Venta(C001,E001,10,LocalDate.now());
+        V001.registrarProducto(P001);
+        imprimirFactura(V001);
+    }
+    
+    public static void imprimirFactura(Venta v){
+        System.out.println("Vendedor: "+ v.getVendedor());
+        System.out.println("Cliente: "+ v.getComprador());
+        for (Producto p : v.getArticulo()){
+            System.out.println("-------------------------");
+            System.out.println("Codigo: " + p.getCodigo());
+            System.out.println("producto: " + p.getNombre());
+            System.out.println("Precio: "+ p.getPrecio());
+        }
         
+        System.out.println("Fecha de venta: "+ v.getFechaVenta());
+        System.out.println("Descuento: " + v.getDescuento()+ "%");
+        System.out.println("Total a Pagar: " + v.getValorVenta());
+        System.out.println("Puntos ganados: " + v.getPuntosVenta());
     }
 }

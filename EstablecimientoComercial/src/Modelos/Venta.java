@@ -84,7 +84,7 @@ public class Venta {
      * @return the valorVenta
      */
     public double getValorVenta() {
-        return valorVenta;
+        return  this.valorVenta - (this.valorVenta*(this.descuento/100));
     }
 
     /**
@@ -109,14 +109,21 @@ public class Venta {
     }
     
     public void registrarProducto(Producto p){
-        this.articulo.add(p);
+        this.getArticulo().add(p);
         this.valorVenta += p.getPrecio();
         this.puntosVenta++;
     }
     
     @Override
     public String toString() {
-        return "Venta{" + "comprador=" + comprador + ", vendedor=" + vendedor + ", articulo=" + articulo + ", descuento=" + descuento + ", valorVenta=" + valorVenta + ", puntosVenta=" + puntosVenta + ", fechaVenta=" + fechaVenta + '}';
+        return "Venta{" + "comprador=" + comprador + ", vendedor=" + vendedor + ", articulo=" + getArticulo() + ", descuento=" + descuento + ", valorVenta=" + valorVenta + ", puntosVenta=" + puntosVenta + ", fechaVenta=" + fechaVenta + '}';
+    }
+
+    /**
+     * @return the articulo
+     */
+    public ArrayList<Producto> getArticulo() {
+        return articulo;
     }
     
 
