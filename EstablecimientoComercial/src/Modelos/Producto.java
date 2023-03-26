@@ -13,13 +13,15 @@ public class Producto {
     private int codigo;
     private int cantidadDisponible;
     private String descripcion;
+    private double precio;
 
    public Producto(){
-       this("Null", 0,0);
+       this("Null", 0,0,0);
    }
-    public Producto(String nombre, int codigo, int cantidadDisponible) {
+    public Producto(String nombre, int codigo, int cantidadDisponible, double precio) {
         this.nombre = nombre;
         this.codigo = codigo;
+        this.precio=precio;
         this.cantidadDisponible = cantidadDisponible;
         this.descripcion="No hay descripcion aun";
     }
@@ -27,7 +29,10 @@ public class Producto {
     public String getNombre() {
         return nombre;
     }
-
+    
+    public double getPrecio(){
+        return precio;
+    }
     public int getCodigo() {
         return codigo;
     }
@@ -47,6 +52,10 @@ public class Producto {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+    
+    public void setPrecio(double precio){
+        this.precio=precio;
+    }
 
     public void setCantidadDisponible(int cantidadDisponible) {
         this.cantidadDisponible = cantidadDisponible;
@@ -58,7 +67,7 @@ public class Producto {
    
     @Override
     public String toString(){
-        return "Nombre: "+this.nombre+ "\nCodigo: "+this.codigo+"\nCantidad Disponible: "+this.cantidadDisponible
+        return "Nombre: "+this.nombre+ "\nCodigo: "+this.codigo+"\nPrecio: "+this.precio+"\nCantidad Disponible: "+this.cantidadDisponible
                 +"\nDescripcion: "+this.descripcion+"\n****************";
     }
     
