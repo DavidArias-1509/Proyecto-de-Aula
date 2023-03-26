@@ -19,15 +19,17 @@ public class Venta {
     private double valorVenta;
     private double puntosVenta;
     private LocalDate fechaVenta;
+    private long codigoVenta;
 
     public Venta() {
-        this(null,null,0,LocalDate.now());
+        this(null,null,0,LocalDate.now(),0000001L);
         this.articulo = new ArrayList();
         this.valorVenta = 0;
         this.puntosVenta = 0;
     }
 
-    public Venta(Cliente comprador, Empleado vendedor, double descuento, LocalDate fechaVenta) {
+    public Venta(Cliente comprador, Empleado vendedor, double descuento, LocalDate fechaVenta, long codigoVenta) {
+        this.codigoVenta = codigoVenta;
         this.comprador = comprador;
         this.vendedor = vendedor;
         this.articulo = new ArrayList();
@@ -115,9 +117,17 @@ public class Venta {
     }
     
     public void registrarProducto(Producto p){
-        this.getArticulo().add(p);
-        this.valorVenta += p.getPrecio();
-        this.puntosVenta++;
+        if (p.getCantidadVenta()<= p.getCantidadDisponible()){
+            this.getArticulo().add(p);
+            //Aqui acumula el valor total de los productos
+            this.valorVenta += (p.getPrecio()*p.getCantidadVenta());
+            //Puntos de venta aumenta en la cantidad de articulos que compres
+            this.puntosVenta += p.getCantidadVenta();
+            p.setCantidadDisponible(p.getCantidadDisponible()-p.getCantidadVenta());
+        }else{
+            System.out.println("la cantidad excede las existencias");
+        }
+        
     }
     
     

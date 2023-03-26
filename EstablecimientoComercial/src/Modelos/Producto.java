@@ -14,6 +14,7 @@ public class Producto {
     private int cantidadDisponible;
     private String descripcion;
     private double precio;
+    private int cantidadVenta;
 
    public Producto(){
        this("Null", 0,0,0);
@@ -44,6 +45,15 @@ public class Producto {
     public String getDescripcion() {
         return descripcion;
     }
+
+    public int getCantidadVenta() {
+        return this.cantidadVenta;
+    }
+
+    public void setCantidadVenta(int cantidadVenta) {
+        this.cantidadVenta = cantidadVenta;
+    }
+    
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
