@@ -15,6 +15,8 @@ public class Main_Principal {
         System.out.println(B001.toString()); 
         
         Producto Arroz = new Producto("Arroz Diana P", 1234, 30);
-        Arroz.setDescripcion("Arroz seleccionado de alta calidad \n Contiene vitaminas y minerales");
+        Arroz.setDescripcion("Arroz seleccionado de alta calidad \nContiene vitaminas y minerales");
+        
+        System.out.println(Arroz.toString());
     }
 }
