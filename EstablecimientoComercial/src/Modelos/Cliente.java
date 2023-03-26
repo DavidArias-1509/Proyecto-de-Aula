@@ -14,8 +14,6 @@ public class Cliente {
 
     public Cliente(){
         this("Null",0,0,"Null@");
-        this.puntos=0;
-        this.deudas=0.0;
     }
     public Cliente(String nombre, int identificacion, int telefono, String email) {
         this.nombre = nombre;
