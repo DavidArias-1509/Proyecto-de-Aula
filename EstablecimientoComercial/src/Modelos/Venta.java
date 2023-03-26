@@ -108,16 +108,19 @@ public class Venta {
         this.fechaVenta = fechaVenta;
     }
     
+    public void registrarProducto(ArrayList<Producto> p){
+        for (Producto a : p){
+            registrarProducto(a);
+        }
+    }
+    
     public void registrarProducto(Producto p){
         this.getArticulo().add(p);
         this.valorVenta += p.getPrecio();
         this.puntosVenta++;
     }
     
-    @Override
-    public String toString() {
-        return "Venta{" + "comprador=" + comprador + ", vendedor=" + vendedor + ", articulo=" + getArticulo() + ", descuento=" + descuento + ", valorVenta=" + valorVenta + ", puntosVenta=" + puntosVenta + ", fechaVenta=" + fechaVenta + '}';
-    }
+    
 
     /**
      * @return the articulo
@@ -126,5 +129,9 @@ public class Venta {
         return articulo;
     }
     
+    @Override
+    public String toString() {
+        return "Venta{" + "comprador=" + comprador + ", vendedor=" + vendedor + ", articulo=" + getArticulo() + ", descuento=" + descuento + ", valorVenta=" + valorVenta + ", puntosVenta=" + puntosVenta + ", fechaVenta=" + fechaVenta + '}';
+    }
 
 }
