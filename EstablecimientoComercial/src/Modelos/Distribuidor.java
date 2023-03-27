@@ -12,14 +12,35 @@ import java.util.ArrayList;
  * @author david
  */
 public class Distribuidor {
+    private String NIT;
     private String nombre;
-    private String salida;
-    private String destino;
-    private LocalDate fechaSalida;
-    private LocalDate fechaEntrega;
-    private ArrayList<Producto> cargamento;
-    private double valorCargamento;
+    private String Telefono;
     private double deudaDistribuidor;
+
+    public Distribuidor() {
+        this(null,null,null,0);
+    }
+
+    public Distribuidor(String NIT, String nombre, String Telefono, double deudaDistribuidor) {
+        this.NIT = NIT;
+        this.nombre = nombre;
+        this.Telefono = Telefono;
+        this.deudaDistribuidor = deudaDistribuidor;
+    }
+
+    /**
+     * @return the NIT
+     */
+    public String getNIT() {
+        return NIT;
+    }
+
+    /**
+     * @param NIT the NIT to set
+     */
+    public void setNIT(String NIT) {
+        this.NIT = NIT;
+    }
 
     /**
      * @return the nombre
@@ -36,85 +57,33 @@ public class Distribuidor {
     }
 
     /**
-     * @return the salida
+     * @return the Telefono
      */
-    public String getSalida() {
-        return salida;
+    public String getTelefono() {
+        return Telefono;
     }
 
     /**
-     * @param salida the salida to set
+     * @param Telefono the Telefono to set
      */
-    public void setSalida(String salida) {
-        this.salida = salida;
-    }
-
-    /**
-     * @return the destino
-     */
-    public String getDestino() {
-        return destino;
-    }
-
-    /**
-     * @param destino the destino to set
-     */
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
-
-    /**
-     * @return the fechaSalida
-     */
-    public LocalDate getFechaSalida() {
-        return fechaSalida;
-    }
-
-    /**
-     * @param fechaSalida the fechaSalida to set
-     */
-    public void setFechaSalida(LocalDate fechaSalida) {
-        this.fechaSalida = fechaSalida;
-    }
-
-    /**
-     * @return the fechaEntrega
-     */
-    public LocalDate getFechaEntrega() {
-        return fechaEntrega;
-    }
-
-    /**
-     * @param fechaEntrega the fechaEntrega to set
-     */
-    public void setFechaEntrega(LocalDate fechaEntrega) {
-        this.fechaEntrega = fechaEntrega;
-    }
-
-    /**
-     * @return the valorCargamento
-     */
-    public double getValorCargamento() {
-        return this.valorCargamento;
+    public void setTelefono(String Telefono) {
+        this.Telefono = Telefono;
     }
 
     /**
      * @return the deudaDistribuidor
      */
     public double getDeudaDistribuidor() {
-        return this.deudaDistribuidor;
+        return deudaDistribuidor;
     }
     
-    public void cargarPoductos (Producto p){
-        this.cargamento.add(p);
-        this.valorCargamento += p.getPrecio();
+    public void pagarDeuda(double pago){
+        this.deudaDistribuidor -= pago;
     }
 
-    
     @Override
     public String toString() {
-        return "Distribuidor{" + "nombre=" + nombre + ", salida=" + salida + ", destino=" + destino + ", fechaSalida=" + fechaSalida + ", fechaEntrega=" + fechaEntrega + ", cargamento=" + cargamento + ", valorCargamento=" + valorCargamento + ", deudaDistribuidor=" + deudaDistribuidor + '}';
+        return "Distribuidor{" + "NIT=" + NIT + ", nombre=" + nombre + ", Telefono=" + Telefono + ", deudaDistribuidor=" + deudaDistribuidor + '}';
     }
-    
     
 }

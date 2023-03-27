@@ -14,6 +14,17 @@ public class Main_Principal {
         Cliente C001 = new Cliente("Juan Antonio", 23456897, 3004567892L, "example@gmail.com");
         C001.setDeudas(234560);
          //System.out.println(C001.toString()); 
+         
+         //creando distribuidores
+         
+        Distribuidor D001 = new Distribuidor("1235468","Arroces S.A.S","3148988546",100000);
+        Distribuidor D002 = new Distribuidor("2215578","Frutiño","3148589646",150000);
+        Distribuidor D003 = new Distribuidor("8265366","Magui COP","3148789546",200000);
+        
+        ArrayList<Distribuidor> distribuidor = new ArrayList();
+        distribuidor.add(D003);
+        distribuidor.add(D002);
+        distribuidor.add(D001);
         
         Producto P001 = new Producto("Arroz Diana P", 1234, 30,12300);
         P001.setDescripcion("3Kg de Arroz seleccionado de alta calidad \nContiene vitaminas y minerales");
