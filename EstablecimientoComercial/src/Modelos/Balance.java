@@ -15,7 +15,7 @@ public class Balance {
         private ArrayList<Venta> ventas;
         private ArrayList<Distribuidor> distribuidores;
         private ArrayList<Empleado> empleados;
-        private double salrios;
+        private double salarios;
         private long  deudas;
         private long producido;
         private double balanceFinal;
@@ -30,11 +30,9 @@ public class Balance {
         this.distribuidores = distribuidores;
         this.empleados = empleados;
         this.deudas=0;
-        this.salrios=0;
+        this.salarios=0;
         this.producido=0;
         this.balanceFinal=0;
-        
-        
     }
 
     public String getPeriodo() {
@@ -54,7 +52,7 @@ public class Balance {
     }
 
     public double getSalrios() {
-        return salrios;
+        return salarios;
     }
 
     public double getDeudas() {
@@ -85,8 +83,8 @@ public class Balance {
         this.empleados = empleados;
     }
 
-    public void setSalrios(double salrios) {
-        this.salrios = salrios;
+    public void setSalrios(double salarios) {
+        this.salarios = salarios;
     }
 
     public void setDeudas(long deudas) {
@@ -113,14 +111,38 @@ public class Balance {
         return this.producido;
     }
     
+    public double calcularSalarios(){
+        if(this.empleados==null){
+            this.salarios=0;
+        }
+        else{
+            for(Empleado employe: this.empleados ){
+                this.salarios+=employe.getSalarioBase();
+            }
+        }
+        return this.salarios;
+    }
+    
+    public long calcularDeudas(){
+        if(this.distribuidores==null){
+            this.deudas=0;
+        }
+        else{
+            for(Distribuidor d: this.distribuidores){
+                this.deudas+=d.getDeudaDistribuidor();
+            }
+        }
+        return this.deudas;
+    }
+    
     public double calcularBalance(){
-         return this.balanceFinal=(double)this.producido-(this.deudas+this.salrios);
+         return this.balanceFinal=(double)this.producido-(this.deudas+this.salarios);
         
     }
         
         @Override
     public String toString(){
-        return "Preiodo: "+this.periodo+"\nTotal Nomina: "+this.salrios +"\nDeudas a Proveedores: "+this.deudas+
-                "\nProducido por ventas: "+this.producido +"\nBalance: "+this.calcularBalance();
+        return "Preiodo: "+this.periodo+"\nTotal Nomina: "+this.calcularSalarios() +"\nDeudas a Proveedores: "+this.calcularDeudas()+
+                "\nProducido por ventas: "+this.calcularProcucido() +"\nBalance: "+this.calcularBalance();
     }
 }
