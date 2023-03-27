@@ -15,12 +15,26 @@ public class Balance {
         private ArrayList<Venta> ventas;
         private ArrayList<Distribuidor> distribuidores;
         private ArrayList<Empleado> empleados;
-
+        private double salrios;
+        private double deudas;
+        private double producido;
+        private double balanceFinal;
+        
+   public Balance(){
+       this("Mes-Mes", null, null,null);
+   }
+   
     public Balance(String periodo, ArrayList<Venta> ventas, ArrayList<Distribuidor> distribuidores, ArrayList<Empleado> empleados) {
         this.periodo = periodo;
         this.ventas = ventas;
         this.distribuidores = distribuidores;
         this.empleados = empleados;
+        this.deudas=0;
+        this.salrios=0;
+        this.producido=0;
+        this.balanceFinal=0;
+        
+        
     }
 
     public String getPeriodo() {
@@ -39,6 +53,22 @@ public class Balance {
         return empleados;
     }
 
+    public double getSalrios() {
+        return salrios;
+    }
+
+    public double getDeudas() {
+        return deudas;
+    }
+
+    public double getProducido() {
+        return producido;
+    }
+
+    public double getBalanceFinal() {
+        return balanceFinal;
+    }
+
     public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
@@ -54,6 +84,31 @@ public class Balance {
     public void setEmpleados(ArrayList<Empleado> empleados) {
         this.empleados = empleados;
     }
+
+    public void setSalrios(double salrios) {
+        this.salrios = salrios;
+    }
+
+    public void setDeudas(double deudas) {
+        this.deudas = deudas;
+    }
+
+    public void setProducido(double producido) {
+        this.producido = producido;
+    }
+
+    public void setBalanceFinal(double balanceFinal) {
+        this.balanceFinal = balanceFinal;
+    }
+    
+    public double calcularBalance(){
+         return this.balanceFinal=this.producido-(this.deudas+this.salrios);
         
+    }
         
+        @Override
+    public String toString(){
+        return "Preiodo: "+this.periodo+"\nTotal Nomina: "+this.salrios+"\nDeudas a Proveedores: "+this.deudas+
+                "\nProducido por ventas: "+this.producido+"\nBalance: "+this.calcularBalance();
+    }
 }
