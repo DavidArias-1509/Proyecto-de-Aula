@@ -40,9 +40,17 @@ public class Main_Principal {
         V001.registrarProducto(P001);
         V001.registrarProducto(listaProductos);
         //Se llama el metodo para imprimir un recibo de compra
-        imprimirFactura(V001);
+        //imprimirFactura(V001);
         
-        System.out.println(P001.toString());
+        //System.out.println(P001.toString());
+        
+        Balance septiembre = new Balance();
+        septiembre.setPeriodo("Agosto_septiembre");
+        septiembre.setSalrios(4985760);
+        septiembre.setDeudas(12345850);
+        septiembre.setProducido(17214560);
+        System.out.println(septiembre.toString());
+        
     }
     
     public static void imprimirFactura(Venta v){

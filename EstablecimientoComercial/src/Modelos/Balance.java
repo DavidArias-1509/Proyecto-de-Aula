@@ -16,8 +16,8 @@ public class Balance {
         private ArrayList<Distribuidor> distribuidores;
         private ArrayList<Empleado> empleados;
         private double salrios;
-        private double deudas;
-        private double producido;
+        private long  deudas;
+        private long producido;
         private double balanceFinal;
         
    public Balance(){
@@ -89,12 +89,12 @@ public class Balance {
         this.salrios = salrios;
     }
 
-    public void setDeudas(double deudas) {
+    public void setDeudas(long deudas) {
         this.deudas = deudas;
     }
 
-    public void setProducido(double producido) {
-        this.producido = producido;
+    public void setProducido(long producido) {
+        this.producido =producido;
     }
 
     public void setBalanceFinal(double balanceFinal) {
@@ -102,13 +102,13 @@ public class Balance {
     }
     
     public double calcularBalance(){
-         return this.balanceFinal=this.producido-(this.deudas+this.salrios);
+         return this.balanceFinal=(double)this.producido-(this.deudas+this.salrios);
         
     }
         
         @Override
     public String toString(){
-        return "Preiodo: "+this.periodo+"\nTotal Nomina: "+this.salrios+"\nDeudas a Proveedores: "+this.deudas+
-                "\nProducido por ventas: "+this.producido+"\nBalance: "+this.calcularBalance();
+        return "Preiodo: "+this.periodo+"\nTotal Nomina: "+this.salrios +"\nDeudas a Proveedores: "+this.deudas+
+                "\nProducido por ventas: "+this.producido +"\nBalance: "+this.calcularBalance();
     }
 }
