@@ -57,12 +57,12 @@ public class Main_Principal {
         sales.add(V001);
         sales.add(V002);
         
-        Balance agosto = new Balance();
+        Balance agosto = new Balance("Julio-Agosto",sales, null, null);
         
         //System.out.println(P001.toString());
         
         Balance septiembre = new Balance();
-        septiembre.setPeriodo("Agosto_septiembre");
+        septiembre.setPeriodo("Agosto-septiembre");
         septiembre.setSalrios(4985760);
         septiembre.setDeudas(12345850);
         septiembre.setProducido(17214560);
