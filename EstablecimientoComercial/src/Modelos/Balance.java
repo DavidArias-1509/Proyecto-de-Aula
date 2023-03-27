@@ -101,6 +101,18 @@ public class Balance {
         this.balanceFinal = balanceFinal;
     }
     
+    public long calcularProcucido(){
+        if(this.ventas==null){
+            this.producido=0;
+        }
+        else{
+            for(Venta s: this.ventas ){
+                this.producido+=s.getValorVenta();
+            }
+        }
+        return this.producido;
+    }
+    
     public double calcularBalance(){
          return this.balanceFinal=(double)this.producido-(this.deudas+this.salrios);
         
