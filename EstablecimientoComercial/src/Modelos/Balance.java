@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Balance {
         private String periodo;
         private ArrayList<Venta> ventas;
-        private ArrayList<Distribuidor> distribuidores;
+        private ArrayList<Proveedor> distribuidores;
         private ArrayList<Empleado> empleados;
         private double salarios;
         private long  deudas;
@@ -24,7 +24,7 @@ public class Balance {
        this("Mes-Mes", null, null,null);
    }
    
-    public Balance(String periodo, ArrayList<Venta> ventas, ArrayList<Distribuidor> distribuidores, ArrayList<Empleado> empleados) {
+    public Balance(String periodo, ArrayList<Venta> ventas, ArrayList<Proveedor> distribuidores, ArrayList<Empleado> empleados) {
         this.periodo = periodo;
         this.ventas = ventas;
         this.distribuidores = distribuidores;
@@ -43,7 +43,7 @@ public class Balance {
         return ventas;
     }
 
-    public ArrayList<Distribuidor> getDistribuidores() {
+    public ArrayList<Proveedor> getDistribuidores() {
         return distribuidores;
     }
 
@@ -75,7 +75,7 @@ public class Balance {
         this.ventas = ventas;
     }
 
-    public void setDistribuidores(ArrayList<Distribuidor> distribuidores) {
+    public void setDistribuidores(ArrayList<Proveedor> distribuidores) {
         this.distribuidores = distribuidores;
     }
 
@@ -128,7 +128,7 @@ public class Balance {
             this.deudas=0;
         }
         else{
-            for(Distribuidor d: this.distribuidores){
+            for(Proveedor d: this.distribuidores){
                 this.deudas+=d.getDeudaDistribuidor();
             }
         }

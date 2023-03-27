@@ -4,24 +4,22 @@
  */
 package Modelos;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  *
  * @author david
  */
-public class Distribuidor {
+public class Proveedor {
     private String NIT;
     private String nombre;
     private String Telefono;
     private double deudaDistribuidor;
 
-    public Distribuidor() {
+    public Proveedor() {
         this(null,null,null,0);
     }
 
-    public Distribuidor(String NIT, String nombre, String Telefono, double deudaDistribuidor) {
+    public Proveedor(String NIT, String nombre, String Telefono, double deudaDistribuidor) {
         this.NIT = NIT;
         this.nombre = nombre;
         this.Telefono = Telefono;

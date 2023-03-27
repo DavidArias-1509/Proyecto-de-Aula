@@ -17,11 +17,11 @@ public class Main_Principal {
          
          //creando distribuidores
          
-        Distribuidor D001 = new Distribuidor("1235468","Arroces S.A.S","3148988546",100000);
-        Distribuidor D002 = new Distribuidor("2215578","Frutiño","3148589646",150000);
-        Distribuidor D003 = new Distribuidor("8265366","Magui COP","3148789546",200000);
+        Proveedor D001 = new Proveedor("1235468","Arroces S.A.S","3148988546",100000);
+        Proveedor D002 = new Proveedor("2215578","Frutiño","3148589646",150000);
+        Proveedor D003 = new Proveedor("8265366","Magui COP","3148789546",200000);
         
-        ArrayList<Distribuidor> distribuidor = new ArrayList();
+        ArrayList<Proveedor> distribuidor = new ArrayList();
         distribuidor.add(D003);
         distribuidor.add(D002);
         distribuidor.add(D001);
@@ -75,16 +75,17 @@ public class Main_Principal {
         sales.add(V001);
         sales.add(V002);
         
-        Balance agosto = new Balance("Julio-Agosto",sales, null, employee);
+        Balance agosto = new Balance("Julio-Agosto",sales, distribuidor, employee);
         System.out.println(agosto.toString());
         //System.out.println(P001.toString());
         
+        /*Pimera Prueba de balance (Sin metodos "Calcular")
         Balance septiembre = new Balance();
         septiembre.setPeriodo("Agosto-septiembre");
         septiembre.setSalrios(4985760);
         septiembre.setDeudas(12345850);
         septiembre.setProducido(17214560);
-        System.out.println(septiembre.toString());
+        System.out.println(septiembre.toString());*/
         
     }
     
