@@ -37,8 +37,11 @@ public class Main_Principal {
         //System.out.println(P001.toString());
         
         Empleado E001 = new Empleado("Francisco Jose", 23457897,3226763839L,"frjose@hotmail.com","Masculino","Calle 56",43);
-        E001.setSalarioBase(3456789);
+        E001.setSalarioBase(45600);
         //System.out.println(E001.toString());
+        Empleado E002= new Empleado("Ana Maria",267893435,3167809654L,"maria34@gmail.com","Femenino","Avenida 34", 34);
+        E002.setSalarioBase(45600);
+        
         
         ArrayList<Producto> listaProductos = new ArrayList();
         P002.setCantidadVenta(10);
@@ -54,6 +57,10 @@ public class Main_Principal {
         L002.add(P002);
         L002.add(P001);
         
+        ArrayList<Empleado> employee = new ArrayList();
+        employee.add(E001);
+        employee.add(E002);
+        
         Venta V001 = new Venta(C001,E001,10,LocalDate.now(),12345L);
         P001.setCantidadVenta(5);
         V001.registrarProducto(P001);
@@ -61,15 +68,15 @@ public class Main_Principal {
         //Se llama el metodo para imprimir un recibo de compra
         //imprimirFactura(V001);
         
-        Venta V002 = new Venta(C001, E001,5,LocalDate.now(),12346L);
+        Venta V002 = new Venta(C001, E002,5,LocalDate.now(),12346L);
         V002.registrarProducto(L002);
         
         ArrayList<Venta> sales = new ArrayList();
         sales.add(V001);
         sales.add(V002);
         
-        Balance agosto = new Balance("Julio-Agosto",sales, null, null);
-        
+        Balance agosto = new Balance("Julio-Agosto",sales, null, employee);
+        System.out.println(agosto.toString());
         //System.out.println(P001.toString());
         
         Balance septiembre = new Balance();

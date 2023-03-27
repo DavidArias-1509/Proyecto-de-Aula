@@ -143,6 +143,6 @@ public class Balance {
         @Override
     public String toString(){
         return "Preiodo: "+this.periodo+"\nTotal Nomina: "+this.calcularSalarios() +"\nDeudas a Proveedores: "+this.calcularDeudas()+
-                "\nProducido por ventas: "+this.calcularProcucido() +"\nBalance: "+this.calcularBalance();
+                "\nProducido por ventas: "+this.calcularProcucido() +"\nBalance: "+this.calcularBalance()+"\n*************";
     }
 }
