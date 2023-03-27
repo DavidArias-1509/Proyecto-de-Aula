@@ -95,8 +95,7 @@ public class Empleado {
     public void setSalarioBase(double salarioBase) {
         this.salarioBase = salarioBase;
     }
-    
-    
+   
         @Override
     public String toString(){
         return "Vendedor \nNombre. "+this.nombre+"\nIdentificacion: "+this.identificacion+"\nTelefono "+this.telefono+
