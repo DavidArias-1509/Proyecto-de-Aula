@@ -91,10 +91,11 @@ public class Empleado {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-
+    
     public void setSalarioBase(double salarioBase) {
         this.salarioBase = salarioBase;
     }
+    
     
         @Override
     public String toString(){
