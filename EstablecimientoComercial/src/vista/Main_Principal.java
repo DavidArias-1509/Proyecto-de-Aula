@@ -35,12 +35,29 @@ public class Main_Principal {
         listaProductos.add(P003);
         listaProductos.add(P002);
         
+        ArrayList<Producto> L002 = new ArrayList();
+        P001.setCantidadVenta(4);
+        P002.setCantidadVenta(5);
+        P003.setCantidadVenta(3);
+        L002.add(P003);
+        L002.add(P002);
+        L002.add(P001);
+        
         Venta V001 = new Venta(C001,E001,10,LocalDate.now(),12345L);
         P001.setCantidadVenta(5);
         V001.registrarProducto(P001);
         V001.registrarProducto(listaProductos);
         //Se llama el metodo para imprimir un recibo de compra
         //imprimirFactura(V001);
+        
+        Venta V002 = new Venta(C001, E001,5,LocalDate.now(),12346L);
+        V002.registrarProducto(L002);
+        
+        ArrayList<Venta> sales = new ArrayList();
+        sales.add(V001);
+        sales.add(V002);
+        
+        Balance agosto = new Balance();
         
         //System.out.println(P001.toString());
         
