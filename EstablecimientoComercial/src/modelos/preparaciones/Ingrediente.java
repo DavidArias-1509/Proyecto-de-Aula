@@ -8,7 +8,7 @@ package modelos.preparaciones;
  *
  * @author david
  */
-public class Ingrediente {
+public abstract class Ingrediente {
     private String nombre;
     private int cantidadDisponible;
 
@@ -32,8 +32,5 @@ public class Ingrediente {
     public void setCnatidadDisponible(int cantidadDisponible) {
         this.cantidadDisponible = cantidadDisponible;
     }
- 
-    public double calcularPrecio(){
-        return 0;
-    }
+ public abstract double obtenerPrecio();
 }

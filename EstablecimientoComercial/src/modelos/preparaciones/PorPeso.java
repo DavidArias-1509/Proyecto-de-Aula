@@ -23,5 +23,10 @@ public class PorPeso extends Ingrediente{
     public void setPrecioPorGr(double precioPorGr) {
         this.precioPorGr = precioPorGr;
     }
+
+    @Override
+    public double obtenerPrecio() {
+        return this.getPrecioPorGr();
+    }
     
 }

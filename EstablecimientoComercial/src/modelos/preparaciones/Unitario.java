@@ -9,7 +9,7 @@ package modelos.preparaciones;
  * @author david
  */
 public class Unitario extends Ingrediente {
-    private double precioPorUnd;
+   private double precioPorUnd;
 
     public Unitario(double precioPorUnd, String nombre, int cantidadDisponible) {
         super(nombre, cantidadDisponible);
@@ -22,6 +22,11 @@ public class Unitario extends Ingrediente {
 
     public void setPrecioPorUnd(double precioPorUnd) {
         this.precioPorUnd = precioPorUnd;
+    }
+
+    @Override
+    public double obtenerPrecio() {
+        return this.getPrecioPorUnd();
     }
     
 }

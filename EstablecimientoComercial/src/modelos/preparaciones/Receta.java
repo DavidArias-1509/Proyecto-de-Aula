@@ -5,25 +5,25 @@
 package modelos.preparaciones;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author david
  */
-public abstract class Receta {
+public  class Receta {
     private String nombre;
-    private ArrayList<Ingrediente> ingredientes;
+    private List<Ingrediente> ingredientes = new ArrayList();
 
-    public Receta(String nombre, ArrayList<Ingrediente> ingredientes) {
+    public Receta(String nombre) {
         this.nombre = nombre;
-        this.ingredientes = ingredientes;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public ArrayList<Ingrediente> getIngredientes() {
+    public List<Ingrediente> getIngredientes() {
         return ingredientes;
     }
 
@@ -35,5 +35,13 @@ public abstract class Receta {
         this.ingredientes = ingredientes;
     }
     
-    public abstract double calcularPrecio();
+    public void agregarIngrediente(){
+        
+    }
+    
+    public  double calcularPrecio(){
+       Ingrediente i1 = new Unitario(2100, "nose", 300);
+       double precio = i1.obtenerPrecio();
+       return 0;
+    }
 }
