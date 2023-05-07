@@ -8,18 +8,16 @@ import modelos.cuentas.*;
 import modelos.employee.*;
 import modelos.preparaciones.*;
 
-
-/**
- *
+/*
  * @author david
  */
 public class Main_Principal {
     
-   
+    public static Inventario I1 = new Inventario();
     public static void main(String[] args) {
          List<Producto> inventario = new ArrayList();
-         Producto p1 = new Producto("tomate", 1000); inventario.add(p1);
-         Producto p2 = new Producto("pasta", 500); inventario.add(p2);
+         Producto p1 = new Producto("tomate", 1000,5,"Vegetal"); inventario.add(p1);
+         Producto p2 = new Producto("pasta", 50,3,"Masa"); inventario.add(p2);
          
          Receta r1 = new Receta("Pastas con tomate");
          Ingrediente i1 = new Ingrediente ("tomate", 5, 50);r1.agregarIngrediente(i1);
@@ -72,7 +70,10 @@ public class Main_Principal {
 
         
         Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
-        
+        Compras C1 = new Compras();
+        C1.agregaACarrito(p2);
+        C1.agregaACarrito(p1);
+        System.out.println("Valor total de la Compra"+C1.getValorTotal());
     }
     
 }
