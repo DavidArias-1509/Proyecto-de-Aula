@@ -1,20 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelos.cuentas;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import modelos.employee.Empleado;
 
-/**
- *
- * @author david
- */
 public class Dia implements Balance{
     private ArrayList<Venta> ventas;
-    private ArrayList<Compras> compras;
+    private ArrayList<Compra> compras;
     private ArrayList<Empleado> asistencia;
     private LocalDate fecha;
 
@@ -36,7 +28,7 @@ public class Dia implements Balance{
         return ventas;
     }
 
-    public ArrayList<Compras> getCompras() {
+    public ArrayList<Compra> getCompras() {
         return compras;
     }
 
@@ -54,7 +46,7 @@ public LocalDate getFecha() {
         this.ventas = ventas;
     }
 
-    public void setCompras(ArrayList<Compras> compras) {
+    public void setCompras(ArrayList<Compra> compras) {
         this.compras = compras;
     }
 
@@ -62,7 +54,7 @@ public LocalDate getFecha() {
         this.asistencia = asistencia;
     }
     
-    public void agregarCompra(Compras c){
+    public void agregarCompra(Compra c){
         this.compras.add(c);
         System.out.println("Compra registrada");
     }
@@ -83,7 +75,7 @@ public LocalDate getFecha() {
         for(Venta v : this.ventas){
             balance+=0;
         }
-        for(Compras c: this.compras){
+        for(Compra c: this.compras){
             balance-=0;
         }
        return balance;

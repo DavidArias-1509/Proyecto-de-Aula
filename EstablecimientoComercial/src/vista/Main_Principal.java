@@ -11,6 +11,7 @@ import modelos.preparaciones.*;
 /*
  * @author david
  */
+
 public class Main_Principal {
     
     public static Inventario I1 = new Inventario();
@@ -70,7 +71,7 @@ public class Main_Principal {
 
         
         Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
-        Compras C1 = new Compras();
+        Compra C1 = new Compra();
         C1.agregaACarrito(p2);
         C1.agregaACarrito(p1);
         System.out.println("Valor total de la Compra"+C1.getValorTotal());
