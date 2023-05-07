@@ -1,5 +1,6 @@
 package vista;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -63,10 +64,15 @@ public class Main_Principal {
         }
         System.out.println("El valor total de la nomina es: "+nomina);
         
+
         ArrayList <Receta> plato = new ArrayList();
             Venta v1 = new Venta(plato,e1);
             v1.agregarReceta(r1);
             System.out.println("Total de la venta es: "+v1.calcularPrecio());
+
+        
+        Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
+        
     }
     
 }
