@@ -1,5 +1,6 @@
 package vista;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -62,6 +63,10 @@ public class Main_Principal {
             nomina += e.calcularSalario();
         }
         System.out.println("El valor total de la nomina es: "+nomina);
+        
+        
+        Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
+        
     }
     
 }
