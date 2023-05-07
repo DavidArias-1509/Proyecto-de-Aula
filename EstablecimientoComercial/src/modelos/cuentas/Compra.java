@@ -1,55 +1,77 @@
 package modelos.cuentas;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import modelos.preparaciones.Ingrediente;
+import static vista.Main_Principal.I1;
 
 public class Compra {
-    private double valorTotal;
-    private ArrayList<Ingrediente> ingredientes;
-    private String descripcion;
+   private double valorTotal;
+   private ArrayList<Producto> productos;
+   private LocalDate fechaCompra;
 
-    public Compra(double valorTotal) {
-        this.valorTotal = valorTotal;
-        this.descripcion=null;
-        this.ingredientes=new ArrayList();
+    public Compra(){
+        this.fechaCompra = LocalDate.now();
+        this.productos = new ArrayList();
+        this.valorTotal = 0;
     }
 
-    public Compra() {
+    public LocalDate getFechaCompra() {
+        return fechaCompra;
     }
-    
+
+    public void setFechaCompra(LocalDate fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
+
     public double getValorTotal() {
         return valorTotal;
     }
 
-    public ArrayList<Ingrediente> getProductos() {
-        return ingredientes;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
+    public ArrayList<Producto> getIngredientes() {
+        return productos;
     }
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
 
-    public void setProductos(ArrayList<Ingrediente> ingredientes) {
-        this.ingredientes = ingredientes;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setIngredientes(ArrayList<Producto> productos) {
+        this.productos = productos;
     }
     
-    public double calcularPrecio(){
-        double valor=0;
-        for(Ingrediente I: this.ingredientes ){
-            valor+=I.getPrecio()*I.getCantidad();
+    public void agregaACarrito(Producto p){
+        this.productos.add(p);
+        this.valorTotal += (p.getPrecio()* p.getCnatidadDisponible());
+    }
+    public void agregaACarrito(String nombre, int cantidad, double precio, String descripcion){
+        Producto p = new Producto(nombre,cantidad,precio,descripcion);
+        this.productos.add(p);
+        this.valorTotal += (p.getPrecio()* p.getCnatidadDisponible());
+    }
+    
+    public void eliminarCarrito(Producto p){
+        for (Producto p1: productos){
+            if (p1.getNombre().equals(p.getNombre())){
+                this.valorTotal -= (p1.getPrecio()*p1.getCnatidadDisponible());
+                this.productos.remove(p1);
+            }
         }
-        return valor;
+        
     }
-            
-
+    public void eliminarCarrito(String nombreProducto){
+        for (Producto p1: productos){
+            if (p1.getNombre().equals(nombreProducto)){
+                this.valorTotal -= (p1.getPrecio()*p1.getCnatidadDisponible());
+                this.productos.remove(p1);
+                
+            }
+        }
+    }
     
-    
+    public void realizarCompra(){
+        for(Producto p : this.productos){
+            I1.agregarItem(p);
+        }
+    }
 }
