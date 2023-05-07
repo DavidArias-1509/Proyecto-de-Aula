@@ -8,29 +8,39 @@ package modelos.preparaciones;
  *
  * @author david
  */
-public abstract class Ingrediente {
+public class Ingrediente {
     private String nombre;
-    private int cantidadDisponible;
+    private double precio;
+    private int cantidad;
 
-    public Ingrediente(String nombre, int cantidadDisponible) {
+    public Ingrediente(String nombre, double precio, int cantidad) {
         this.nombre = nombre;
-        this.cantidadDisponible = cantidadDisponible;
+        this.precio = precio;
+        this.cantidad = cantidad;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public int getCnatidadDisponible() {
-        return cantidadDisponible;
+    public double getPrecio() {
+        return precio;
+    }
+
+    public int getCantidad() {
+        return cantidad;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setCnatidadDisponible(int cantidadDisponible) {
-        this.cantidadDisponible = cantidadDisponible;
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
- public abstract double obtenerPrecio();
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
 }

@@ -5,6 +5,7 @@
 package modelos.preparaciones;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -35,13 +36,15 @@ public  class Receta {
         this.ingredientes = ingredientes;
     }
     
-    public void agregarIngrediente(){
-        
+    public void agregarIngrediente(Ingrediente I){
+        this.ingredientes.add(I);
     }
     
-    public  double calcularPrecio(){
-       Ingrediente i1 = new Unitario(2100, "nose", 300);
-       double precio = i1.obtenerPrecio();
-       return 0;
+    public double calcularPrecio(){
+        double precio=0;
+        for(Ingrediente I: ingredientes){
+           precio += I.getPrecio()*I.getCantidad();
+        }
+        return precio;
     }
 }

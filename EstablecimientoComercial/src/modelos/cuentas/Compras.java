@@ -5,7 +5,6 @@
 package modelos.cuentas;
 
 import java.util.ArrayList;
-import modelos.preparaciones.Ingrediente;
 
 /**
  *
