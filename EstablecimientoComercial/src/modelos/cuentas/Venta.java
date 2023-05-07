@@ -14,6 +14,7 @@ import modelos.preparaciones.Receta;
  */
 public class Venta {
     private ArrayList<Receta> platos;
+    
     private Empleado empleado;
 
     public Venta(ArrayList<Receta> platos, Empleado empleado) {
@@ -26,7 +27,7 @@ public class Venta {
     }
 
     public Empleado getEmpleado() {
-        return empleado;
+        return empleado;   
     }
 
     public void setPlatos(ArrayList<Receta> platos) {
@@ -37,5 +38,15 @@ public class Venta {
         this.empleado = empleado;
     }
     
+    public void agregarReceta(Receta r){
+        this.platos.add(r);
+    }
     
+    public double calcularPrecio(){
+        double precio=0;
+        for(Receta R: this.platos){
+           precio += R.calcularPrecio();
+        }
+        return precio;
+    }
 }

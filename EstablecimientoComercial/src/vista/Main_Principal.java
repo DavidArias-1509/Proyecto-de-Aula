@@ -62,6 +62,11 @@ public class Main_Principal {
             nomina += e.calcularSalario();
         }
         System.out.println("El valor total de la nomina es: "+nomina);
+        
+        ArrayList <Receta> plato = new ArrayList();
+            Venta v1 = new Venta(plato,e1);
+            v1.agregarReceta(r1);
+            System.out.println("Total de la venta es: "+v1.calcularPrecio());
     }
     
 }
