@@ -12,27 +12,27 @@ import java.util.ArrayList;
  */
 public class Compras {
    private double valorTotal;
-    private ArrayList<Ingrediente> ingredientes;
+    private ArrayList<Producto> productos;
 
-    public Compras(double valorTotal, ArrayList<Ingrediente> ingredientes) {
+    public Compras(double valorTotal, ArrayList<Producto> productos) {
         this.valorTotal = valorTotal;
-        this.ingredientes = ingredientes;
+        this.productos = productos;
     }
 
     public double getValorTotal() {
         return valorTotal;
     }
 
-    public ArrayList<Ingrediente> getIngredientes() {
-        return ingredientes;
+    public ArrayList<Producto> getIngredientes() {
+        return productos;
     }
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
 
-    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
-        this.ingredientes = ingredientes;
+    public void setIngredientes(ArrayList<Producto> productos) {
+        this.productos = productos;
     }
     
 }
