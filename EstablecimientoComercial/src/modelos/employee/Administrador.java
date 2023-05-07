@@ -8,7 +8,7 @@ package modelos.employee;
  *
  * @author david
  */
-public class Administrador extends Empleado implements CalcularSalarios {
+public abstract class Administrador extends Empleado{
     private double salarioBase;
     private double auxilios;
     private double bonificacion;

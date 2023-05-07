@@ -8,7 +8,7 @@ package modelos.employee;
  *
  * @author david
  */
-public class Empleado {
+public abstract class Empleado {
         private String nombre;
         private long identificacion;
 
@@ -32,5 +32,6 @@ public class Empleado {
     public void setIdentificacion(long identificacion) {
         this.identificacion = identificacion;
     }
-        
+      
+  public abstract double calcularSalario();
 }

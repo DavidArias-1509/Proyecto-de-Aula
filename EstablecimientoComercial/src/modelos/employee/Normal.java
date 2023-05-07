@@ -8,7 +8,7 @@ package modelos.employee;
  *
  * @author david
  */
-public class Normal extends Empleado implements CalcularSalarios {
+public class Normal extends Empleado{
     private double pagoPorDia;
     private double bonificacion;
     private int diasTrabajados;

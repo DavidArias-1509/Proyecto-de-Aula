@@ -32,5 +32,8 @@ public class Ingrediente {
     public void setCnatidadDisponible(int cantidadDisponible) {
         this.cantidadDisponible = cantidadDisponible;
     }
-    
+ 
+    public double calcularPrecio(){
+        return 0;
+    }
 }
