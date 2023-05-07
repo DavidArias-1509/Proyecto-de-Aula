@@ -8,11 +8,6 @@ import modelos.cuentas.*;
 import modelos.employee.*;
 import modelos.preparaciones.*;
 
-
-/**
- *
- * @author david
- */
 public class Main_Principal {
     
    
