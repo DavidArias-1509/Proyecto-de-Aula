@@ -3,7 +3,8 @@ package vista;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import modelos.cuentas.Producto;
+import modelos.cuentas.*;
+import modelos.employee.*;
 import modelos.preparaciones.*;
 
 
@@ -50,6 +51,17 @@ public class Main_Principal {
              }
          }
         }
+        
+        List<Empleado> personal = new ArrayList();
+        Normal e1 = new Normal(12_000, 30_000, 20, "Juan Alvarez", 1000456); personal.add(e1);
+        Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
+        personal.add(admin);
+        double nomina=0;
+        for(Empleado e : personal){
+            System.out.println(e);
+            nomina += e.calcularSalario();
+        }
+        System.out.println("El valor total de la nomina es: "+nomina);
     }
     
 }

@@ -53,7 +53,12 @@ public class Normal extends Empleado{
     
     @Override
     public double calcularSalario() {
-        return 0;    
+        return (this.diasTrabajados*this.pagoPorDia)+this.bonificacion;    
     }
     
+    @Override
+    public String toString(){
+        return super.toString()+"\nEmpleado Normal \nPago por dia: "+this.pagoPorDia+"\nDias trabajados: "+this.diasTrabajados+
+                "\nBonificacion: "+this.bonificacion+"\nSalario Final: "+this.calcularSalario()+"\n*********************";
+    }
 }

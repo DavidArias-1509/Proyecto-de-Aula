@@ -34,4 +34,9 @@ public abstract class Empleado {
     }
       
   public abstract double calcularSalario();
+  
+        @Override
+  public String toString(){
+      return "Nombre: "+this.nombre+"\nId: "+this.identificacion;
+  }
 }

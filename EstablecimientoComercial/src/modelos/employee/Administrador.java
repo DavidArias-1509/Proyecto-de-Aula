@@ -8,7 +8,7 @@ package modelos.employee;
  *
  * @author david
  */
-public abstract class Administrador extends Empleado{
+public  class Administrador extends Empleado{
     private double salarioBase;
     private double auxilios;
     private double bonificacion;
@@ -46,7 +46,12 @@ public abstract class Administrador extends Empleado{
 
     @Override
     public double calcularSalario() {
-    return 0;    
+    return this.salarioBase+this.auxilios+this.bonificacion;
     }
-
+    
+    @Override
+    public String toString(){
+        return super.toString()+"\nAdministrador \nSalario base: "+this.salarioBase+"\nAuxilios: "+this.auxilios+
+                "\nBonificacion: "+this.bonificacion+"\nSalario Final: "+this.calcularSalario()+"\n*********************";
+    }
 }
