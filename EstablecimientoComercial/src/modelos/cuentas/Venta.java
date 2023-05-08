@@ -1,10 +1,13 @@
 package modelos.cuentas;
 
 import java.time.LocalDate;
+import modelos.Entrada;
 import java.util.ArrayList;
+import static modelos.Entrada.leerFecha;
 import modelos.employee.Empleado;
 import modelos.preparaciones.Receta;
-import static vista.Main_Principal.mes;
+import static vista.Main_Principal.*;
+
 
 public class Venta {
     private char encontro;
@@ -67,6 +70,39 @@ public class Venta {
             if(this.fechaVenta.equals(d.getFecha())){
                 d.agregarVenta(this);
             }
+        }
+    }
+    
+    public static void RegistroVenta(){
+        char encontro = 'n';
+        LocalDate fecha;
+        System.out.println("Registro de Venta");
+        System.out.println("---------------------------");
+        fecha = leerFecha("Fecha");
+        System.out.println("---------------------------");
+        for(Dia d : mes.getDias()){
+            if (d.getFecha().equals(fecha)){
+                encontro = 's';
+                break;
+            }
+        }
+        if (encontro == 'n'){
+            Dia d = new Dia(fecha);
+            mes.agregarDia(d);
+        }
+        encontro='n';
+        System.out.println("Empleado");
+        System.out.println("----------------------------");
+        long id = Entrada.leerLong("Identificacion: ");
+        for (Empleado e: personal){            
+            if(e.getIdentificacion() == id){
+                encontro = 's';
+                System.out.println("Nombre: "+ e.getNombre());
+                break;
+            }
+        }
+        if(encontro == 'n'){
+            System.out.println("No se encontro empleado intente otra vez");
         }
     }
 }

@@ -1,20 +1,21 @@
 package modelos.cuentas;
 
 import java.util.ArrayList;
+import java.util.Map;
 import modelos.employee.Empleado;
 
 public class Mes implements Balance {
     private ArrayList<Dia> balanceMes;
     private ArrayList<Dia> dias;
-    private ArrayList<Empleado> empleados;
+    
 
     public Mes() {
-        this(new ArrayList(), new ArrayList());
+        this(new ArrayList());
     }
 
-    public Mes(ArrayList<Dia> dias, ArrayList<Empleado> empleados) {
+    public Mes(ArrayList<Dia> dias) {
         this.dias = dias;
-        this.empleados = empleados;
+//        this.empleados = empleados;
         this.balanceMes = new ArrayList();
     }
 
@@ -22,17 +23,17 @@ public class Mes implements Balance {
         return dias;
     }
 
-    public ArrayList<Empleado> getEmpleados() {
-        return empleados;
-    }
+//    public ArrayList<Empleado> getEmpleados() {
+//        return empleados;
+//    }
 
     public void setDias(ArrayList<Dia> dias) {
         this.dias = dias;
     }
 
-    public void setEmpleados(ArrayList<Empleado> empleados) {
-        this.empleados = empleados;
-    }
+//    public void setEmpleados(ArrayList<Empleado> empleados) {
+//        this.empleados = empleados;
+//    }
     
     public void agregarDia(Dia d){
         this.dias.add(d);
