@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import modelos.Entrada;
 import modelos.cuentas.*;
 import modelos.employee.*;
 import modelos.preparaciones.*;
@@ -83,4 +84,38 @@ public class Main_Principal {
         System.out.println("Balance del mes: "+mes.calcularBalance());
     }
     
+    public static int menuInicial(){
+        System.out.println("1- Inventario");
+        System.out.println("2- Registrar Venta");
+        System.out.println("3- Registrar Compra");
+        System.out.println("4- Registo de Asistencia");
+        System.out.println("5- Persistir Informacion");
+        System.out.println("6- Opciones de Balance");
+        System.out.println("7- Funciones Especiales");
+        System.out.println("8- Cerrar Programa");
+        return Entrada.leerEntero("Selecione una alternativa: ");
+    }
+    
+    public static int menuCompras(){
+        System.out.println("1- Compra de Ingredientes");
+        System.out.println("2- Productos Adicionales");
+        System.out.println("3- Volver al Menu Anterior");
+        return Entrada.leerEntero("Seleccione Una alternativa: ");
+    }
+    
+    public static int opcionesBalance(){
+        System.out.println("1- Balance por dia");
+        System.out.println("2- Balance Mensual");
+        System.out.println("3- Volver al Menu Anterior");
+        return Entrada.leerEntero("Seleccione una alternativa: ");
+    }
+    
+    public static int menuFuncionesAdmin(){
+        System.out.println("1- Consultar detalle de Venta");
+        System.out.println("2- Consultar detalle de Compra");
+        System.out.println("3- Modificar Inventario");
+        System.out.println("4- Datos Empleados");
+        System.out.println("5- Volver al Menu Anterior");
+        return Entrada.leerEntero("Seleccione una alternativa: ");
+    }
 }
