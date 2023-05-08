@@ -55,7 +55,6 @@ public class Main_Principal {
          }
         }
         
-        List<Empleado> personal = new ArrayList();
         Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456); personal.add(e1);
         Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
         Cliente c1 = new Cliente("Maria", "blablabla@gmail.com", 12314493L);
@@ -160,16 +159,18 @@ public class Main_Principal {
     }
     
     public static void agregarEmpleado(){
+        Empleado e;
         char op='S', encontro='N';
         System.out.println("Registro de empleados");
+        long id;
         while(op=='S'){
             do{
-                long id = Entrada.leerLong("Cedula: ");
+                id = Entrada.leerLong("Cedula: ");
                 if(personal==null){
                    encontro='N'; 
                 }else{
-                    for(Empleado e : personal){
-                        if(e.getIdentificacion()==id){
+                    for(Empleado c : personal){
+                        if(c.getIdentificacion()==id){
                             System.out.println("Ya hay un empleado con esa cedula");
                             encontro='S';
                             System.out.println("Intente otra vez");
@@ -180,11 +181,30 @@ public class Main_Principal {
             }while(encontro=='S');
             
             String name =Entrada.leerString("Nombre");
-            char tipo = Entrada.leerCaracter("Admin (A) o Normal (N): ");
-            
-      
+            char tipo;
+            do{
+                tipo = Entrada.leerCaracter("Admin (A) o Normal (N): ");
+                if((tipo!='A')&&(tipo!='N')){
+                    System.out.println("Valor inesperado: Intente otra vez");
+                }
+            }while((tipo!='A')&&(tipo!='N'));
+            if(tipo=='A'){
+                double salarioBase = Entrada.leerDouble("Salario base: ");
+                double auxilios = Entrada.leerDouble("Auxilios: ");
+                double bonificacion = Entrada.leerDouble("Bonificacion: ");
+                e = new Administrador(salarioBase, auxilios, bonificacion, name, id);
+            }else{
+                double pagoPorDia = Entrada.leerDouble("Pago por dia: ");
+                double bonificacion = Entrada.leerDouble("Bonificacion: ");
+                e = new Normal(pagoPorDia, bonificacion, name, id);
+            }
+            personal.add(e);
+            do{
+                op=Entrada.leerCaracter("Desea Agregar un empleado mas? (S/N) :");
+            }while((op!='N')&&(op!='S'));
              
         }
-        
     }
+    
+    
 }
