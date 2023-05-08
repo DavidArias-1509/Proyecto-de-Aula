@@ -18,6 +18,7 @@ public class Inventario {
         this.Item = new HashMap();
     }
     
+    
     public void agregarItem(Producto p){
         char Encontro = 'n';
         int adicion;
@@ -56,4 +57,9 @@ public class Inventario {
             System.out.println("No se encontro Item");
         }
     }
+
+    public Map<String ,Producto> getItem() {
+        return Item;
+    }
+    
 }

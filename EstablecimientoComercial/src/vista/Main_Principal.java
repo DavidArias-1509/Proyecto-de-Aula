@@ -2,6 +2,7 @@ package vista;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import modelos.Entrada;
 import modelos.cuentas.*;
@@ -86,6 +87,8 @@ public class Main_Principal {
         System.out.println(C1.getFechaCompra());
         System.out.println("Balance del mes: "+mes.mesBalance(5, 2023));
         System.out.println("Valance del dia 7 del mes 5: "+ nuevo.calcularBalance());
+        
+        ejecucionPrincipal();
     }
     
     public static void ejecucionPrincipal(){
@@ -94,7 +97,7 @@ public class Main_Principal {
        while(op=='S'){
            int option = menuInicial();
             switch(option){
-                case 1: mostarInventario();
+                case 1: mostrarInventario();
                     break;
                    
                case 2:
@@ -115,7 +118,7 @@ public class Main_Principal {
                case 7:
                     break;
                    
-               case 8:
+               case 8: op='N';
                     break;
                    
                default: System.out.println("Valor inesperado: Intente otra vez");
@@ -213,6 +216,22 @@ public class Main_Principal {
                 op=Entrada.leerCaracter("Desea Agregar un empleado mas? (S/N) :");
             }while((op!='N')&&(op!='S'));
              
+        }
+    }
+    
+    public static void mostrarInventario(){
+        System.out.println("Inventario de Ingredientes");
+        if(I1==null){
+            System.out.println("Al parecer hay Ingredientes");
+        }else{
+            System.out.println("Ingrediente             Cantidad Disponible");
+            Iterator<String> c = I1.getItem().keySet().iterator();
+            while(c.hasNext()){
+                String key = c.next();
+                System.out.println(I1.getItem().get(key));
+            }
+            System.out.println("\nNO hay mas ingredientes");
+            System.out.println("********************");
         }
     }
     
