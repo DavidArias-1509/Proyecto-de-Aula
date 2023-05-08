@@ -3,6 +3,7 @@ package modelos.cuentas;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import modelos.employee.Empleado;
+import modelos.employee.Normal;
 
 public class Dia implements Balance{
     private ArrayList<Venta> ventas;
@@ -65,8 +66,20 @@ public LocalDate getFecha() {
     }
     
     public void registarAsistencia(Empleado e){
-        this.asistencia.add(e);
-        System.out.println("Asistencia registrada");
+        char encontro = 'n';
+        for(Empleado e1 : this.asistencia){
+            if(e1.getIdentificacion() == e.getIdentificacion()){
+                System.out.println("Asistencia ya fue registrada");
+                encontro = 's';
+            }
+        }
+        if(encontro == 'n'){
+            if (e instanceof Normal normal){
+                normal.setDiasTrabajados(1);
+            }
+            this.asistencia.add(e);
+            System.out.println("Asistencia registrada");
+        }
     }
     
     @Override
@@ -77,6 +90,9 @@ public LocalDate getFecha() {
         }
         for(Compra c: this.compras){
             balance-=c.getValorTotal();
+        }
+        for (Empleado e: this.asistencia){
+            balance -= e.calcularSalario();
         }
        return balance; 
     }

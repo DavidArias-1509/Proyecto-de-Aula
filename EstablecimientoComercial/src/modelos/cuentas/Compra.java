@@ -14,6 +14,10 @@ public class Compra {
    private LocalDate fechaCompra;
 
     public Compra(){
+        this(LocalDate.now());
+    }
+    
+    public Compra(LocalDate fecha){
         this.encontro='n';
         this.fechaCompra = LocalDate.now();
         for(Dia d: mes.getDias()){

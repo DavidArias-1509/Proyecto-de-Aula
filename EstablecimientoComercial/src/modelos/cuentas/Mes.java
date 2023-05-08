@@ -4,17 +4,18 @@ import java.util.ArrayList;
 import modelos.employee.Empleado;
 
 public class Mes implements Balance {
+    private ArrayList<Dia> balanceMes;
     private ArrayList<Dia> dias;
     private ArrayList<Empleado> empleados;
 
     public Mes() {
-        this.dias = new ArrayList();
-        this.empleados = new ArrayList();
+        this(new ArrayList(), new ArrayList());
     }
 
     public Mes(ArrayList<Dia> dias, ArrayList<Empleado> empleados) {
         this.dias = dias;
         this.empleados = empleados;
+        this.balanceMes = new ArrayList();
     }
 
     public ArrayList<Dia> getDias() {
@@ -36,11 +37,23 @@ public class Mes implements Balance {
     public void agregarDia(Dia d){
         this.dias.add(d);
     }
+    
+    public double mesBalance(int mes, int anio){
+        double balance=0;
+        this.balanceMes.clear();
+        for(Dia d: this.dias){
+            if(d.getFecha().getYear()==anio && d.getFecha().getMonthValue() == mes){
+                this.balanceMes.add(d);
+            }
+        }
+        balance = this.calcularBalance();
+        return balance;
+    }
 
     @Override
     public double calcularBalance() {
         double balance=0;
-        for(Dia d : this.dias){
+        for(Dia d : this.balanceMes){
             balance += d.calcularBalance();
         }
         return balance;

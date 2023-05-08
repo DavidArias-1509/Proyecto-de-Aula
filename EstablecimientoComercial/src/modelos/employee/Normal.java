@@ -5,18 +5,18 @@ public class Normal extends Empleado{
     private double bonificacion;
     private int diasTrabajados;
 
-    public Normal(double pagoPorDia, double bonificacion, int diasTrabajados, String nombre, long identificacion) {
-        super(nombre, identificacion);
-        this.pagoPorDia = pagoPorDia;
-        this.bonificacion = bonificacion;
-        this.diasTrabajados = diasTrabajados;
-    }
+//    public Normal(double pagoPorDia, double bonificacion, int diasTrabajados, String nombre, long identificacion) {
+//        super(nombre, identificacion);
+//        this.pagoPorDia = pagoPorDia;
+//        this.bonificacion = bonificacion;
+//        this.diasTrabajados = diasTrabajados =0;
+//    }
 
     public Normal(double pagoPorDia, double bonificacion, String nombre, long identificacion) {
         super(nombre, identificacion);
         this.pagoPorDia = pagoPorDia;
         this.bonificacion = bonificacion;
-        this.diasTrabajados=0;
+        this.diasTrabajados = 0;
     }
     
     public double getPagoPorDia() {

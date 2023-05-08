@@ -55,7 +55,7 @@ public class Main_Principal {
         }
         
         List<Empleado> personal = new ArrayList();
-        Normal e1 = new Normal(12_000, 30_000, 20, "Juan Alvarez", 1000456); personal.add(e1);
+        Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456); personal.add(e1);
         Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
         personal.add(admin);
         double nomina=0;
@@ -73,6 +73,8 @@ public class Main_Principal {
 
         
         Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
+        nuevo.registarAsistencia(e1);
+        mes.agregarDia(nuevo);
         Compra C1 = new Compra();
         C1.agregaACarrito(p2);
         C1.agregaACarrito(p1);
@@ -80,7 +82,8 @@ public class Main_Principal {
         C1.realizarCompra();
         v1.realizarVenta();
         System.out.println(C1.getFechaCompra());
-        System.out.println("Balance del mes: "+mes.calcularBalance());
+        System.out.println("Balance del mes: "+mes.mesBalance(5, 2023));
+        System.out.println("Valance del dia 7 del mes 5: "+ nuevo.calcularBalance());
     }
     
 }
