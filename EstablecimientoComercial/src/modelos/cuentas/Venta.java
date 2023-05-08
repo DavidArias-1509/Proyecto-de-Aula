@@ -11,11 +11,13 @@ public class Venta {
     private ArrayList<Receta> platos;
     private LocalDate fechaVenta;
     private Empleado empleado;
+    private Cliente cliente;
     private double precioVenta;
 
-    public Venta(ArrayList<Receta> platos, Empleado empleado) {
+    public Venta(ArrayList<Receta> platos, Empleado empleado, Cliente cliente) {
         this.encontro = 'n';
         this.platos = platos;
+        this.cliente = cliente;
         this.empleado = empleado;
         this.fechaVenta = LocalDate.now();
         for(Dia d: mes.getDias()){

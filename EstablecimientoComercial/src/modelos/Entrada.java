@@ -33,4 +33,9 @@ public class Entrada {
         String fecha = input.next();
         return LocalDate.parse(fecha, formatter);
    }
+   
+   public static long leerLong(String label){
+        System.out.println(label);
+        return input.nextLong();
+    }
 }
