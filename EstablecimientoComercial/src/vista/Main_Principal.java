@@ -87,7 +87,7 @@ public class Main_Principal {
         System.out.println(C1.getFechaCompra());
         System.out.println("Balance del mes: "+mes.mesBalance(5, 2023));
         System.out.println("Valance del dia 7 del mes 5: "+ nuevo.calcularBalance());
-        
+
         ejecucionPrincipal();
     }
     
@@ -101,6 +101,7 @@ public class Main_Principal {
                     break;
                    
                case 2:
+                   Venta.RegistroVenta();
                     break;
                    
                case 3:
@@ -237,8 +238,9 @@ public class Main_Principal {
                 }
             }while(encontro=='S');
             
-            String name =Entrada.leerString("Nombre");
-            char tipo;
+            String name =Entrada.leerString("Nombre");        
+            char tipo = Entrada.leerCaracter("Admin (A) o Normal (N): ");    
+
             do{
                 tipo = Entrada.leerCaracter("Admin (A) o Normal (N): ");
                 if((tipo!='A')&&(tipo!='N')){
@@ -317,3 +319,5 @@ public class Main_Principal {
     
     
 }
+
+
