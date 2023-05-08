@@ -94,7 +94,7 @@ public class Main_Principal {
        while(op=='S'){
            int option = menuInicial();
             switch(option){
-                case 1: 
+                case 1: mostarInventario();
                     break;
                    
                case 2:
@@ -156,6 +156,16 @@ public class Main_Principal {
         System.out.println("4- Datos Empleados");
         System.out.println("5- Volver al Menu Anterior");
         return Entrada.leerEntero("Seleccione una alternativa: ");
+    }
+    
+    public static boolean validar(String user, String password){
+        String usuario="";
+        String contrasena="";
+        boolean confirmar = false;
+        if((usuario.equals(user))&&(contrasena.equals(password))){
+            confirmar = true;
+        }
+        return confirmar;
     }
     
     public static void agregarEmpleado(){
