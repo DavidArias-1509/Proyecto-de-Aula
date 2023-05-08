@@ -107,16 +107,16 @@ public class Main_Principal {
                case 3:
                     break;
                    
-               case 4:
+               case 4: registroAsistencia();
                     break;
                    
-               case 5:
+               case 5: persistirInformacion();
                     break;
                    
-               case 6:
+               case 6: balances();
                     break;
                    
-               case 7:
+               case 7: funcionesAdicionales();
                     break;
                    
                case 8: op='N';
@@ -158,7 +158,9 @@ public class Main_Principal {
         System.out.println("2- Consultar detalle de Compra");
         System.out.println("3- Modificar Inventario");
         System.out.println("4- Datos Empleados");
-        System.out.println("5- Volver al Menu Anterior");
+        System.out.println("5- Ver Detalle Venta");
+        System.out.println("6- ver Detalle Compra");
+        System.out.println("7- Volver al Menu Anterior");
         return Entrada.leerEntero("Seleccione una alternativa: ");
     }
     
@@ -171,6 +173,48 @@ public class Main_Principal {
         }
         return confirmar;
     }
+    
+    public static void funcionesAdicionales(){
+        boolean confirm=false;
+         char romper='N';
+         int opc;
+        do{
+            confirm=validar(Entrada.leerString("Usuario: "), Entrada.leerString("Contrasena: "));
+            if(confirm==false){
+                System.out.println("Error con el usuario o la contrasena: Verfique los datos");
+                romper = Entrada.leerCaracter("Desea volver al menu anterior? (S/N): ");
+            }
+          }while((false==confirm)||(romper=='N'));
+         
+        if(confirm==true){
+            char cn='S';
+            while(cn=='S'){
+                opc=menuFuncionesAdmin();
+                switch(opc){
+                        case 1: verDetalleVenta();
+                            break;
+                        case 2:verDetalleCompra();
+                            break;
+                        case 3: modificarInventario();
+                            break;
+                        case 4:eliminarVenta();
+                            break;
+                        case 5:eliminarCompra();
+                            break;
+                         case 6:listaPersonal();
+                            break;
+                        case 7:cn='N';
+                            break;
+                         
+                        default: System.out.println("Valor inesperado: Intente otra vez");
+                        
+                 }
+            }
+            
+        }
+    }
+    
+   
     
     public static void agregarEmpleado(){
         Empleado e;
@@ -235,6 +279,42 @@ public class Main_Principal {
             System.out.println("\nNO hay mas ingredientes");
             System.out.println("********************");
         }
+    }
+
+    private static void verDetalleVenta() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void verDetalleCompra() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void modificarInventario() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void eliminarVenta() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void eliminarCompra() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void listaPersonal() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void persistirInformacion() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void balances() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private static void registroAsistencia() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     
