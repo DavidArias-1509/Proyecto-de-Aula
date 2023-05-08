@@ -2,6 +2,7 @@ package vista;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import modelos.Entrada;
 import modelos.cuentas.*;
@@ -55,7 +56,6 @@ public class Main_Principal {
          }
         }
         
-        List<Empleado> personal = new ArrayList();
         Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456); personal.add(e1);
         Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
         Cliente c1 = new Cliente("Maria", "blablabla@gmail.com", 12314493L);
@@ -87,6 +87,7 @@ public class Main_Principal {
         System.out.println(C1.getFechaCompra());
         System.out.println("Balance del mes: "+mes.mesBalance(5, 2023));
         System.out.println("Valance del dia 7 del mes 5: "+ nuevo.calcularBalance());
+
         ejecucionPrincipal();
     }
     
@@ -96,7 +97,7 @@ public class Main_Principal {
        while(op=='S'){
            int option = menuInicial();
             switch(option){
-                case 1: 
+                case 1: mostrarInventario();
                     break;
                    
                case 2:
@@ -118,7 +119,7 @@ public class Main_Principal {
                case 7:
                     break;
                    
-               case 8:
+               case 8: op='N';
                     break;
                    
                default: System.out.println("Valor inesperado: Intente otra vez");
@@ -161,17 +162,29 @@ public class Main_Principal {
         return Entrada.leerEntero("Seleccione una alternativa: ");
     }
     
+    public static boolean validar(String user, String password){
+        String usuario="";
+        String contrasena="";
+        boolean confirmar = false;
+        if((usuario.equals(user))&&(contrasena.equals(password))){
+            confirmar = true;
+        }
+        return confirmar;
+    }
+    
     public static void agregarEmpleado(){
+        Empleado e;
         char op='S', encontro='N';
         System.out.println("Registro de empleados");
+        long id;
         while(op=='S'){
             do{
-                long id = Entrada.leerLong("Cedula: ");
+                id = Entrada.leerLong("Cedula: ");
                 if(personal==null){
                    encontro='N'; 
                 }else{
-                    for(Empleado e : personal){
-                        if(e.getIdentificacion()==id){
+                    for(Empleado c : personal){
+                        if(c.getIdentificacion()==id){
                             System.out.println("Ya hay un empleado con esa cedula");
                             encontro='S';
                             System.out.println("Intente otra vez");
@@ -181,10 +194,50 @@ public class Main_Principal {
                 }
             }while(encontro=='S');
             
-            String name =Entrada.leerString("Nombre");
+            String name =Entrada.leerString("Nombre");        
             char tipo = Entrada.leerCaracter("Admin (A) o Normal (N): ");    
+
+            do{
+                tipo = Entrada.leerCaracter("Admin (A) o Normal (N): ");
+                if((tipo!='A')&&(tipo!='N')){
+                    System.out.println("Valor inesperado: Intente otra vez");
+                }
+            }while((tipo!='A')&&(tipo!='N'));
+            if(tipo=='A'){
+                double salarioBase = Entrada.leerDouble("Salario base: ");
+                double auxilios = Entrada.leerDouble("Auxilios: ");
+                double bonificacion = Entrada.leerDouble("Bonificacion: ");
+                e = new Administrador(salarioBase, auxilios, bonificacion, name, id);
+            }else{
+                double pagoPorDia = Entrada.leerDouble("Pago por dia: ");
+                double bonificacion = Entrada.leerDouble("Bonificacion: ");
+                e = new Normal(pagoPorDia, bonificacion, name, id);
+            }
+            personal.add(e);
+            do{
+                op=Entrada.leerCaracter("Desea Agregar un empleado mas? (S/N) :");
+            }while((op!='N')&&(op!='S'));
+             
         }
     }
+    
+    public static void mostrarInventario(){
+        System.out.println("Inventario de Ingredientes");
+        if(I1==null){
+            System.out.println("Al parecer hay Ingredientes");
+        }else{
+            System.out.println("Ingrediente             Cantidad Disponible");
+            Iterator<String> c = I1.getItem().keySet().iterator();
+            while(c.hasNext()){
+                String key = c.next();
+                System.out.println(I1.getItem().get(key));
+            }
+            System.out.println("\nNO hay mas ingredientes");
+            System.out.println("********************");
+        }
+    }
+    
+    
 }
 
 
