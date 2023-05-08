@@ -16,6 +16,7 @@ public class Main_Principal {
     
     public static Inventario I1 = new Inventario();
     public static Mes mes = new Mes();
+    public static List<Empleado> personal = new ArrayList();
     
     public static void main(String[] args) {
          List<Producto> inventario = new ArrayList();
@@ -153,5 +154,34 @@ public class Main_Principal {
         System.out.println("4- Datos Empleados");
         System.out.println("5- Volver al Menu Anterior");
         return Entrada.leerEntero("Seleccione una alternativa: ");
+    }
+    
+    public static void agregarEmpleado(){
+        char op='S', encontro='N';
+        System.out.println("Registro de empleados");
+        while(op=='S'){
+            do{
+                long id = Entrada.leerLong("Cedula: ");
+                if(personal==null){
+                   encontro='N'; 
+                }else{
+                    for(Empleado e : personal){
+                        if(e.getIdentificacion()==id){
+                            System.out.println("Ya hay un empleado con esa cedula");
+                            encontro='S';
+                            System.out.println("Intente otra vez");
+                            break;
+                        }
+                    }
+                }
+            }while(encontro=='S');
+            
+            String name =Entrada.leerString("Nombre");
+            char tipo = Entrada.leerCaracter("Admin (A) o Normal (N): ");
+            
+      
+             
+        }
+        
     }
 }
