@@ -4,7 +4,7 @@
  */
 package modelos.cuentas;
 
-import java.util.ArrayList;
+import java.util.*;
 import modelos.preparaciones.Ingrediente;
 
 /**
@@ -12,39 +12,43 @@ import modelos.preparaciones.Ingrediente;
  * @author karla
  */
 public class Inventario {
-    private ArrayList <Producto> Item;
+    private Map<String ,Producto> Item;
 
     public Inventario() {
-        this.Item = new ArrayList();
+        this.Item = new HashMap();
     }
     
     public void agregarItem(Producto p){
         char Encontro = 'n';
         int adicion;
+        Iterator<String> i = this.Item.keySet().iterator();
         if((this.Item!= null)){
-            for (Producto p1 : this.Item){
-                if (p1.getNombre().equals(p.getNombre())){
+            while(i.hasNext()){
+                String key = i.next();
+                if (this.Item.get(key).equals(p.getNombre())){
                     Encontro = 's';
-                    adicion = p1.getCnatidadDisponible() + p.getCnatidadDisponible();
-                    p1.setCnatidadDisponible(adicion);
-                    p1.setPrecio(p.getPrecio());
+                    adicion = this.Item.get(key).getCnatidadDisponible() + p.getCnatidadDisponible();
+                    this.Item.get(key).setCnatidadDisponible(adicion);
+                    this.Item.get(key).setPrecio(p.getPrecio());
                 }
             }
         }
         
         if(Encontro == 'n'){
-            this.Item.add(p);
+            this.Item.put(p.getNombre(), p);
         }
     }
     
     public void reducirItem(Ingrediente i){
         char Encontro = 'n';
         int reduccion;
-        for (Producto p1 : Item){
-            if (i.getNombre().equals(p1.getNombre())){
+        Iterator<String> b = this.Item.keySet().iterator();
+        while(b.hasNext()){
+            String key = b.next();
+            if (i.getNombre().equals(this.Item.get(key))){
                 Encontro = 's';
-                reduccion = p1.getCnatidadDisponible() - i.getCantidad();
-                p1.setCnatidadDisponible(reduccion);
+                reduccion = this.Item.get(key).getCnatidadDisponible() - i.getCantidad();
+                this.Item.get(key).setCnatidadDisponible(reduccion);
             } else {
             }
         }

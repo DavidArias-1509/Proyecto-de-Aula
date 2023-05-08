@@ -3,7 +3,6 @@ package vista;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import modelos.Entrada;
 import modelos.cuentas.*;
 import modelos.employee.*;
@@ -22,7 +21,7 @@ public class Main_Principal {
          List<Producto> inventario = new ArrayList();
          Producto p1 = new Producto("tomate", 1000,5,"Vegetal"); inventario.add(p1);
          Producto p2 = new Producto("pasta", 50,3,"Masa"); inventario.add(p2);
-         
+    
          Receta r1 = new Receta("Pastas con tomate");
          Ingrediente i1 = new Ingrediente ("tomate", 5, 50);r1.agregarIngrediente(i1);
          Ingrediente i2 = new Ingrediente("pasta",3, 100);r1.agregarIngrediente(i2);
@@ -58,6 +57,8 @@ public class Main_Principal {
         List<Empleado> personal = new ArrayList();
         Normal e1 = new Normal(12_000, 30_000, 20, "Juan Alvarez", 1000456); personal.add(e1);
         Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
+        Cliente c1 = new Cliente("Maria", "blablabla@gmail.com", 12314493L);
+        
         personal.add(admin);
         double nomina=0;
         for(Empleado e : personal){
@@ -68,7 +69,7 @@ public class Main_Principal {
         
 
         ArrayList <Receta> plato = new ArrayList();
-            Venta v1 = new Venta(plato,e1);
+            Venta v1 = new Venta(plato,e1,c1);
             v1.agregarReceta(r1);
             System.out.println("Total de la venta es: "+v1.calcularPrecio());
 
@@ -90,20 +91,27 @@ public class Main_Principal {
        while(op=='S'){
            int option = menuInicial();
             switch(option){
-                case 1:
+                case 1: 
                     break;
+                   
                case 2:
                     break;
+                   
                case 3:
                     break;
+                   
                case 4:
                     break;
+                   
                case 5:
                     break;
+                   
                case 6:
                     break;
+                   
                case 7:
                     break;
+                   
                case 8:
                     break;
                    
