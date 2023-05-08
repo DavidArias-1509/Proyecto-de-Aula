@@ -56,7 +56,7 @@ public class Main_Principal {
          }
         }
         
-        Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456); personal.add(e1);
+        Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456L); personal.add(e1);
         Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
         Cliente c1 = new Cliente("Maria", "blablabla@gmail.com", 12314493L);
         
