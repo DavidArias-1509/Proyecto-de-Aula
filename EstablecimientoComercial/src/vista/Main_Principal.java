@@ -85,10 +85,31 @@ public class Main_Principal {
     }
     
     public static void ejecucionPrincipal(){
-        char op;
-        do{
+        char op='S';
             
-        }while(op=='S');
+       while(op=='S'){
+           int option = menuInicial();
+            switch(option){
+                case 1:
+                    break;
+               case 2:
+                    break;
+               case 3:
+                    break;
+               case 4:
+                    break;
+               case 5:
+                    break;
+               case 6:
+                    break;
+               case 7:
+                    break;
+               case 8:
+                    break;
+                   
+               default: System.out.println("Valor inesperado: Intente otra vez");
+            }
+       }
     }
     
     public static int menuInicial(){
