@@ -73,12 +73,12 @@ public LocalDate getFecha() {
     public double calcularBalance() {
        double balance=0;
         for(Venta v : this.ventas){
-            balance+=0;
+            balance+=v.calcularPrecio();
         }
         for(Compra c: this.compras){
-            balance-=0;
+            balance-=c.getValorTotal();
         }
-       return balance;
+       return balance; 
     }
 
     

@@ -15,19 +15,23 @@ public class Inventario {
     private ArrayList <Producto> Item;
 
     public Inventario() {
+        this.Item = new ArrayList();
     }
     
     public void agregarItem(Producto p){
         char Encontro = 'n';
         int adicion;
-        for (Producto p1 : Item){
-            if (p1.getNombre().equals(p.getNombre())){
-                Encontro = 's';
-                adicion = p1.getCnatidadDisponible() + p.getCnatidadDisponible();
-                p1.setCnatidadDisponible(adicion);
-                p1.setPrecio(p.getPrecio());
+        if((this.Item!= null)){
+            for (Producto p1 : this.Item){
+                if (p1.getNombre().equals(p.getNombre())){
+                    Encontro = 's';
+                    adicion = p1.getCnatidadDisponible() + p.getCnatidadDisponible();
+                    p1.setCnatidadDisponible(adicion);
+                    p1.setPrecio(p.getPrecio());
+                }
             }
         }
+        
         if(Encontro == 'n'){
             this.Item.add(p);
         }

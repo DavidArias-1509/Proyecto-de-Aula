@@ -15,6 +15,8 @@ import modelos.preparaciones.*;
 public class Main_Principal {
     
     public static Inventario I1 = new Inventario();
+    public static Mes mes = new Mes();
+    
     public static void main(String[] args) {
          List<Producto> inventario = new ArrayList();
          Producto p1 = new Producto("tomate", 1000,5,"Vegetal"); inventario.add(p1);
@@ -74,7 +76,11 @@ public class Main_Principal {
         Compra C1 = new Compra();
         C1.agregaACarrito(p2);
         C1.agregaACarrito(p1);
-        System.out.println("Valor total de la Compra"+C1.getValorTotal());
+        System.out.println("Valor total de la Compra: "+C1.getValorTotal());
+        C1.realizarCompra();
+        v1.realizarVenta();
+        System.out.println(C1.getFechaCompra());
+        System.out.println("Balance del mes: "+mes.calcularBalance());
     }
     
 }

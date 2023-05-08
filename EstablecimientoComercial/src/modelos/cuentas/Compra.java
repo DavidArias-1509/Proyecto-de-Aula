@@ -4,14 +4,27 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import modelos.preparaciones.Ingrediente;
 import static vista.Main_Principal.I1;
+import static vista.Main_Principal.mes;
 
 public class Compra {
+   private char encontro;
+   private int codigo;
    private double valorTotal;
    private ArrayList<Producto> productos;
    private LocalDate fechaCompra;
 
     public Compra(){
+        this.encontro='n';
         this.fechaCompra = LocalDate.now();
+        for(Dia d: mes.getDias()){
+            if(this.fechaCompra.equals(d.getFecha())){
+                encontro = 's';
+            }
+        }
+        if (this.encontro == 'n'){
+            Dia d1 = new Dia();
+            mes.agregarDia(d1);
+        }
         this.productos = new ArrayList();
         this.valorTotal = 0;
     }
@@ -72,6 +85,11 @@ public class Compra {
     public void realizarCompra(){
         for(Producto p : this.productos){
             I1.agregarItem(p);
+        }
+        for(Dia d : mes.getDias()){
+            if(this.fechaCompra.equals(d.getFecha())){
+                d.agregarCompra(this);
+            }
         }
     }
 }
