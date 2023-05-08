@@ -84,6 +84,13 @@ public class Main_Principal {
         System.out.println("Balance del mes: "+mes.calcularBalance());
     }
     
+    public static void ejecucionPrincipal(){
+        char op;
+        do{
+            
+        }while(op=='S');
+    }
+    
     public static int menuInicial(){
         System.out.println("1- Inventario");
         System.out.println("2- Registrar Venta");
