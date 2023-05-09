@@ -2,9 +2,14 @@ package modelos.cuentas;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import modelos.Entrada;
+import static modelos.Entrada.leerFecha;
+import modelos.employee.Administrador;
+import modelos.employee.Empleado;
 import modelos.preparaciones.Ingrediente;
 import static vista.Main_Principal.I1;
 import static vista.Main_Principal.mes;
+import static vista.Main_Principal.personal;
 
 public class Compra {
    private char encontro;
@@ -95,5 +100,64 @@ public class Compra {
                 d.agregarCompra(this);
             }
         }
+    }
+    public static void RegistroCompra(){
+        if(validacion()){
+            int opc = 0;
+            System.out.println("rRegistro de Compra");
+            System.out.println("---------------------------");
+            System.out.println("1. Compra de Ingredientes");
+            System.out.println("2. Otras Compras");
+            do{
+                opc = Entrada.leerEntero("Elija Opcion enttre (1-2)");
+            }while (opc == 1 || opc ==2);
+            String desc;
+            if(opc==1){
+                
+            }
+            char encontro = 'n';
+            LocalDate fecha;
+            System.out.println("Registro de Compra");
+            System.out.println("---------------------------");
+            fecha = leerFecha("Fecha");
+            System.out.println("---------------------------");
+            for(Dia d : mes.getDias()){
+                if (d.getFecha().equals(fecha)){
+                    encontro = 's';
+                    break;
+                }
+            }
+            if (encontro == 'n'){
+                Dia d = new Dia(fecha);
+                mes.agregarDia(d);
+            }
+            encontro='n';
+            
+        }
+    }
+    public static boolean validacion(){
+        boolean bol = false;
+        System.out.println("Registro de compra");
+        System.out.println("-------------------------");
+        long usuario = Entrada.leerLong("Usuario : ");
+        long Contrasena = Entrada.leerLong("Contrasena : ");
+        if(usuario == 123L && Contrasena == 1234L){
+            bol = true;
+        }else{
+            for(Empleado e : personal){
+                if(usuario == e.getIdentificacion() && (e instanceof Administrador)){
+                    if(Contrasena == e.getIdentificacion()){
+                       bol = true;
+                    }else{
+                        System.out.println("Error en contraseña...");
+                        bol = false;
+                    }
+                }
+            }
+        }
+        if(!bol){
+            System.out.println("Acceso no permitido");
+        }
+       return bol;
     }
 }
