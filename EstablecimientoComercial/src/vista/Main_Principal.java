@@ -301,7 +301,18 @@ public class Main_Principal {
     }
 
     private static void verDetalleCompra() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         LocalDate buscar = Entrada.leerFecha("Dia de la compra: ");
+       for(Dia d : mes.getDias()){
+           if(buscar.equals(d.getFecha())){
+               System.out.println("Dia econtrado:");
+               String code = Entrada.leerString("Codigo de la compra: ");
+              for(Compra c : d.getCompras()){
+                  if(code.equals(c.getCodigoCompra())){
+                      c.detalle();
+                  }
+              }
+           }
+       }
     }
 
     private static void modificarInventario() {
