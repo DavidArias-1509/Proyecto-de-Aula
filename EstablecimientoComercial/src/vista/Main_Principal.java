@@ -285,7 +285,12 @@ public class Main_Principal {
     }
 
     private static void verDetalleVenta() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       LocalDate buscar = Entrada.leerFecha("Dia de la compra: ");
+       for(Dia d : mes.getDias()){
+           if(buscar.equals(d.getFecha())){
+              
+           }
+       }
     }
 
     private static void verDetalleCompra() {
@@ -293,7 +298,15 @@ public class Main_Principal {
     }
 
     private static void modificarInventario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        char opc = Entrada.leerCaracter("Desea agregar(A) o eliminar(E): ");
+          String ingrediente = Entrada.leerString("Nombre del ingrediente: ");
+          int cantidad;
+          if(opc=='A'){
+              cantidad=Entrada.leerEntero("Cantidad para agregar: ");
+          }else{
+              cantidad=Entrada.leerEntero("Cantidad para eliminar: ");
+          }
     }
 
     private static void eliminarVenta() {
