@@ -136,7 +136,7 @@ public class Venta {
                     op = Entrada.leerCaracter("No se encontro plato, desea agregar? (S/N)");
 
                 }else{
-                    v.platos.add(r1);
+                    v.agregarReceta(r1);
                 }
                 op = Entrada.leerCaracter("Desea finalizar (S/N)");
             }while(op =='N'|| op =='n');
@@ -145,13 +145,12 @@ public class Venta {
                 for(Dia d : mes.getDias()){
                     if (d.getFecha().equals(fecha)){
                         d.agregarVenta(v);
+                        System.out.println("Total venta: " + v.calcularPrecio());
                         break;
                     }
                 }
             }
             
         }
-        
-        
     }
 }
