@@ -18,6 +18,7 @@ public class Main_Principal {
     public static Inventario I1 = new Inventario();
     public static Mes mes = new Mes();
     public static List<Empleado> personal = new ArrayList();
+    public static List<Receta> libroReceta = new ArrayList();
     
     public static void main(String[] args) {
          List<Producto> inventario = new ArrayList();
@@ -27,7 +28,7 @@ public class Main_Principal {
          Receta r1 = new Receta("Pastas con tomate");
          Ingrediente i1 = new Ingrediente ("tomate", 5, 50);r1.agregarIngrediente(i1);
          Ingrediente i2 = new Ingrediente("pasta",3, 100);r1.agregarIngrediente(i2);
-         
+         libroReceta.add(r1);
          System.out.println("El precio es: "+r1.calcularPrecio());
          char encontro='N';
          for(Ingrediente I : r1.getIngredientes() ){
