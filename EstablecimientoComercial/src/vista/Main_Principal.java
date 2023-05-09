@@ -334,7 +334,7 @@ public class Main_Principal {
 
     private static void listaPersonal() {
         System.out.println("Lista de Personal");
-        System.out.println("Nombre-Identificacion-Dias Trabajados- Pago por dia");
+        System.out.println("Nombre-Identificacion");
         for(Empleado e : personal){
             System.out.println(e.getNombre()+"-"+e.getIdentificacion());
         }
@@ -349,7 +349,7 @@ public class Main_Principal {
     }
 
     private static void registroAsistencia() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
     
     
