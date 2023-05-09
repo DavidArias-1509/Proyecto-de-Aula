@@ -9,11 +9,11 @@ import modelos.employee.Empleado;
 import modelos.preparaciones.Ingrediente;
 import static vista.Main_Principal.I1;
 import static vista.Main_Principal.mes;
+import static vista.Main_Principal.pedirFecha;
 import static vista.Main_Principal.personal;
 
 public class Compra {
     private String codigoCompra;
-   private char encontro;
    private double valorTotal;
    private ArrayList<Producto> productos;
    private LocalDate fechaCompra;
@@ -23,7 +23,7 @@ public class Compra {
     }
     
     public Compra(LocalDate fecha){
-        this.encontro='n';
+        char encontro='n';
          int secuencia = 1;
         this.fechaCompra = LocalDate.now();
         for(Dia d: mes.getDias()){
@@ -38,7 +38,7 @@ public class Compra {
                 encontro = 's';
             }
         }
-        if (this.encontro == 'n'){
+        if (encontro == 'n'){
             Dia d1 = new Dia();
             mes.agregarDia(d1);
         }
@@ -123,22 +123,7 @@ public class Compra {
             }while (opc == 1 || opc ==2);
             
             char encontro = 'n';
-            LocalDate fecha;
-            System.out.println("Registro de Compra");
-            System.out.println("---------------------------");
-            //Leemos Fecha
-            fecha = leerFecha("Fecha");
-            System.out.println("---------------------------");
-            for(Dia d : mes.getDias()){
-                if (d.getFecha().equals(fecha)){
-                    encontro = 's';
-                    break;
-                }
-            }
-            if (encontro == 'n'){
-                Dia d = new Dia(fecha);
-                mes.agregarDia(d);
-            }
+            LocalDate fecha = pedirFecha();
             Compra c = new Compra(fecha);
             encontro='n';
             char op = 'n';
@@ -172,8 +157,8 @@ public class Compra {
         boolean bol = false;
         System.out.println("Registro de compra");
         System.out.println("-------------------------");
-        long usuario = Entrada.leerLong("Usuario : ");
-        long Contrasena = Entrada.leerLong("Contrasena : ");
+        long usuario = Entrada.leerLong("Usuario(123) : ");
+        long Contrasena = Entrada.leerLong("Contrasena (1234) : ");
         if(usuario == 123L && Contrasena == 1234L){
             bol = true;
         }else{
@@ -199,9 +184,6 @@ public class Compra {
         return codigoCompra;
     }
 
-    public char getEncontro() {
-        return encontro;
-    }
 
     public ArrayList<Producto> getProductos() {
         return productos;

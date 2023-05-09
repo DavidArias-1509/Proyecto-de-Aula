@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import modelos.Entrada;
+import static modelos.Entrada.leerFecha;
 import modelos.cuentas.*;
 import modelos.employee.*;
 import modelos.preparaciones.*;
@@ -84,7 +85,8 @@ public class Main_Principal {
         C1.realizarCompra();
         v1.realizarVenta();
         System.out.println(C1.getFechaCompra());
-        System.out.println("Balance del mes: "+mes.mesBalance(5, 2023));
+//        mes.mesBalance(5, 2023);
+//        System.out.println("Balance del mes: "+ mes.calcularBalance())
         System.out.println("Valance del dia 7 del mes 5: "+ nuevo.calcularBalance());
 
         ejecucionPrincipal();
@@ -107,7 +109,7 @@ public class Main_Principal {
                    Compra.RegistroCompra();
                     break;
                    
-               case 4: registroAsistencia();
+               case 4: Dia.registarAsistencia();
                     break;
                    
                case 5: persistirInformacion();
@@ -288,7 +290,7 @@ public class Main_Principal {
        LocalDate buscar = Entrada.leerFecha("Dia de la venta: ");
        for(Dia d : mes.getDias()){
            if(buscar.equals(d.getFecha())){
-               System.out.println("Dia econtrado:");
+               System.out.println("Dia encontrado:");
                String code = Entrada.leerString("Codigo de la venta: ");
               for(Venta v : d.getVentas()){
                   if(code.equals(v.getCodigoVenta())){
@@ -388,11 +390,100 @@ public class Main_Principal {
     }
 
     private static void balances() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int opc,op;
+        System.out.println("Balance");
+        System.out.println("---------------------------");
+        opc = opcionesBalance();
+        LocalDate fecha = LocalDate.now();
+        switch(opc){
+            case 1 :
+                System.out.println("Balance dia");
+                System.out.println("---------------------------");
+                fecha = pedirFecha();
+                for(Dia d: mes.getDias()){
+                    if(d.getFecha().equals(fecha)){
+                        double balance = d.calcularBalance();
+                        System.out.println("Producido por Ventas: "+d.getBalanceVenta());
+                        System.out.println("Gastos de Compras: "+d.getBalanceCompra());
+                        System.out.println("Balance Final: "+balance);
+                    }
+                }
+                System.out.println("----------------------------");
+                System.out.println("1. Ver detalle Venta");
+                System.out.println("2. Ver detalle Compra");
+                System.out.println("3. Ver Empleados.");
+                op = Entrada.leerEntero("Elija opcion: ");
+                switch (op){
+                    case 1: 
+                        verDetalleVenta();
+                        break;
+                    case 2:
+                        verDetalleCompra();
+                        break;
+                    case 3:
+                        listaPersonal();
+                        break;
+                    default:
+                        System.out.println("Opcion no valida.");
+                        break;
+                }
+                break;
+            case 2 :
+                System.out.println("Balance dia");
+                System.out.println("---------------------------");
+                fecha = pedirFecha();
+                for(Dia d: mes.getDias()){
+                    if(d.getFecha().equals(fecha)){
+                        mes.mesBalance(fecha.getMonthValue(), fecha.getYear());
+                        double balance  = mes.calcularBalance();
+                        System.out.println("Producido por Ventas: "+  Mes.producidoVenta(mes));
+                        System.out.println("Gastos de Compras: "+ Mes.gastosCompra(mes));
+                        System.out.println("Pago Nomina: "+Mes.nomina(mes));
+                        System.out.println("Balance Final: "+balance);
+                    }
+                }
+                System.out.println("----------------------------");
+                System.out.println("1. Ver detalle Nomina");
+                System.out.println("2. Ver detalle Dias");
+                op = Entrada.leerEntero("Elija opcion: ");
+                switch (op){
+                    case 1: 
+                        System.out.println("No Disponible");
+                        break;
+                    case 2:
+                        System.out.println("No Disponible");
+                        break;
+                    default:
+                        System.out.println("Opcion no valida.");
+                        break;
+                }
+                break;
+            case 3 : 
+                break;
+            default:
+                System.out.println("Opcion no valida");
+                break;
+        }
     }
-
-    private static void registroAsistencia() {
-        
+    
+    public static LocalDate pedirFecha(){
+        char encontro = 'n';
+        LocalDate fecha;
+        System.out.println("Registro de Venta");
+        System.out.println("---------------------------");
+        fecha = leerFecha("Fecha");
+        System.out.println("---------------------------");
+        for(Dia d : mes.getDias()){
+            if (d.getFecha().equals(fecha)){
+                encontro = 's';
+                break;
+            }
+        }
+        if (encontro == 'n'){
+            Dia d = new Dia(fecha);
+            mes.agregarDia(d);
+        }
+        return fecha;
     }
     
     

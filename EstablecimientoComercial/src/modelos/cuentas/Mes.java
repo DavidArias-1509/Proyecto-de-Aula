@@ -23,6 +23,10 @@ public class Mes implements Balance {
         return dias;
     }
 
+    public ArrayList<Dia> getBalanceMes() {
+        return balanceMes;
+    }
+
 //    public ArrayList<Empleado> getEmpleados() {
 //        return empleados;
 //    }
@@ -39,7 +43,7 @@ public class Mes implements Balance {
         this.dias.add(d);
     }
     
-    public double mesBalance(int mes, int anio){
+    public void mesBalance(int mes, int anio){
         double balance=0;
         this.balanceMes.clear();
         for(Dia d: this.dias){
@@ -47,17 +51,40 @@ public class Mes implements Balance {
                 this.balanceMes.add(d);
             }
         }
-        balance = this.calcularBalance();
-        return balance;
+    }
+    public static double producidoVenta(Mes m){
+        double producido = 0;
+        for(Dia d : m.getBalanceMes()){
+            for(Venta v : d.getVentas()){
+                producido += v.calcularPrecio();
+            }
+        }
+        return producido;
+    }
+    
+    public static double gastosCompra(Mes m){
+        double gastos = 0;
+            for(Dia d : m.getBalanceMes()){
+                for(Compra c : d.getCompras()){
+                    gastos += c.getValorTotal();
+                }
+            }
+        return gastos;
+    }
+    
+    public static double nomina(Mes m){
+        double nomi =0;
+        for(Dia d : m.getBalanceMes()){
+            for(Empleado e: d.getAsistencia()){
+                nomi += e.calcularSalario();
+            }
+        }
+        return nomi;
     }
 
     @Override
     public double calcularBalance() {
-        double balance=0;
-        for(Dia d : this.balanceMes){
-            balance += d.calcularBalance();
-        }
-        return balance;
+        return producidoVenta(this)- gastosCompra(this)- nomina(this);
     }
     
     

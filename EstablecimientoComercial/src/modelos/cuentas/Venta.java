@@ -83,21 +83,7 @@ public class Venta {
     
     public static void RegistroVenta(){
         char encontro = 'n';
-        LocalDate fecha;
-        System.out.println("Registro de Venta");
-        System.out.println("---------------------------");
-        fecha = leerFecha("Fecha");
-        System.out.println("---------------------------");
-        for(Dia d : mes.getDias()){
-            if (d.getFecha().equals(fecha)){
-                encontro = 's';
-                break;
-            }
-        }
-        if (encontro == 'n'){
-            Dia d = new Dia(fecha);
-            mes.agregarDia(d);
-        }
+        LocalDate fecha = pedirFecha();
         encontro='n';
         System.out.println("Empleado");
         System.out.println("----------------------------");
@@ -178,16 +164,8 @@ public class Venta {
         this.codigoVenta = codigoVenta;
     }
 
-    public void setFechaVenta(LocalDate fechaVenta) {
-        this.fechaVenta = fechaVenta;
-    }
-
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-
-    public void setPrecioVenta(double precioVenta) {
-        this.precioVenta = precioVenta;
     }
     
     public void detalle(){

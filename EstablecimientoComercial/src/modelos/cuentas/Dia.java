@@ -7,6 +7,7 @@ import static modelos.Entrada.leerFecha;
 import modelos.employee.Empleado;
 import modelos.employee.Normal;
 import static vista.Main_Principal.mes;
+import static vista.Main_Principal.pedirFecha;
 import static vista.Main_Principal.personal;
 
 public class Dia implements Balance{
@@ -14,19 +15,29 @@ public class Dia implements Balance{
     private ArrayList<Compra> compras;
     private ArrayList<Empleado> asistencia;
     private LocalDate fecha;
+    private double balanceVenta;
+    private double balanceCompra;
 
     public Dia(LocalDate fecha) {
         this.ventas = new ArrayList();
         this.compras = new ArrayList();
         this.asistencia = new ArrayList();
+        this.balanceCompra = 0;
+        this.balanceVenta = 0;
         this.fecha = fecha;
     }
 
+    public double getBalanceVenta() {
+        return balanceVenta;
+    }
+
+    public double getBalanceCompra() {
+        return balanceCompra;
+    }
+    
+
     public Dia(){
-        this.ventas = new ArrayList();
-        this.compras = new ArrayList();
-        this.asistencia = new ArrayList();
-        this.fecha = LocalDate.now();
+        this(LocalDate.now());
     }
 
     public ArrayList<Venta> getVentas() {
@@ -66,21 +77,7 @@ public class Dia implements Balance{
     public static void registarAsistencia(){
         if(Compra.validacion()){
             char encontro = 'n';
-            LocalDate fecha;
-            System.out.println("Registro de Venta");
-            System.out.println("---------------------------");
-            fecha = leerFecha("Fecha");
-            System.out.println("---------------------------");
-            for(Dia d : mes.getDias()){
-                if (d.getFecha().equals(fecha)){
-                    encontro = 's';
-                    break;
-                }
-            }
-            if (encontro == 'n'){
-                Dia d = new Dia(fecha);
-                mes.agregarDia(d);
-            }
+            LocalDate fecha = pedirFecha();
             char op = 'n' ;
             long id =0L;
             Dia d = new Dia(fecha);
@@ -114,17 +111,14 @@ public class Dia implements Balance{
     public double calcularBalance() {
        double balance=0;
         for(Venta v : this.ventas){
-            balance+=v.calcularPrecio();
+            this.balanceVenta += v.calcularPrecio();
         }
+        balance += this.balanceVenta; 
         for(Compra c: this.compras){
-            balance-=c.getValorTotal();
+            this.balanceCompra+=c.getValorTotal();
         }
-        for (Empleado e: this.asistencia){
-            balance -= e.calcularSalario();
-        }
+        System.out.println("Gastos en Compras: "+this.balanceCompra);
+        balance -= this.balanceCompra;
        return balance; 
     }
-
-    
-    
 }
