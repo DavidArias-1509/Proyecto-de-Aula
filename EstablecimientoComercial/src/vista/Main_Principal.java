@@ -21,9 +21,8 @@ public class Main_Principal {
     public static List<Receta> libroReceta = new ArrayList();
     
     public static void main(String[] args) {
-         List<Producto> inventario = new ArrayList();
-         Producto p1 = new Producto("tomate", 1000,5,"Vegetal"); inventario.add(p1);
-         Producto p2 = new Producto("pasta", 50,3,"Masa"); inventario.add(p2);
+         Producto p1 = new Producto("tomate", 1000,5,"Vegetal"); I1.agregarItem(p1);
+         Producto p2 = new Producto("pasta", 50,3,"Masa"); I1.agregarItem(p2);
     
          Receta r1 = new Receta("Pastas con tomate");
          Ingrediente i1 = new Ingrediente ("tomate", 5, 50);r1.agregarIngrediente(i1);
@@ -32,14 +31,13 @@ public class Main_Principal {
          System.out.println("El precio es: "+r1.calcularPrecio());
          char encontro='N';
          for(Ingrediente I : r1.getIngredientes() ){
-             for(Producto p : inventario){
-                 if(I.getNombre().equalsIgnoreCase(p.getNombre())){
-                     if(I.getCantidad()>p.getCnatidadDisponible()){
-                         encontro='S';
-                         break;
-                     }
-                 }
-             }
+             Producto p = I1.getItem().get(p1.getNombre());
+            if(I.getNombre().equalsIgnoreCase(p.getNombre())){
+                if(I.getCantidad()>p.getCnatidadDisponible()){
+                    encontro='S';
+                    break;
+                }
+            }
          }
          
         if(encontro=='S'){
@@ -47,14 +45,13 @@ public class Main_Principal {
         }else{
             System.out.println("La receta se puede preparar");
             for(Ingrediente I : r1.getIngredientes() ){
-             for(Producto p : inventario){
+                 Producto p = I1.getItem().get(p1.getNombre());            
                  if(I.getNombre().equalsIgnoreCase(p.getNombre())){
                         int cantidad = p.getCnatidadDisponible()-I.getCantidad();
                         p.setCnatidadDisponible(cantidad);
                         System.out.println("La nueva cantidad de "+p.getNombre()+" es: "+p.getCnatidadDisponible());
                  }
              }
-         }
         }
         
         Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456L); personal.add(e1);
@@ -70,9 +67,10 @@ public class Main_Principal {
         System.out.println("El valor total de la nomina es: "+nomina);
         
 
+
         //ArrayList <Receta> plato = new ArrayList();
             Venta v1 = new Venta(e1,c1);
-            v1.agregarReceta(r1);
+            v1.agregarPlato(r1);
             System.out.println("Total de la venta es: "+v1.calcularPrecio());
 
         

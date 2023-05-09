@@ -55,7 +55,7 @@ public class Venta {
         this.empleado = empleado;
     }
     
-    public void agregarReceta(Receta r){
+    public void agregarPlato(Receta r){
         double valor=0;
         this.platos.add(r);
         for(Receta R: this.platos){
@@ -140,7 +140,7 @@ public class Venta {
                     op = Entrada.leerCaracter("No se encontro plato, desea agregar? (S/N)");
 
                 }else{
-                    v.agregarReceta(r1);
+                    v.agregarPlato(r1);
                 }
                 op = Entrada.leerCaracter("Desea finalizar (S/N)");
             }while(op =='N'|| op =='n');
