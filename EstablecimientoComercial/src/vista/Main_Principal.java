@@ -157,10 +157,11 @@ public class Main_Principal {
         System.out.println("1- Consultar detalle de Venta");
         System.out.println("2- Consultar detalle de Compra");
         System.out.println("3- Modificar Inventario");
-        System.out.println("4- Datos Empleados");
-        System.out.println("5- Ver Detalle Venta");
-        System.out.println("6- ver Detalle Compra");
-        System.out.println("7- Volver al Menu Anterior");
+        System.out.println("4- Eliminar Venta");
+        System.out.println("5- Eliminar Compra");
+        System.out.println("6- Datos Empleados");
+        System.out.println("7- Registrar Empleado");
+        System.out.println("8- Volver al Menu Anterior");
         return Entrada.leerEntero("Seleccione una alternativa: ");
     }
     
@@ -201,9 +202,11 @@ public class Main_Principal {
                             break;
                         case 5:eliminarCompra();
                             break;
-                         case 6:listaPersonal();
+                        case 6:listaPersonal();
                             break;
-                        case 7:cn='N';
+                        case 7: agregarEmpleado();
+                                break;
+                        case 8:cn='N';
                             break;
                          
                         default: System.out.println("Valor inesperado: Intente otra vez");
