@@ -2,8 +2,12 @@ package modelos.cuentas;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import modelos.Entrada;
+import static modelos.Entrada.leerFecha;
 import modelos.employee.Empleado;
 import modelos.employee.Normal;
+import static vista.Main_Principal.mes;
+import static vista.Main_Principal.personal;
 
 public class Dia implements Balance{
     private ArrayList<Venta> ventas;
@@ -36,23 +40,17 @@ public class Dia implements Balance{
     public ArrayList<Empleado> getAsistencia() {
         return asistencia;
     }
-public LocalDate getFecha() {
+    
+    public LocalDate getFecha() {
         return fecha;
     }
 
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-    public void setVentas(ArrayList<Venta> ventas) {
-        this.ventas = ventas;
-    }
 
-    public void setCompras(ArrayList<Compra> compras) {
-        this.compras = compras;
-    }
-
-    public void setAsistencia(ArrayList<Empleado> asistencia) {
-        this.asistencia = asistencia;
+    public void setAsistencia(Empleado e) {
+        this.asistencia.add(e);
     }
     
     public void agregarCompra(Compra c){
@@ -65,21 +63,51 @@ public LocalDate getFecha() {
         System.out.println("Venta registrada");
     }
     
-    public void registarAsistencia(Empleado e){
-        char encontro = 'n';
-        for(Empleado e1 : this.asistencia){
-            if(e1.getIdentificacion() == e.getIdentificacion()){
-                System.out.println("Asistencia ya fue registrada");
-                encontro = 's';
+    public static void registarAsistencia(){
+        if(Compra.validacion()){
+            char encontro = 'n';
+            LocalDate fecha;
+            System.out.println("Registro de Venta");
+            System.out.println("---------------------------");
+            fecha = leerFecha("Fecha");
+            System.out.println("---------------------------");
+            for(Dia d : mes.getDias()){
+                if (d.getFecha().equals(fecha)){
+                    encontro = 's';
+                    break;
+                }
             }
-        }
-        if(encontro == 'n'){
-            if (e instanceof Normal normal){
-                normal.setDiasTrabajados(1);
+            if (encontro == 'n'){
+                Dia d = new Dia(fecha);
+                mes.agregarDia(d);
             }
-            this.asistencia.add(e);
-            System.out.println("Asistencia registrada");
+            char op = 'n' ;
+            long id =0L;
+            Dia d = new Dia(fecha);
+            do{
+                id = Entrada.leerLong("Indentificacion: ");
+                encontro = 'n';
+                Empleado e = new Normal(0,0,"",0);
+                for(Empleado e1 : d.getAsistencia()){
+                    if(e1.getIdentificacion() == e.getIdentificacion()){
+                        System.out.println("Asistencia ya fue registrada");
+                        e = e1;
+                        encontro = 's';
+                    }
+                }
+                if(encontro == 'n'){
+                    if (e instanceof Normal normal){
+                        normal.setDiasTrabajados(1);
+                        e= normal;
+                    }
+                    d.setAsistencia(e);
+                    System.out.println("Asistencia registrada");
+                }
+                op = Entrada.leerCaracter("Desea agregar otra asistencia: ");
+            }while(op == 'n'||op == 'N');
+            
         }
+       
     }
     
     @Override

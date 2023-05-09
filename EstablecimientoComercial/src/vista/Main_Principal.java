@@ -75,7 +75,7 @@ public class Main_Principal {
 
         
         Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
-        nuevo.registarAsistencia(e1);
+        nuevo.registarAsistencia();
         mes.agregarDia(nuevo);
         Compra C1 = new Compra();
         C1.agregaACarrito(p2);
@@ -104,6 +104,7 @@ public class Main_Principal {
                     break;
                    
                case 3:
+                   Compra.RegistroCompra();
                     break;
                    
                case 4: registroAsistencia();
