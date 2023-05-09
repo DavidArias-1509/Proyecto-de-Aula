@@ -121,14 +121,12 @@ public class Compra {
             do{
                 opc = Entrada.leerEntero("Elija Opcion enttre (1-2)");
             }while (opc == 1 || opc ==2);
-            String desc;
-            if(opc==1){
-                
-            }
+            
             char encontro = 'n';
             LocalDate fecha;
             System.out.println("Registro de Compra");
             System.out.println("---------------------------");
+            //Leemos Fecha
             fecha = leerFecha("Fecha");
             System.out.println("---------------------------");
             for(Dia d : mes.getDias()){
@@ -141,11 +139,36 @@ public class Compra {
                 Dia d = new Dia(fecha);
                 mes.agregarDia(d);
             }
+            Compra c = new Compra(fecha);
             encontro='n';
-            
+            char op = 'n';
+            String desc = "";
+            double precio = 0;
+            int cantidad = 0;
+            do{
+                if(opc==1){
+                    desc = Entrada.leerString("Ingrediente: ");
+                }else{
+                    desc = Entrada.leerString("Descripcion: ");
+                }
+                cantidad = Entrada.leerEntero("Cantidad: ");
+                precio = Entrada.leerDouble("Precio Por Unidad");
+                op = Entrada.leerCaracter("Desea gregar otro plato (S/N)");
+            }while(op == 'n' || op== 'N');
+            op = Entrada.leerCaracter("Desea realizar compra (S/N)");
+            if(opc==1){
+                c.agregaACarrito(desc, cantidad, precio, "");
+            }else{
+                c.agregaACarrito(desc, cantidad, precio, desc);
+            }
+            if(op == 's' || op== 'S'){
+                c.realizarCompra();
+            }
         }
     }
-    public static boolean validacion(){
+    
+    
+    public static boolean validacion(){//Validacion de usuario administrador
         boolean bol = false;
         System.out.println("Registro de compra");
         System.out.println("-------------------------");
