@@ -10,7 +10,7 @@ import static vista.Main_Principal.*;
 
 
 public class Venta {
-    private char encontro;
+    private String codigoVenta;
     private ArrayList<Receta> platos;
     private LocalDate fechaVenta;
     private Empleado empleado;
@@ -18,7 +18,8 @@ public class Venta {
     private double precioVenta;
 
     public Venta(ArrayList<Receta> platos, Empleado empleado, Cliente cliente) {
-        this.encontro = 'n';
+        char encontro = 'n';
+        int secuencia = 1;
         this.platos = platos;
         this.cliente = cliente;
         this.empleado = empleado;
@@ -26,12 +27,15 @@ public class Venta {
         for(Dia d: mes.getDias()){
             if(d.getFecha().equals(this.fechaVenta )){
                 encontro = 's';
+                secuencia = d.getVentas().size()+1;
+                break;
             }
         }
-        if (this.encontro == 'n'){
+        if (encontro == 'n'){
             Dia d1 = new Dia();
             mes.agregarDia(d1);
         }
+        this.codigoVenta = ""+ this.fechaVenta.getYear() + this.fechaVenta.getMonthValue() + this.fechaVenta.getDayOfMonth() + secuencia + "";
         this.precioVenta = 0;
     }
 
@@ -103,6 +107,29 @@ public class Venta {
         }
         if(encontro == 'n'){
             System.out.println("No se encontro empleado intente otra vez");
+        }else{
+            System.out.println("------------------------");
+            System.out.println("Cliente");
+            id = Entrada.leerLong("Identificacion: ");
+            String nombre = Entrada.leerString("Nombre: ");
+            String Email = Entrada.leerString("Email: ");
+            Cliente c1 = new Cliente(nombre, Email, id);
+            System.out.println("------------------------");
+            System.out.println("Platos");
+            char op;
+            do{
+                do{
+                    System.out.println("------------------------");
+
+                    op = Entrada.leerCaracter("Desea finalizar (S/N)");
+                }while(op =='N'|| op =='n');
+                op = Entrada.leerCaracter("Desea Guardar Venta (S/N)");
+            }while(op =='S'|| op =='s');
+            
+            
+            
         }
+        
+        
     }
 }
