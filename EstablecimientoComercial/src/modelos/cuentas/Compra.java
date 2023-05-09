@@ -120,7 +120,7 @@ public class Compra {
             System.out.println("2. Otras Compras");
             do{
                 opc = Entrada.leerEntero("Elija Opcion enttre (1-2)");
-            }while (opc == 1 || opc ==2);
+            }while ((opc < 1 || opc >2));
             
             char encontro = 'n';
             LocalDate fecha = pedirFecha();
@@ -139,14 +139,14 @@ public class Compra {
                 cantidad = Entrada.leerEntero("Cantidad: ");
                 precio = Entrada.leerDouble("Precio Por Unidad");
                 op = Entrada.leerCaracter("Desea gregar otro plato (S/N)");
-            }while(op == 'n' || op== 'N');
+            }while(op == 'S' || op== 's');
             op = Entrada.leerCaracter("Desea realizar compra (S/N)");
             if(opc==1){
                 c.agregaACarrito(desc, cantidad, precio, "");
             }else{
                 c.agregaACarrito(desc, cantidad, precio, desc);
             }
-            if(op == 's' || op== 'S'){
+            if(op == 'n' || op== 'N'){
                 c.realizarCompra();
             }
         }

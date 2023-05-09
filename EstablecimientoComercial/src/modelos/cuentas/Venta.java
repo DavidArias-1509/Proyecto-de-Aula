@@ -109,7 +109,7 @@ public class Venta {
             Venta v = new Venta(e1,c1);
             System.out.println("------------------------");
             System.out.println("Platos");
-            char op;
+            char op='s';
             do{
                 encontro = 'n';
                 System.out.println("------------------------");
@@ -127,10 +127,10 @@ public class Venta {
                 }else{
                     v.agregarPlato(r1);
                 }
-                op = Entrada.leerCaracter("Desea finalizar (S/N)");
-            }while(op =='N'|| op =='n');
+                op = Entrada.leerCaracter("Desea finalizar (S/N): ");
+            }while(op =='S'|| op =='s');
             op = Entrada.leerCaracter("Desea Guardar Venta (S/N)");
-            if (op == 's'|| op=='S'){
+            if (op == 'n'|| op=='N'){
                 for(Dia d : mes.getDias()){
                     if (d.getFecha().equals(fecha)){
                         d.agregarVenta(v);
