@@ -87,5 +87,4 @@ public class Mes implements Balance {
         return producidoVenta(this)- gastosCompra(this)- nomina(this);
     }
     
-    
 }

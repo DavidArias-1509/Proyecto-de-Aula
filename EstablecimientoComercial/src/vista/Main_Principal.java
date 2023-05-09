@@ -76,7 +76,7 @@ public class Main_Principal {
 
         
         Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
-        nuevo.registarAsistencia();
+//        nuevo.registarAsistencia();s
         mes.agregarDia(nuevo);
         Compra C1 = new Compra();
         C1.agregaACarrito(p2);
