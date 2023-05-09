@@ -17,10 +17,10 @@ public class Venta {
     private Cliente cliente;
     private double precioVenta;
 
-    public Venta(ArrayList<Receta> platos, Empleado empleado, Cliente cliente) {
+    public Venta( Empleado empleado, Cliente cliente) {
         char encontro = 'n';
         int secuencia = 1;
-        this.platos = platos;
+        this.platos = new ArrayList();
         this.cliente = cliente;
         this.empleado = empleado;
         this.fechaVenta = LocalDate.now();
@@ -98,9 +98,11 @@ public class Venta {
         System.out.println("Empleado");
         System.out.println("----------------------------");
         long id = Entrada.leerLong("Identificacion: ");
+        Empleado e1=null;
         for (Empleado e: personal){            
             if(e.getIdentificacion() == id){
                 encontro = 's';
+                e1 = e;
                 System.out.println("Nombre: "+ e.getNombre());
                 break;
             }
@@ -114,13 +116,29 @@ public class Venta {
             String nombre = Entrada.leerString("Nombre: ");
             String Email = Entrada.leerString("Email: ");
             Cliente c1 = new Cliente(nombre, Email, id);
+            Venta v = new Venta(e1,c1);
             System.out.println("------------------------");
             System.out.println("Platos");
             char op;
             do{
                 do{
+                    encontro = 'n';
                     System.out.println("------------------------");
-
+                    String plato = Entrada.leerString("Nombre del plato: ");
+                    Receta r1= null;
+                    for(Receta r : libroReceta){
+                        if(r.getNombre().equals(plato)){
+                            encontro = 's';
+                            r1 = r;
+                            break;
+                        }
+                    }
+                    if(encontro == 'n'){
+                        op = Entrada.leerCaracter("No se encontro plato, desea agregar? (S/N)");
+               
+                    }else{
+                        v.platos.add(r1);
+                    }
                     op = Entrada.leerCaracter("Desea finalizar (S/N)");
                 }while(op =='N'|| op =='n');
                 op = Entrada.leerCaracter("Desea Guardar Venta (S/N)");
