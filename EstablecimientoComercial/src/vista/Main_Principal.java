@@ -307,6 +307,22 @@ public class Main_Principal {
           }else{
               cantidad=Entrada.leerEntero("Cantidad para eliminar: ");
           }
+          Iterator<String> c = I1.getItem().keySet().iterator();
+            while(c.hasNext()){
+                String key = c.next();
+                if(ingrediente.equals(I1.getItem().get(key).getNombre())){
+                    System.out.println("Ingrediente encontrado ");
+                    if(opc=='A'){
+                        int nuevo = I1.getItem().get(key).getCnatidadDisponible()+cantidad;
+                        I1.getItem().get(key).setCnatidadDisponible(nuevo);
+                    }else{
+                        int nuevo = I1.getItem().get(key).getCnatidadDisponible()-cantidad;
+                        I1.getItem().get(key).setCnatidadDisponible(nuevo);
+                    }
+                    System.out.println("Nueva cantidad: "+I1.getItem().get(key).getCnatidadDisponible());
+                }
+            }
+          
     }
 
     private static void eliminarVenta() {
