@@ -119,11 +119,10 @@ public class Venta {
                     if(r.getNombre().equals(plato)){
                         encontro = 's';
                         r1 = r;
-                        break;
                     }
                 }
                 if(encontro == 'n'){
-                    op = Entrada.leerCaracter("No se encontro plato, desea agregar? (S/N)");
+                    op = Entrada.leerCaracter("No se encontro plato");
 
                 }else{
                     v.agregarPlato(r1);
