@@ -39,4 +39,9 @@ public  class Receta {
         }
         return precio;
     }
+    
+    @Override
+    public String toString(){
+        return "Plato: "+nombre+"\n Precio: "+this.calcularPrecio();
+    }
 }

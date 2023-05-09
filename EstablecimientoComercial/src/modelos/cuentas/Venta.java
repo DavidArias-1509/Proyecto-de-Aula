@@ -50,7 +50,7 @@ public class Venta {
     public void setPlatos(ArrayList<Receta> platos) {
         this.platos = platos;
     }
-
+    
     public void setEmpleado(Empleado empleado) {
         this.empleado = empleado;
     }
@@ -65,7 +65,11 @@ public class Venta {
     }
     
     public double calcularPrecio(){
-        return this.precioVenta;
+        double total=0;
+        for(Receta r : this.platos){
+           total+=r.calcularPrecio();
+        }
+        return total;
     }
     
     public void realizarVenta(){
@@ -152,5 +156,52 @@ public class Venta {
             }
             
         }
+    }
+
+    public String getCodigoVenta() {
+        return codigoVenta;
+    }
+
+    public LocalDate getFechaVenta() {
+        return fechaVenta;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public double getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setCodigoVenta(String codigoVenta) {
+        this.codigoVenta = codigoVenta;
+    }
+
+    public void setFechaVenta(LocalDate fechaVenta) {
+        this.fechaVenta = fechaVenta;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setPrecioVenta(double precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+    
+    public void detalle(){
+        System.out.println("-Empleado");
+        System.out.println("Nombre: "+empleado.getNombre());
+        System.out.println("Identificacion: "+empleado.getIdentificacion());
+        System.out.println("-Cliente");
+        System.out.println("Nombre: "+cliente.getNombre());
+        System.out.println("Identificacion: "+cliente.getId());
+        System.out.println("E-mail: "+cliente.getE_mail());
+        System.out.println("-Platos");
+        for(Receta r : this.platos){
+            System.out.println(r);
+        }
+        System.out.println("\nTotal Venta: "+this.calcularPrecio());
     }
 }

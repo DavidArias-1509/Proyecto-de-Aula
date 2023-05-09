@@ -12,8 +12,8 @@ import static vista.Main_Principal.mes;
 import static vista.Main_Principal.personal;
 
 public class Compra {
+    private String codigoCompra;
    private char encontro;
-   private int codigo;
    private double valorTotal;
    private ArrayList<Producto> productos;
    private LocalDate fechaCompra;
@@ -24,7 +24,15 @@ public class Compra {
     
     public Compra(LocalDate fecha){
         this.encontro='n';
+         int secuencia = 1;
         this.fechaCompra = LocalDate.now();
+        for(Dia d: mes.getDias()){
+            if(d.getFecha().equals(this.fechaCompra )){
+                encontro = 's';
+                secuencia = d.getVentas().size()+1;
+                break;
+            }
+        }
         for(Dia d: mes.getDias()){
             if(this.fechaCompra.equals(d.getFecha())){
                 encontro = 's';
@@ -35,6 +43,7 @@ public class Compra {
             mes.agregarDia(d1);
         }
         this.productos = new ArrayList();
+        this.codigoCompra = ""+ this.fechaCompra.getYear() + this.fechaCompra.getMonthValue() + this.fechaCompra.getDayOfMonth() + secuencia + "";
         this.valorTotal = 0;
     }
 
@@ -57,7 +66,7 @@ public class Compra {
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
     }
-
+    
     public void setIngredientes(ArrayList<Producto> productos) {
         this.productos = productos;
     }
@@ -101,6 +110,7 @@ public class Compra {
             }
         }
     }
+
     public static void RegistroCompra(){
         if(validacion()){
             int opc = 0;
@@ -159,5 +169,29 @@ public class Compra {
             System.out.println("Acceso no permitido");
         }
        return bol;
+    }
+
+
+    public String getCodigoCompra() {
+        return codigoCompra;
+    }
+
+    public char getEncontro() {
+        return encontro;
+    }
+
+    public ArrayList<Producto> getProductos() {
+        return productos;
+    }
+    
+    public void detalle(){
+        System.out.println("Compra");
+        System.out.println("Porducto(s)");
+        for(Producto p : this.productos){
+            System.out.println("Nombre: "+p.getNombre());
+            System.out.println("Descripcion: "+p.getDescripcion());
+            System.out.println("Precio: "+p.getPrecio());
+        }
+        System.out.println("\nTotal Compra: "+this.valorTotal);
     }
 }

@@ -67,8 +67,10 @@ public class Main_Principal {
         System.out.println("El valor total de la nomina es: "+nomina);
         
 
+
+        //ArrayList <Receta> plato = new ArrayList();
             Venta v1 = new Venta(e1,c1);
-            v1.agregarReceta(r1);
+            v1.agregarPlato(r1);
             System.out.println("Total de la venta es: "+v1.calcularPrecio());
 
         
@@ -282,16 +284,33 @@ public class Main_Principal {
     }
 
     private static void verDetalleVenta() {
-       LocalDate buscar = Entrada.leerFecha("Dia de la compra: ");
+       LocalDate buscar = Entrada.leerFecha("Dia de la venta: ");
        for(Dia d : mes.getDias()){
            if(buscar.equals(d.getFecha())){
-              
+               System.out.println("Dia econtrado:");
+               String code = Entrada.leerString("Codigo de la venta: ");
+              for(Venta v : d.getVentas()){
+                  if(code.equals(v.getCodigoVenta())){
+                      v.detalle();
+                  }
+              }
            }
        }
     }
 
     private static void verDetalleCompra() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         LocalDate buscar = Entrada.leerFecha("Dia de la compra: ");
+       for(Dia d : mes.getDias()){
+           if(buscar.equals(d.getFecha())){
+               System.out.println("Dia econtrado:");
+               String code = Entrada.leerString("Codigo de la compra: ");
+              for(Compra c : d.getCompras()){
+                  if(code.equals(c.getCodigoCompra())){
+                      c.detalle();
+                  }
+              }
+           }
+       }
     }
 
     private static void modificarInventario() {
@@ -331,14 +350,14 @@ public class Main_Principal {
 
     private static void listaPersonal() {
         System.out.println("Lista de Personal");
-        System.out.println("Nombre-Identificacion-Dias Trabajados- Pago por dia");
+        System.out.println("Nombre-Identificacion");
         for(Empleado e : personal){
             System.out.println(e.getNombre()+"-"+e.getIdentificacion());
         }
     }
 
     private static void persistirInformacion() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Aun no disponible ");
     }
 
     private static void balances() {
@@ -346,7 +365,7 @@ public class Main_Principal {
     }
 
     private static void registroAsistencia() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
     
     
