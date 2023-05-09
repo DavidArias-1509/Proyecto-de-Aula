@@ -118,7 +118,7 @@ public class Venta {
                 for(Receta r : libroReceta){
                     if(r.getNombre().equals(plato)){
                         encontro = 's';
-                        r1 = r;
+                        r1 = r;2
                     }
                 }
                 if(encontro == 'n'){

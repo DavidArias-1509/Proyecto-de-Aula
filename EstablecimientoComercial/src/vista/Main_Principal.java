@@ -29,32 +29,34 @@ public class Main_Principal {
          Ingrediente i1 = new Ingrediente ("tomate", 5, 50);r1.agregarIngrediente(i1);
          Ingrediente i2 = new Ingrediente("pasta",3, 100);r1.agregarIngrediente(i2);
          libroReceta.add(r1);
-         System.out.println("El precio es: "+r1.calcularPrecio());
-         char encontro='N';
-         for(Ingrediente I : r1.getIngredientes() ){
-             Producto p = I1.getItem().get(p1.getNombre());
-            if(I.getNombre().equalsIgnoreCase(p.getNombre())){
-                if(I.getCantidad()>p.getCnatidadDisponible()){
-                    encontro='S';
-                    break;
-                }
-            }
-         }
          
-        if(encontro=='S'){
-            System.out.println("No se puede preparar la receta");
-        }else{
-            System.out.println("La receta se puede preparar");
-            for(Ingrediente I : r1.getIngredientes() ){
-                 Producto p = I1.getItem().get(p1.getNombre());            
-                 if(I.getNombre().equalsIgnoreCase(p.getNombre())){
-                        int cantidad = p.getCnatidadDisponible()-I.getCantidad();
-                        p.setCnatidadDisponible(cantidad);
-                        System.out.println("La nueva cantidad de "+p.getNombre()+" es: "+p.getCnatidadDisponible());
-                 }
-             }
-        }
-        
+//         System.out.println("El precio es: "+r1.calcularPrecio());
+//         char encontro='N';
+//         for(Ingrediente I : r1.getIngredientes() ){
+//             Producto p = I1.getItem().get(p1.getNombre());
+//            if(I.getNombre().equalsIgnoreCase(p.getNombre())){
+//                if(I.getCantidad()>p.getCnatidadDisponible()){
+//                    encontro='S';
+//                    break;
+//                }
+//            }
+//         }
+//         
+//        if(encontro=='S'){
+//            System.out.println("No se puede preparar la receta");
+//        }else{
+//            System.out.println("La receta se puede preparar");
+//            for(Ingrediente I : r1.getIngredientes() ){
+//                 Producto p = I1.getItem().get(p1.getNombre());            
+//                 if(I.getNombre().equalsIgnoreCase(p.getNombre())){
+//                        int cantidad = p.getCnatidadDisponible()-I.getCantidad();
+//                        p.setCnatidadDisponible(cantidad);
+//                        System.out.println("La nueva cantidad de "+p.getNombre()+" es: "+p.getCnatidadDisponible());
+//                 }
+//             }
+//        }
+//       
+
         Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456L); personal.add(e1);
         Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
         Cliente c1 = new Cliente("Maria", "blablabla@gmail.com", 12314493L);
