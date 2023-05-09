@@ -286,7 +286,12 @@ public class Main_Principal {
     }
 
     private static void verDetalleVenta() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       LocalDate buscar = Entrada.leerFecha("Dia de la compra: ");
+       for(Dia d : mes.getDias()){
+           if(buscar.equals(d.getFecha())){
+              
+           }
+       }
     }
 
     private static void verDetalleCompra() {
@@ -294,7 +299,30 @@ public class Main_Principal {
     }
 
     private static void modificarInventario() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        char opc = Entrada.leerCaracter("Desea agregar(A) o eliminar(E): ");
+          String ingrediente = Entrada.leerString("Nombre del ingrediente: ");
+          int cantidad;
+          if(opc=='A'){
+              cantidad=Entrada.leerEntero("Cantidad para agregar: ");
+          }else{
+              cantidad=Entrada.leerEntero("Cantidad para eliminar: ");
+          }
+          Iterator<String> c = I1.getItem().keySet().iterator();
+        while(c.hasNext()){
+            String key = c.next();
+            if(ingrediente.equals(I1.getItem().get(key).getNombre())){
+                System.out.println("Ingrediente encontrado ");
+                if(opc=='A'){
+                    int nuevo = I1.getItem().get(key).getCnatidadDisponible()+cantidad;
+                    I1.getItem().get(key).setCnatidadDisponible(nuevo);
+                }else{
+                    int nuevo = I1.getItem().get(key).getCnatidadDisponible()-cantidad;
+                    I1.getItem().get(key).setCnatidadDisponible(nuevo);
+                }
+                System.out.println("Nueva cantidad: "+I1.getItem().get(key).getCnatidadDisponible());
+            }
+        }       
     }
 
     private static void eliminarVenta() {
@@ -306,7 +334,11 @@ public class Main_Principal {
     }
 
     private static void listaPersonal() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Lista de Personal");
+        System.out.println("Nombre-Identificacion-Dias Trabajados- Pago por dia");
+        for(Empleado e : personal){
+            System.out.println(e.getNombre()+"-"+e.getIdentificacion());
+        }
     }
 
     private static void persistirInformacion() {
