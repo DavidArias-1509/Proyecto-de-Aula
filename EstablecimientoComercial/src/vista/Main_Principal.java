@@ -342,11 +342,37 @@ public class Main_Principal {
     }
 
     private static void eliminarVenta() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     LocalDate buscar = Entrada.leerFecha("Dia de la venta: ");
+       for(Dia d : mes.getDias()){
+           if(buscar.equals(d.getFecha())){
+               System.out.println("Dia econtrado:");
+               String code = Entrada.leerString("Codigo de la venta: ");
+              for(Venta v : d.getVentas()){
+                  if(code.equals(v.getCodigoVenta())){
+                      v.detalle();
+                      d.getVentas().remove(v);
+                      System.out.println("Venta Eliminada");
+                  }
+              }
+           }
+       }   
     }
 
     private static void eliminarCompra() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        LocalDate buscar = Entrada.leerFecha("Dia de la compra: ");
+       for(Dia d : mes.getDias()){
+           if(buscar.equals(d.getFecha())){
+               System.out.println("Dia econtrado:");
+               String code = Entrada.leerString("Codigo de la compra: ");
+              for(Compra c : d.getCompras()){
+                  if(code.equals(c.getCodigoCompra())){
+                      c.detalle();
+                      d.getCompras().remove(c);
+                      System.out.println("Compra Eliminda");
+                  }
+              }
+           }
+       } 
     }
 
     private static void listaPersonal() {
