@@ -171,10 +171,10 @@ public class Main_Principal {
     }
     
     public static boolean validar(String user, String password){
-        String usuario="";
-        String contrasena="";
+        String usuario="JULIAN";
+        String contrasena="YULIAN";
         boolean confirmar = false;
-        if((usuario.equals(user))&&(contrasena.equals(password))){
+        if(usuario.equals(user) && contrasena.equals(password)){
             confirmar = true;
         }
         return confirmar;
@@ -185,12 +185,14 @@ public class Main_Principal {
          char romper='N';
          int opc;
         do{
-            confirm=validar(Entrada.leerString("Usuario: "), Entrada.leerString("Contrasena: "));
+            String user =Entrada.leerString("Usuario: ");
+            String pasword = Entrada.leerString("Contrasena: ");
+            confirm=validar(user, pasword);
             if(confirm==false){
                 System.out.println("Error con el usuario o la contrasena: Verfique los datos");
                 romper = Entrada.leerCaracter("Desea volver al menu anterior? (S/N): ");
             }
-          }while((false==confirm)||(romper=='N'));
+          }while((false==confirm)&&(romper=='N'));
          
         if(confirm==true){
             char cn='S';
@@ -223,8 +225,6 @@ public class Main_Principal {
             
         }
     }
-    
-   
     
     public static void agregarEmpleado(){
         Empleado e;
@@ -492,10 +492,50 @@ public class Main_Principal {
     }
 
     private static void agregarReceta() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String name = Entrada.leerString("Nombre de la receta: ");
+        boolean continuar=false;
+        if(libroReceta==null){
+            continuar = true;
+        }else{
+            for(Receta r: libroReceta){
+                if(r.getNombre().equals(name)){
+                    continuar=false;
+                    break;
+                }
+            }
+        }
+        if(continuar==false){
+            System.out.println("La receta ya existe...");
+        }else{
+            Receta R = new Receta (name);
+            char op='S';
+            while(op=='S'){
+                double precio=0;
+                boolean encontro=false;
+                String ingrediente = Entrada.leerString("Ingrediente: ");
+                Iterator<String> b = I1.getItem().keySet().iterator();
+                
+                while(b.hasNext()){
+                    String key = b.next();
+                    if(ingrediente.equals(I1.getItem().get(key))){
+                        precio= I1.getItem().get(key).getPrecio();
+                        encontro=true;
+                        break;
+                    }
+                }
+                
+                if(encontro==true){
+                    int cantidad = Entrada.leerEntero("Cantidad Necesaria: ");
+                    Ingrediente I = new Ingrediente(ingrediente, precio, cantidad);
+                    R.agregarIngrediente(I);
+                }
+                else{
+                    System.out.println("Ese producto no esta en el inventario");
+                }
+                op=Entrada.leerCaracter("Desea Agregar un Ingediente mas? (S/N): ");
+            }
+            libroReceta.add(R);
+        }
     }
     
-    
 }
-
-
