@@ -91,7 +91,9 @@ public class Main_Principal {
 ////        System.out.println("Balance del mes: "+ mes.calcularBalance())
 //        System.out.println("Valance del dia 7 del mes 5: "+ nuevo.calcularBalance());
 
-        ejecucionPrincipal();
+        //ejecucionPrincipal();
+        
+        JFPrincipal ejecucion = new JFPrincipal();
     }
     
     public static void ejecucionPrincipal(){
