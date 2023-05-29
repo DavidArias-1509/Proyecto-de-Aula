@@ -103,12 +103,16 @@ public class Venta {
             System.out.println("------------------------");
             System.out.println("Cliente");
             id = Entrada.leerLong("Identificacion: ");
+            
             String nombre = Entrada.leerString("Nombre: ");
             String Email = Entrada.leerString("Email: ");
             Cliente c1 = new Cliente(nombre, Email, id);
             Venta v = new Venta(e1,c1);
             System.out.println("------------------------");
             System.out.println("Platos");
+            for(Receta r : libroReceta){
+                System.out.println(r.getNombre());
+            }
             char op='s';
             do{
                 encontro = 'n';
@@ -125,10 +129,11 @@ public class Venta {
                     op = Entrada.leerCaracter("No se encontro plato");
 
                 }else{
+                    System.out.println("Se agrego plato");
                     v.agregarPlato(r1);
                 }
                 op = Entrada.leerCaracter("Desea finalizar (S/N): ");
-            }while(op =='S'|| op =='s');
+            }while(op =='N'|| op =='n');
             op = Entrada.leerCaracter("Desea Guardar Venta (S/N)");
             if (op == 'n'|| op=='N'){
                 for(Dia d : mes.getDias()){

@@ -20,22 +20,25 @@ public class Entrada {
    
    public static String leerString(String label){
        System.out.println(label);
-       return input.next();
+       return input.nextLine();
    }
    
    public static char leerCaracter(String label){
        System.out.println(label);
-       return Character.toUpperCase(input.next().charAt(0));
+       return Character.toUpperCase(input.nextLine().charAt(0));
    }
   
    public static LocalDate leerFecha(String label){
         System.out.println(label + " (dd/MM/yyyy):");
-        String fecha = input.next();
+        String fecha = input.nextLine();
         return LocalDate.parse(fecha, formatter);
    }
    
    public static long leerLong(String label){
         System.out.println(label);
-        return input.nextLong();
+        long num = input.nextLong();
+        input.nextLine();
+        return num;
     }
+  
 }
