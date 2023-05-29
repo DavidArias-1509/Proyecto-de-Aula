@@ -22,13 +22,13 @@ public class Main_Principal {
     public static List<Receta> libroReceta = new ArrayList();
     
     public static void main(String[] args) {
-         Producto p1 = new Producto("tomate", 1000,5,"Vegetal"); I1.agregarItem(p1);
-         Producto p2 = new Producto("pasta", 50,3,"Masa"); I1.agregarItem(p2);
-    
-         Receta r1 = new Receta("Pastas con tomate");
-         Ingrediente i1 = new Ingrediente ("tomate", 5, 50);r1.agregarIngrediente(i1);
-         Ingrediente i2 = new Ingrediente("pasta",3, 100);r1.agregarIngrediente(i2);
-         libroReceta.add(r1);
+//         Producto p1 = new Producto("tomate", 1000,5,"Vegetal"); I1.agregarItem(p1);
+//         Producto p2 = new Producto("pasta", 50,3,"Masa"); I1.agregarItem(p2);
+//    
+//         Receta r1 = new Receta("Pastas con tomate");
+//         Ingrediente i1 = new Ingrediente ("tomate", 5, 50);r1.agregarIngrediente(i1);
+//         Ingrediente i2 = new Ingrediente("pasta",3, 100);r1.agregarIngrediente(i2);
+//         libroReceta.add(r1);
          
 //         System.out.println("El precio es: "+r1.calcularPrecio());
 //         char encontro='N';
@@ -57,41 +57,43 @@ public class Main_Principal {
 //        }
 //       
 
-        Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456L); personal.add(e1);
-        Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
-        Cliente c1 = new Cliente("Maria", "blablabla@gmail.com", 12314493L);
+//        Normal e1 = new Normal(12_000, 30_000, "Juan Alvarez", 1000456L); personal.add(e1);
+//        Administrador admin  = new Administrador(1235000, 367000, 150000, "Marcos", 12341121);
+//        Cliente c1 = new Cliente("Maria", "blablabla@gmail.com", 12314493L);
+//        
+//        personal.add(admin);
+//        double nomina=0;
+//        for(Empleado e : personal){
+//            System.out.println(e);
+//            nomina += e.calcularSalario();
+//        }
+//        System.out.println("El valor total de la nomina es: "+nomina);
         
-        personal.add(admin);
-        double nomina=0;
-        for(Empleado e : personal){
-            System.out.println(e);
-            nomina += e.calcularSalario();
-        }
-        System.out.println("El valor total de la nomina es: "+nomina);
+
+
+//        //ArrayList <Receta> plato = new ArrayList();
+//            Venta v1 = new Venta(e1,c1);
+//            v1.agregarPlato(r1);
+//            System.out.println("Total de la venta es: "+v1.calcularPrecio());
+//
+//        
+//        Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
+////        nuevo.registarAsistencia();s
+//        mes.agregarDia(nuevo);
+//        Compra C1 = new Compra();
+//        C1.agregaACarrito(p2);
+//        C1.agregaACarrito(p1);
+//        System.out.println("Valor total de la Compra: "+C1.getValorTotal());
+//        C1.realizarCompra();
+//        v1.realizarVenta();
+//        System.out.println(C1.getFechaCompra());
+////        mes.mesBalance(5, 2023);
+////        System.out.println("Balance del mes: "+ mes.calcularBalance())
+//        System.out.println("Valance del dia 7 del mes 5: "+ nuevo.calcularBalance());
+
+        //ejecucionPrincipal();
         
-
-
-        //ArrayList <Receta> plato = new ArrayList();
-            Venta v1 = new Venta(e1,c1);
-            v1.agregarPlato(r1);
-            System.out.println("Total de la venta es: "+v1.calcularPrecio());
-
-        
-        Dia nuevo = new Dia(LocalDate.of(2023, 5, 7));
-//        nuevo.registarAsistencia();s
-        mes.agregarDia(nuevo);
-        Compra C1 = new Compra();
-        C1.agregaACarrito(p2);
-        C1.agregaACarrito(p1);
-        System.out.println("Valor total de la Compra: "+C1.getValorTotal());
-        C1.realizarCompra();
-        v1.realizarVenta();
-        System.out.println(C1.getFechaCompra());
-//        mes.mesBalance(5, 2023);
-//        System.out.println("Balance del mes: "+ mes.calcularBalance())
-        System.out.println("Valance del dia 7 del mes 5: "+ nuevo.calcularBalance());
-
-        ejecucionPrincipal();
+        JFPrincipal ejecucion = new JFPrincipal();
     }
     
     public static void ejecucionPrincipal(){
@@ -161,19 +163,20 @@ public class Main_Principal {
         System.out.println("1- Consultar detalle de Venta");
         System.out.println("2- Consultar detalle de Compra");
         System.out.println("3- Modificar Inventario");
-        System.out.println("4- Eliminar Venta");
-        System.out.println("5- Eliminar Compra");
-        System.out.println("6- Datos Empleados");
-        System.out.println("7- Registrar Empleado");
-        System.out.println("8- Volver al Menu Anterior");
+        System.out.println("4- Agregar nueva Receta");
+        System.out.println("5- Eliminar Venta");
+        System.out.println("6- Eliminar Compra");
+        System.out.println("7- Datos Empleados");
+        System.out.println("8- Registrar Empleado");
+        System.out.println("9- Volver al Menu Anterior");
         return Entrada.leerEntero("Seleccione una alternativa: ");
     }
     
     public static boolean validar(String user, String password){
-        String usuario="";
-        String contrasena="";
+        String usuario="JULIAN";
+        String contrasena="YULIAN";
         boolean confirmar = false;
-        if((usuario.equals(user))&&(contrasena.equals(password))){
+        if(usuario.equals(user) && contrasena.equals(password)){
             confirmar = true;
         }
         return confirmar;
@@ -184,12 +187,14 @@ public class Main_Principal {
          char romper='N';
          int opc;
         do{
-            confirm=validar(Entrada.leerString("Usuario: "), Entrada.leerString("Contrasena: "));
+            String user =Entrada.leerString("Usuario: ");
+            String pasword = Entrada.leerString("Contrasena: ");
+            confirm=validar(user, pasword);
             if(confirm==false){
                 System.out.println("Error con el usuario o la contrasena: Verfique los datos");
                 romper = Entrada.leerCaracter("Desea volver al menu anterior? (S/N): ");
             }
-          }while((false==confirm)||(romper=='N'));
+          }while((false==confirm)&&(romper=='N'));
          
         if(confirm==true){
             char cn='S';
@@ -202,15 +207,17 @@ public class Main_Principal {
                             break;
                         case 3: modificarInventario();
                             break;
-                        case 4:eliminarVenta();
+                        case 4: agregarReceta();
                             break;
-                        case 5:eliminarCompra();
+                        case 5:eliminarVenta();
                             break;
-                        case 6:listaPersonal();
+                        case 6:eliminarCompra();
                             break;
-                        case 7: agregarEmpleado();
+                        case 7:listaPersonal();
+                            break;
+                        case 8: agregarEmpleado();
                                 break;
-                        case 8:cn='N';
+                        case 9:cn='N';
                             break;
                          
                         default: System.out.println("Valor inesperado: Intente otra vez");
@@ -220,8 +227,6 @@ public class Main_Principal {
             
         }
     }
-    
-   
     
     public static void agregarEmpleado(){
         Empleado e;
@@ -487,8 +492,52 @@ public class Main_Principal {
         }
         return fecha;
     }
-    
+
+    private static void agregarReceta() {
+        String name = Entrada.leerString("Nombre de la receta: ");
+        boolean continuar=false;
+        if(libroReceta==null){
+            continuar = true;
+        }else{
+            for(Receta r: libroReceta){
+                if(r.getNombre().equals(name)){
+                    continuar=false;
+                    break;
+                }
+            }
+        }
+        if(continuar==false){
+            System.out.println("La receta ya existe...");
+        }else{
+            Receta R = new Receta (name);
+            char op='S';
+            while(op=='S'){
+                double precio=0;
+                boolean encontro=false;
+                String ingrediente = Entrada.leerString("Ingrediente: ");
+                Iterator<String> b = I1.getItem().keySet().iterator();
+                
+                while(b.hasNext()){
+                    String key = b.next();
+                    if(ingrediente.equals(I1.getItem().get(key))){
+                        precio= I1.getItem().get(key).getPrecio();
+                        encontro=true;
+                        break;
+                    }
+                }
+                
+                if(encontro==true){
+                    int cantidad = Entrada.leerEntero("Cantidad Necesaria: ");
+                    Ingrediente I = new Ingrediente(ingrediente, precio, cantidad);
+                    R.agregarIngrediente(I);
+                }
+                else{
+                    System.out.println("Ese producto no esta en el inventario");
+                }
+                op=Entrada.leerCaracter("Desea Agregar un Ingediente mas? (S/N): ");
+            }
+            libroReceta.add(R);
+        }
+    }
     
 }
-
-

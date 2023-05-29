@@ -21,6 +21,11 @@ public class Entrada {
    public static String leerString(String label){
        System.out.println(label);
        return input.nextLine();
+       String str = input.nextLine();
+       //try{
+       String bug = input.next();
+       //}
+       return str;
    }
    
    public static char leerCaracter(String label){
