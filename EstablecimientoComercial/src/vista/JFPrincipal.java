@@ -5,6 +5,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -80,8 +81,7 @@ public class JFPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lbImg, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lbNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(lbNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,7 +220,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             pAsistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAsistenciaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbAsistencia, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pAsistenciaLayout.setVerticalGroup(
@@ -317,7 +317,7 @@ public class JFPrincipal extends javax.swing.JFrame {
             .addGroup(pPersistirLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbPersistir, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pPersistirLayout.setVerticalGroup(
             pPersistirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,8 +330,8 @@ public class JFPrincipal extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pInventario, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-            .addComponent(pVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
+            .addComponent(pInventario, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+            .addComponent(pVenta, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
             .addComponent(pCompra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pAsistencia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(pBalance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -372,15 +372,16 @@ public class JFPrincipal extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbtt1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lbtt2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(231, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,61 +408,91 @@ public class JFPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    public Font font = new Font("Lucida Console", Font.BOLD, 18);
+    public Font font2 = new Font("Lucida Console", Font.PLAIN, 18);
+    
     private void pCompraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCompraMouseEntered
         this.pCompra.setBackground(new Color(232,112,36));
+        this.lbcompra.setForeground(Color.white);
+        this.lbcompra.setFont(font);
     }//GEN-LAST:event_pCompraMouseEntered
 
     private void pCompraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCompraMouseExited
         this.pCompra.setBackground(Color.white);
+        this.lbcompra.setForeground(Color.black);
+        this.lbcompra.setFont(font2);
     }//GEN-LAST:event_pCompraMouseExited
 
     private void pInventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pInventarioMouseEntered
         this.pInventario.setBackground(new Color(232,112,36));
+        this.lbInventario.setForeground(Color.white);
+        this.lbInventario.setFont(font);
     }//GEN-LAST:event_pInventarioMouseEntered
 
     private void pInventarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pInventarioMouseExited
         this.pInventario.setBackground(Color.white);
+         this.lbInventario.setForeground(Color.black);
+        this.lbInventario.setFont(font2);
     }//GEN-LAST:event_pInventarioMouseExited
 
     private void pVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pVentaMouseEntered
         this.pVenta.setBackground(new Color(232,112,36));
+        this.lbVenta.setForeground(Color.white);
+        this.lbVenta.setFont(font);
     }//GEN-LAST:event_pVentaMouseEntered
 
     private void pVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pVentaMouseExited
         this.pVenta.setBackground(Color.white);
+        this.lbVenta.setForeground(Color.black);
+        this.lbVenta.setFont(font2);
     }//GEN-LAST:event_pVentaMouseExited
 
     private void pAsistenciaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAsistenciaMouseEntered
         this.pAsistencia.setBackground(new Color(232,112,36));
+        this.lbAsistencia.setForeground(Color.white);
+        this.lbAsistencia.setFont(font);
     }//GEN-LAST:event_pAsistenciaMouseEntered
 
     private void pAsistenciaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAsistenciaMouseExited
         this.pAsistencia.setBackground(Color.WHITE);
+        this.lbAsistencia.setForeground(Color.black);
+        this.lbAsistencia.setFont(font2);
     }//GEN-LAST:event_pAsistenciaMouseExited
 
     private void pBalanceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pBalanceMouseEntered
         this.pBalance.setBackground(new Color(232,112,36));
+        this.lbBalance.setForeground(Color.white);
+        this.lbBalance.setFont(font);
     }//GEN-LAST:event_pBalanceMouseEntered
 
     private void pBalanceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pBalanceMouseExited
         this.pBalance.setBackground(Color.white);
+         this.lbBalance.setForeground(Color.black);
+        this.lbBalance.setFont(font2);
     }//GEN-LAST:event_pBalanceMouseExited
 
     private void pFuncionesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pFuncionesMouseEntered
         this.pFunciones.setBackground(new Color(232,112,36));
+        this.lbFunciones.setForeground(Color.white);
+        this.lbFunciones.setFont(font);
     }//GEN-LAST:event_pFuncionesMouseEntered
 
     private void pFuncionesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pFuncionesMouseExited
         this.pFunciones.setBackground(Color.WHITE);
+        this.lbFunciones.setForeground(Color.black);
+        this.lbFunciones.setFont(font2);
     }//GEN-LAST:event_pFuncionesMouseExited
 
     private void pPersistirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPersistirMouseEntered
         this.pPersistir.setBackground(new Color(232,112,36));
+        this.lbPersistir.setForeground(Color.white);
+        this.lbPersistir.setFont(font);
     }//GEN-LAST:event_pPersistirMouseEntered
 
     private void pPersistirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPersistirMouseExited
         this.pPersistir.setBackground(Color.white);
+        this.lbPersistir.setForeground(Color.black);
+        this.lbPersistir.setFont(font2);
     }//GEN-LAST:event_pPersistirMouseExited
 
     private void pInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pInventarioMouseClicked
@@ -471,16 +502,16 @@ public class JFPrincipal extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new JFPrincipal().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                new JFPrincipal().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
