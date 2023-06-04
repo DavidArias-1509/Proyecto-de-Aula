@@ -37,13 +37,8 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         this.contenedor.setLayout(new BorderLayout());
         this.titulo();
         this.crearPanelLateral();
-        this.funcionalidad();this.panelCentral = new JPanel();
-        //this.panelCentral.setBackground(new Color(232,112,36));
-        this.panelCentral.setBackground(Color.white);
-        Border border = BorderFactory.createLineBorder(Color.RED);
-        this.panelCentral.setBorder(border);
-        //this.panelCentral.setSize(100, 100);
-        this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
+        this.crearPanelCentral();
+        this.funcionalidad();
     }
     
     public Font font1= new Font("Lucida Console", Font.BOLD, 18);
@@ -131,6 +126,14 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         this.contenedor.add(panelGrid, BorderLayout.WEST);
     }
     
+    public void crearPanelCentral(){
+        this.panelCentral = new JPanel();
+        this.panelCentral.setBackground(Color.white);
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        this.panelCentral.setBorder(border);
+        this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
+    }
+    
     public void funcionalidad(){
         opcion1.addMouseListener(this);
         opcion2.addMouseListener(this);
@@ -148,7 +151,9 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
             label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
             JOptionPane.showMessageDialog(null, label.getText());
             if(label.getText().equals("Inventario")){
-                PanelInventario();
+                crearPanelCentral();
+                this.panelCentral.add(PanelInventario());
+                this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
             }
         }  
     }
@@ -178,7 +183,18 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         } 
     }
     
-    public void PanelInventario(){
-        
+    public JPanel PanelInventario(){
+        JPanel panel= new JPanel();
+        panel.setVisible(true);
+        Container internalCont = getContentPane();
+        internalCont.setLayout(new BorderLayout());
+        JLabel titulo = new JLabel("Inventario");
+        titulo.setBackground(new Color(232,112,36));
+        titulo.setForeground(Color.BLACK);
+        titulo.setFont(font2);
+        internalCont.add(titulo, BorderLayout.NORTH);
+        panel.add(internalCont);
+        //panel.add(titulo);
+        return panel;
     }
 }
