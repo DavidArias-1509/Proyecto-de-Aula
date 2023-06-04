@@ -26,6 +26,7 @@ public class Entrada {
 //       String bug = input.next();
 //       //}
        //return str;
+//       return str;
    }
    
    public static char leerCaracter(String label){

@@ -93,7 +93,8 @@ public class Main_Principal {
 
         //ejecucionPrincipal();
         
-        JFPrincipal ejecucion = new JFPrincipal();
+        //JFPrincipal ejecucion = new JFPrincipal();
+        VentanaPrincipal window = new VentanaPrincipal("La Góndola");
     }
     
     public static void ejecucionPrincipal(){
