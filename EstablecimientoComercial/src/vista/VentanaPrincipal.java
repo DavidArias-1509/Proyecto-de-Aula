@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package vista;
 
 import java.awt.BorderLayout;
@@ -18,15 +14,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
-/**
- *
- * @author david
- */
 public class VentanaPrincipal extends JFrame implements MouseListener {
     private Container contenedor; 
     
-    private JLabel opcion1,opcion2,opcion3,opcion4,opcion5,opcion6,opcion7; 
+    private JLabel opcion1,opcion2,opcion3,opcion4,opcion5,opcion6,opcion7;
+    private JPanel panelCentral;
     
     public VentanaPrincipal(String title){
         setTitle(title);
@@ -43,7 +37,13 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         this.contenedor.setLayout(new BorderLayout());
         this.titulo();
         this.crearPanelLateral();
-        this.funcionalidad();
+        this.funcionalidad();this.panelCentral = new JPanel();
+        //this.panelCentral.setBackground(new Color(232,112,36));
+        this.panelCentral.setBackground(Color.white);
+        Border border = BorderFactory.createLineBorder(Color.RED);
+        this.panelCentral.setBorder(border);
+        //this.panelCentral.setSize(100, 100);
+        this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
     }
     
     public Font font1= new Font("Lucida Console", Font.BOLD, 18);
@@ -139,7 +139,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         opcion5.addMouseListener(this);
         opcion6.addMouseListener(this);
         opcion7.addMouseListener(this);
-    }
+        }
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -147,7 +147,10 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
             JLabel label = (JLabel) e.getSource();
             label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
             JOptionPane.showMessageDialog(null, label.getText());
-        }    
+            if(label.getText().equals("Inventario")){
+                PanelInventario();
+            }
+        }  
     }
 
     @Override
@@ -173,5 +176,9 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
             JLabel label = (JLabel) e.getSource();
             label.setForeground(Color.BLACK); // Restaurar el color del texto al salir
         } 
+    }
+    
+    public void PanelInventario(){
+        
     }
 }
