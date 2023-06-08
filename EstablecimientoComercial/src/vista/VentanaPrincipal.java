@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package vista;
 
 import java.awt.BorderLayout;
@@ -18,16 +14,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
-/**
- *
- * @author david
- */
 public class VentanaPrincipal extends JFrame implements MouseListener {
     private Container contenedor; 
     
     private JPanel contenedorVentana;
-    private JLabel opcion1,opcion2,opcion3,opcion4,opcion5,opcion6,opcion7; 
+    private JLabel opcion1,opcion2,opcion3,opcion4,opcion5,opcion6,opcion7;
+    private JPanel panelCentral;
     
     public VentanaPrincipal(String title){
         setTitle(title);
@@ -45,6 +39,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         this.titulo();
         this.crearPanelVentana();
         this.crearPanelLateral();
+        this.crearPanelCentral();
         this.funcionalidad();
     }
     
@@ -149,6 +144,13 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         this.contenedorVentana.add(cont);
     }
     
+    public void crearPanelCentral(){
+        this.panelCentral = new JPanel();
+        this.panelCentral.setBackground(Color.white);
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        this.panelCentral.setBorder(border);
+        this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
+    }
     
     public void funcionalidad(){
         opcion1.addMouseListener(this);
@@ -158,7 +160,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         opcion5.addMouseListener(this);
         opcion6.addMouseListener(this);
         opcion7.addMouseListener(this);
-    }
+        }
 
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -171,6 +173,12 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
                 this.inventario();
             }
         }    
+            if(label.getText().equals("Inventario")){
+                crearPanelCentral();
+                this.panelCentral.add(PanelInventario());
+                this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
+            }
+        }  
     }
 
     @Override
@@ -196,5 +204,20 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
             JLabel label = (JLabel) e.getSource();
             label.setForeground(Color.BLACK); // Restaurar el color del texto al salir
         } 
+    }
+    
+    public JPanel PanelInventario(){
+        JPanel panel= new JPanel();
+        panel.setVisible(true);
+        Container internalCont = getContentPane();
+        internalCont.setLayout(new BorderLayout());
+        JLabel titulo = new JLabel("Inventario");
+        titulo.setBackground(new Color(232,112,36));
+        titulo.setForeground(Color.BLACK);
+        titulo.setFont(font2);
+        internalCont.add(titulo, BorderLayout.NORTH);
+        panel.add(internalCont);
+        //panel.add(titulo);
+        return panel;
     }
 }
