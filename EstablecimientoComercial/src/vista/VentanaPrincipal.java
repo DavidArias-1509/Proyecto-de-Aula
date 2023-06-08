@@ -26,6 +26,7 @@ import javax.swing.JPanel;
 public class VentanaPrincipal extends JFrame implements MouseListener {
     private Container contenedor; 
     
+    private JPanel contenedorVentana;
     private JLabel opcion1,opcion2,opcion3,opcion4,opcion5,opcion6,opcion7; 
     
     public VentanaPrincipal(String title){
@@ -42,6 +43,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         this.contenedor = this.getContentPane();
         this.contenedor.setLayout(new BorderLayout());
         this.titulo();
+        this.crearPanelVentana();
         this.crearPanelLateral();
         this.funcionalidad();
     }
@@ -65,6 +67,11 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         panelTitle.add(t2, BorderLayout.EAST);
         this.contenedor.add(panelTitle, BorderLayout.NORTH);
     }
+    
+    public void crearPanelVentana(){
+        this.contenedorVentana = new JPanel();
+        this.contenedorVentana.setLayout(new GridLayout(1,1,3,3));
+    }
    
     public void crearPanelLateral(){
         Color c1 = new Color(232,112,36);
@@ -72,7 +79,6 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         JPanel panelGrid = new JPanel();
         panelGrid.setBackground(c1);
         panelGrid.setLayout(new GridLayout(2, 1, 3, 3));
-        
         JPanel subPanelTitulo = new JPanel();
         subPanelTitulo.setBackground(c1);
         subPanelTitulo.setLayout(new GridLayout(2,1,1,1));
@@ -125,11 +131,24 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         
         panelGrid.add(subPanelTitulo, BorderLayout.NORTH);
         panelGrid.add(subPanelOpciones, BorderLayout.CENTER);
-        
+        //panelGrid.add(this.contenedorVentana, BorderLayout.CENTER);
         panelGrid.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         this.contenedor.add(panelGrid, BorderLayout.WEST);
     }
+    
+    public void inventario(){
+        JPanel cont = new JPanel();
+        cont.setLayout(new GridLayout(2,1,1,1));
+        cont.setBackground(new Color(255,255,255));
+        JLabel tituloTabla = new JLabel();
+        tituloTabla.setText("Productos Disponibles");
+        tituloTabla.setForeground(Color.BLACK);
+        tituloTabla.setFont(font2);
+        cont.add(tituloTabla);
+        this.contenedorVentana.add(cont);
+    }
+    
     
     public void funcionalidad(){
         opcion1.addMouseListener(this);
@@ -147,6 +166,10 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
             JLabel label = (JLabel) e.getSource();
             label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
             JOptionPane.showMessageDialog(null, label.getText());
+            if("Inventario".equals(label.getText())){
+                this.contenedorVentana.removeAll();
+                this.inventario();
+            }
         }    
     }
 
