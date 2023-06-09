@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import jdialogs.JDInventario;
 
 public class VentanaPrincipal extends JFrame implements MouseListener {
     private Container contenedor; 
@@ -166,34 +167,15 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        //JLabel label = null;
+        
         if(e.getSource() == this.opcion1){
               JOptionPane.showMessageDialog(null, opcion1.getText());
-                //JLabel prueba = new JLabel("Inventairio");
-                this.crearPanelCentral();
-//                this.panelCentral.add(prueba, BorderLayout.NORTH);
-                this.contenedorVentana.removeAll();
-                //this.inventario();
-                this.panelCentral.add(PanelInventario());
-                this.panelCentral.add(contenedorVentana);
-                this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
+              JDInventario dialog = new JDInventario(null,  "Inventario", true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Opcion");
         }
-//        if (e.getSource() instanceof JLabel) {
-//             label = (JLabel) e.getSource();
-//            label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
-//            JOptionPane.showMessageDialog(null, label.getText());
-//            if("Inventario".equals(label.getText())){
-//                this.contenedorVentana.removeAll();
-//                this.inventario();
-//                crearPanelCentral();
-//                this.panelCentral.add(PanelInventario(), BorderLayout.CENTER);
-//                this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
-//            }
-//        }    
-////            if(label.getText().equals("Inventario")){
-//                
-//            }
-        }  
+       
+     }  
 
     
     @Override
