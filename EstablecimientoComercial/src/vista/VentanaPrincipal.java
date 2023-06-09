@@ -25,15 +25,14 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
     private JPanel contenedorVentana;
     private JLabel opcion1,opcion2,opcion3,opcion4,opcion5,opcion6;
     private JPanel op1, op2, op3, op4, op5, op6;
-    private JPanel panelCentral;
-    
+
     public VentanaPrincipal(String title){
         setTitle(title);
         setVisible(true);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.initComponents();
-        setSize(500,500);
+        setSize(700,700);
         
     }
     
@@ -69,7 +68,28 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         panelTitle.add(t2, BorderLayout.SOUTH);
         this.contenedor.add(panelTitle, BorderLayout.NORTH);
     }
-   
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    
     public void crearPanelLateral(){
         
         JPanel panelGrid = new JPanel();
@@ -88,21 +108,9 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         
         panelGrid.add(subPanelTitulo, BorderLayout.NORTH);
         panelGrid.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-
         this.contenedor.add(panelGrid, BorderLayout.WEST);
     }
     
-    public void inventario(){
-        JPanel cont = new JPanel();
-        cont.setLayout(new GridLayout(2,1,1,1));
-        cont.setBackground(new Color(255,255,255));
-        JLabel tituloTabla = new JLabel();
-        tituloTabla.setText("Productos Disponibles");
-        tituloTabla.setForeground(Color.BLACK);
-        tituloTabla.setFont(font2);
-        cont.add(tituloTabla);
-        this.contenedorVentana.add(cont);
-    }
     
     public void crearPanelCentral(){
         Border border = BorderFactory.createLineBorder(c1, 1);
@@ -157,8 +165,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         subPanelOpciones.add(new JPanel());
         
         this.contenedor.add(subPanelOpciones, BorderLayout.CENTER);
-        
-    }
+  }
     
     public void funcionalidad(){
         opcion1.addMouseListener(this);
@@ -171,41 +178,20 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
-        if(e.getSource() == this.opcion1){
-              JOptionPane.showMessageDialog(null, opcion1.getText());
-              JDInventario dialog = new JDInventario(null,  "Inventario", true);
-        }else{
-            JOptionPane.showMessageDialog(null, "Opcion");
-        }
-       
-     }  
-
-    
-    @Override
-    public void mousePressed(MouseEvent e) {
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-       }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-       if (e.getSource() instanceof JLabel) {
-            JLabel label = (JLabel) e.getSource();
-            label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
-            label.setBackground(Color.BLACK);
-       }
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
         if (e.getSource() instanceof JLabel) {
             JLabel label = (JLabel) e.getSource();
-            label.setForeground(Color.BLACK); // Restaurar el color del texto al salir
-        } 
+            label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
+            JOptionPane.showMessageDialog(null, label.getText());
+            if("Inventario".equals(label.getText())){
+                if(label.getText().equals("Inventario")){
+                    crearPanelCentral();
+                    this.panelCentral.add(PanelInventario());
+                    this.panelCentral.repaint();
+                    //this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
+                }
+            }
+        }
     }
-    
-}
+        
+        }  
+
