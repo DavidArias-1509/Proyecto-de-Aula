@@ -1,20 +1,13 @@
 package vista;
 
-<<<<<<< HEAD
 import persistencias.Inventario;
 import persistencias.Mes;
-=======
-import cuentas.Mes;
-import cuentas.Inventario;
-import cuentas.Dia;
-import cuentas.Compra;
-import cuentas.Venta;
+import cuentas.*;
 import empleados.Normal;
 import empleados.Empleado;
 import empleados.Administrador;
 import preparaciones.Ingrediente;
 import preparaciones.Receta;
->>>>>>> 4f37e06b8bf7de3963dc8f7113a728c11e83cc21
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;

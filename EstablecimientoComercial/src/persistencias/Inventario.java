@@ -2,18 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-<<<<<<<< HEAD:EstablecimientoComercial/src/persistencias/Inventario.java
+
 package persistencias;
 
 import java.util.*;
-import modelos.cuentas.Producto;
-import modelos.preparaciones.Ingrediente;
-========
-package cuentas;
+import cuentas.Producto;
 
 import java.util.*;
 import preparaciones.Ingrediente;
->>>>>>>> 4f37e06b8bf7de3963dc8f7113a728c11e83cc21:EstablecimientoComercial/src/cuentas/Inventario.java
 
 /**
  *+

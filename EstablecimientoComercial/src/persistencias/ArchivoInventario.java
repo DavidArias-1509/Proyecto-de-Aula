@@ -7,7 +7,7 @@ package persistencias;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import modelos.cuentas.Producto;
+import cuentas.Producto;
 
 /**
  *

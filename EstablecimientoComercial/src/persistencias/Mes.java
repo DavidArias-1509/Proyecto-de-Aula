@@ -1,20 +1,12 @@
-<<<<<<<< HEAD:EstablecimientoComercial/src/persistencias/Mes.java
+
 package persistencias;
 
+import cuentas.Balance;
+import cuentas.Dia;
+import cuentas.Compra;
+import cuentas.Venta;
 import java.util.ArrayList;
-import java.util.Map;
-import modelos.cuentas.Balance;
-import modelos.cuentas.Compra;
-import modelos.cuentas.Dia;
-import modelos.cuentas.Venta;
-import modelos.employee.Empleado;
-========
-package cuentas;
-
-import java.util.ArrayList;
-import java.util.Map;
 import empleados.Empleado;
->>>>>>>> 4f37e06b8bf7de3963dc8f7113a728c11e83cc21:EstablecimientoComercial/src/cuentas/Mes.java
 
 public class Mes implements Balance {
     private ArrayList<Dia> balanceMes;
