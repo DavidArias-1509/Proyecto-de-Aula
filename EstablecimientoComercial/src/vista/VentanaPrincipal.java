@@ -178,20 +178,8 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource() instanceof JLabel) {
-            JLabel label = (JLabel) e.getSource();
-            label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
-            JOptionPane.showMessageDialog(null, label.getText());
-            if("Inventario".equals(label.getText())){
-                if(label.getText().equals("Inventario")){
-                    crearPanelCentral();
-                    this.panelCentral.add(PanelInventario());
-                    this.panelCentral.repaint();
-                    //this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
-                }
-            }
-        }
+       
     }
         
-        }  
+ }  
 
