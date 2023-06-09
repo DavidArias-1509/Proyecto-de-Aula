@@ -13,7 +13,7 @@ import static vista.Main_Principal.pedirFecha;
 import static vista.Main_Principal.personal;
 
 public class Compra {
-    private String codigoCompra;
+   private String codigoCompra;
    private double valorTotal;
    private ArrayList<Producto> productos;
    private LocalDate fechaCompra;

@@ -2,20 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelos.cuentas;
+package persistencias;
 
 import java.util.*;
+import modelos.cuentas.Producto;
 import modelos.preparaciones.Ingrediente;
 
 /**
- *
+ *+
  * @author karla
  */
 public class Inventario {
     private Map<String ,Producto> Item;
+    private List<Producto> list;
 
     public Inventario() {
         this.Item = new HashMap();
+        this.list = new ArrayList();
     }
     
     
@@ -61,5 +64,6 @@ public class Inventario {
     public Map<String ,Producto> getItem() {
         return Item;
     }
+
     
 }

@@ -1,7 +1,11 @@
-package modelos.cuentas;
+package persistencias;
 
 import java.util.ArrayList;
 import java.util.Map;
+import modelos.cuentas.Balance;
+import modelos.cuentas.Compra;
+import modelos.cuentas.Dia;
+import modelos.cuentas.Venta;
 import modelos.employee.Empleado;
 
 public class Mes implements Balance {

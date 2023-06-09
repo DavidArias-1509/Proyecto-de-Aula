@@ -1,5 +1,7 @@
 package vista;
 
+import persistencias.Inventario;
+import persistencias.Mes;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
