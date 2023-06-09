@@ -1,4 +1,4 @@
-package modelos.employee;
+package empleados;
 
 public class Normal extends Empleado{
     private double pagoPorDia;

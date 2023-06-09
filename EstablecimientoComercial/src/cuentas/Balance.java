@@ -1,4 +1,4 @@
-package modelos.cuentas;
+package cuentas;
 
 public interface Balance {
     double calcularBalance();

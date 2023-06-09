@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import jdialogs.JDInventario;
 
 public class VentanaPrincipal extends JFrame implements MouseListener {
     private Container contenedor; 
@@ -37,7 +38,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         this.contenedor.setLayout(new BorderLayout());
         this.titulo();
         this.crearPanelLateral();
-        this.crearPanelCentral();
+        //this.crearPanelCentral();
         this.funcionalidad();
     }
     
@@ -60,6 +61,15 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         panelTitle.add(t2, BorderLayout.EAST);
         this.contenedor.add(panelTitle, BorderLayout.NORTH);
     }
+<<<<<<< HEAD
+=======
+    
+    public void crearPanelVentana(){
+        this.contenedorVentana = new JPanel();
+        this.contenedorVentana.setLayout(new GridLayout(1,1,3,3));
+        this.inventario();
+    }
+>>>>>>> 4f37e06b8bf7de3963dc8f7113a728c11e83cc21
    
     public void crearPanelLateral(){
         Color c1 = new Color(232,112,36);
@@ -139,6 +149,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
     public void crearPanelCentral(){
         this.panelCentral = new JPanel();
         this.panelCentral.setBackground(Color.white);
+        this.panelCentral.setLayout(new BorderLayout());
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         this.panelCentral.setBorder(border);
         this.panelCentral.setLayout(new GridLayout(1,2));
@@ -159,6 +170,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+<<<<<<< HEAD
         if (e.getSource() instanceof JLabel) {
             JLabel label = (JLabel) e.getSource();
             label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
@@ -173,7 +185,19 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
             }
         }
     }
+=======
+        
+        if(e.getSource() == this.opcion1){
+              JOptionPane.showMessageDialog(null, opcion1.getText());
+              JDInventario dialog = new JDInventario(null,  "Inventario", true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Opcion");
+        }
+       
+     }  
+>>>>>>> 4f37e06b8bf7de3963dc8f7113a728c11e83cc21
 
+    
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println("Potque me oprimes");
@@ -202,16 +226,22 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
     
     public JPanel PanelInventario(){
         JPanel panel= new JPanel();
-        panel.setVisible(true);
-        Container internalCont = getContentPane();
-        internalCont.setLayout(new BorderLayout());
+//        panel.setVisible(true);
+//        Container internalCont = getContentPane();
+//        internalCont.setLayout(new BorderLayout());
         JLabel titulo = new JLabel("Inventario");
         titulo.setBackground(new Color(232,112,36));
         titulo.setForeground(Color.BLACK);
         titulo.setFont(font2);
+<<<<<<< HEAD
         internalCont.add(titulo, BorderLayout.NORTH);
         //panel.add(internalCont);
         panel.add(titulo, BorderLayout.EAST);
+=======
+//        internalCont.add(titulo, BorderLayout.NORTH);
+//        panel.add(internalCont);
+        panel.add(titulo);
+>>>>>>> 4f37e06b8bf7de3963dc8f7113a728c11e83cc21
         return panel;
     }
 }

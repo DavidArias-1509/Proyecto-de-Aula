@@ -1,11 +1,11 @@
-package modelos.cuentas;
+package cuentas;
 
 import java.time.LocalDate;
 import modelos.Entrada;
 import java.util.ArrayList;
 import static modelos.Entrada.leerFecha;
-import modelos.employee.Empleado;
-import modelos.preparaciones.Receta;
+import empleados.Empleado;
+import preparaciones.Receta;
 import static vista.Main_Principal.*;
 
 
