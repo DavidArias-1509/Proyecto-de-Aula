@@ -1,19 +1,20 @@
 package vista;
 
-import persistencias.Inventario;
-import persistencias.Mes;
 import cuentas.*;
-import empleados.Normal;
-import empleados.Empleado;
 import empleados.Administrador;
-import preparaciones.Ingrediente;
-import preparaciones.Receta;
+import empleados.Empleado;
+import empleados.Normal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import modelos.Entrada;
 import static modelos.Entrada.leerFecha;
+import persistencias.*;
+import preparaciones.Ingrediente;
+import preparaciones.Receta;
+
+
 
 /*
  * @author david
@@ -448,11 +449,11 @@ public class Main_Principal {
                 for(Dia d: mes.getDias()){
                     if(d.getFecha().equals(fecha)){
                         mes.mesBalance(fecha.getMonthValue(), fecha.getYear());
-                        double balance  = mes.calcularBalance();
+                        //double balance  = mes.calcularBalance();
                         System.out.println("Producido por Ventas: "+  Mes.producidoVenta(mes));
                         System.out.println("Gastos de Compras: "+ Mes.gastosCompra(mes));
                         System.out.println("Pago Nomina: "+Mes.nomina(mes));
-                        System.out.println("Balance Final: "+balance);
+                        //System.out.println("Balance Final: "+balance);
                     }
                 }
                 System.out.println("----------------------------");

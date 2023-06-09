@@ -8,7 +8,7 @@ import cuentas.Venta;
 import java.util.ArrayList;
 import empleados.Empleado;
 
-public class Mes implements Balance {
+public class Mes {
     private ArrayList<Dia> balanceMes;
     private ArrayList<Dia> dias;
     
@@ -86,9 +86,9 @@ public class Mes implements Balance {
         return nomi;
     }
 
-    @Override
-    public double calcularBalance() {
-        return producidoVenta(this)- gastosCompra(this)- nomina(this);
-    }
+//    @Override
+//    public double calcularBalance() {
+//        return producidoVenta(this)- gastosCompra(this)- nomina(this);
+//    }
     
 }
