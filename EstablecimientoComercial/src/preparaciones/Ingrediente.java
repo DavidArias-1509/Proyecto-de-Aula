@@ -1,4 +1,4 @@
-package modelos.preparaciones;
+package preparaciones;
 
 public class Ingrediente {
     private String nombre;

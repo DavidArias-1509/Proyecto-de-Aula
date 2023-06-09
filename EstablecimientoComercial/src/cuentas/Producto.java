@@ -1,4 +1,4 @@
-package modelos.cuentas;
+package cuentas;
 
 public class Producto {
     private String nombre;

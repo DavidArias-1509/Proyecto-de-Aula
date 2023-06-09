@@ -1,4 +1,4 @@
-package modelos.employee;
+package empleados;
 
 public abstract class Empleado {
         private String nombre;

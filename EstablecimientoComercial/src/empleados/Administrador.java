@@ -1,4 +1,4 @@
-package modelos.employee;
+package empleados;
 
 public  class Administrador extends Empleado{
     private double salarioBase;

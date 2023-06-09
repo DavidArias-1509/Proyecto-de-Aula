@@ -1,4 +1,4 @@
-package modelos.preparaciones;
+package preparaciones;
 
 import java.util.ArrayList;
 import java.util.Iterator;

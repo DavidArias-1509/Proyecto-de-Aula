@@ -1,8 +1,8 @@
-package modelos.cuentas;
+package cuentas;
 
 import java.util.ArrayList;
 import java.util.Map;
-import modelos.employee.Empleado;
+import empleados.Empleado;
 
 public class Mes implements Balance {
     private ArrayList<Dia> balanceMes;

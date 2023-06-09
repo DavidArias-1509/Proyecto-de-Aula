@@ -39,7 +39,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         this.titulo();
         this.crearPanelVentana();
         this.crearPanelLateral();
-        this.crearPanelCentral();
+        //this.crearPanelCentral();
         this.funcionalidad();
     }
     
@@ -66,6 +66,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
     public void crearPanelVentana(){
         this.contenedorVentana = new JPanel();
         this.contenedorVentana.setLayout(new GridLayout(1,1,3,3));
+        this.inventario();
     }
    
     public void crearPanelLateral(){
@@ -147,6 +148,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
     public void crearPanelCentral(){
         this.panelCentral = new JPanel();
         this.panelCentral.setBackground(Color.white);
+        this.panelCentral.setLayout(new BorderLayout());
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         this.panelCentral.setBorder(border);
         this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
@@ -164,23 +166,36 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getSource() instanceof JLabel) {
-            JLabel label = (JLabel) e.getSource();
-            label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
-            JOptionPane.showMessageDialog(null, label.getText());
-            if("Inventario".equals(label.getText())){
+        //JLabel label = null;
+        if(e.getSource() == this.opcion1){
+              JOptionPane.showMessageDialog(null, opcion1.getText());
+                //JLabel prueba = new JLabel("Inventairio");
+                this.crearPanelCentral();
+//                this.panelCentral.add(prueba, BorderLayout.NORTH);
                 this.contenedorVentana.removeAll();
-                this.inventario();
-            }
-        }    
-            if(label.getText().equals("Inventario")){
-                crearPanelCentral();
+                //this.inventario();
                 this.panelCentral.add(PanelInventario());
+                this.panelCentral.add(contenedorVentana);
                 this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
-            }
+        }
+//        if (e.getSource() instanceof JLabel) {
+//             label = (JLabel) e.getSource();
+//            label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
+//            JOptionPane.showMessageDialog(null, label.getText());
+//            if("Inventario".equals(label.getText())){
+//                this.contenedorVentana.removeAll();
+//                this.inventario();
+//                crearPanelCentral();
+//                this.panelCentral.add(PanelInventario(), BorderLayout.CENTER);
+//                this.contenedor.add(this.panelCentral, BorderLayout.CENTER);
+//            }
+//        }    
+////            if(label.getText().equals("Inventario")){
+//                
+//            }
         }  
-    }
 
+    
     @Override
     public void mousePressed(MouseEvent e) {
         
@@ -208,16 +223,16 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
     
     public JPanel PanelInventario(){
         JPanel panel= new JPanel();
-        panel.setVisible(true);
-        Container internalCont = getContentPane();
-        internalCont.setLayout(new BorderLayout());
+//        panel.setVisible(true);
+//        Container internalCont = getContentPane();
+//        internalCont.setLayout(new BorderLayout());
         JLabel titulo = new JLabel("Inventario");
         titulo.setBackground(new Color(232,112,36));
         titulo.setForeground(Color.BLACK);
         titulo.setFont(font2);
-        internalCont.add(titulo, BorderLayout.NORTH);
-        panel.add(internalCont);
-        //panel.add(titulo);
+//        internalCont.add(titulo, BorderLayout.NORTH);
+//        panel.add(internalCont);
+        panel.add(titulo);
         return panel;
     }
 }
