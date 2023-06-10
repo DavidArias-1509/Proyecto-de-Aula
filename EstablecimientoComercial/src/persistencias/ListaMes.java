@@ -8,9 +8,10 @@ import cuentas.Venta;
 import java.util.ArrayList;
 import empleados.Empleado;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
-public class ListaMes implements Logica {
+public class ListaMes implements Logica , Serializable{
     private ArrayList<Dia> balanceMes;
     private ArrayList<Dia> dia;
     
