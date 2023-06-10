@@ -108,7 +108,7 @@ public class JDRegistroCompra extends JDialog implements MouseListener{
         panel.setBackground(c1);
         JPanel sPanel = new JPanel();
         sPanel.setBackground(Color.WHITE);
-        this.Titulo = new JLabel ("Venta");
+        this.Titulo = new JLabel ("Registro de Compra");
         this.Titulo.setFont(font2);
         sPanel.add(this.Titulo);
         this.Titulo.setForeground(Color.black);

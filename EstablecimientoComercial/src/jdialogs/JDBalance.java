@@ -7,14 +7,21 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class JDBalance extends JDialog {
+public class JDBalance extends JDialog implements MouseListener {
     private Container contenedor;
+    private JLabel Titulo; 
+        
+        private JPanel option1, option2;
+        private JLabel opt1, opt2; 
 
     public JDBalance(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
@@ -37,6 +44,7 @@ public class JDBalance extends JDialog {
         this.panelTitulo();
         this.crearPanelLateral();
         this.crearPanel();
+        this.funcionalidad(); //Para iniciar los escucahdores de eventos
     }
     
      public Font font1= new Font("Lucida Console", Font.BOLD, 18);
@@ -95,7 +103,92 @@ public class JDBalance extends JDialog {
     }
     
     public void crearPanel(){
+        JPanel panel = new JPanel();
+        panel.setBackground(c1);
+        JPanel sPanel = new JPanel();
+        sPanel.setBackground(Color.WHITE);
+        this.Titulo = new JLabel ("Opciones de Balance");
+        this.Titulo.setFont(font2);
+        sPanel.add(this.Titulo);
+        this.Titulo.setForeground(Color.black);
+        panel.setLayout(new BorderLayout());
+        panel.add(sPanel, BorderLayout.NORTH);
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
+        JPanel subPanel = new JPanel();
+        subPanel.setBackground(Color.WHITE);
+        subPanel.setLayout(new GridLayout(2, 1, 10,5));
+        
+        this.option1 = new JPanel(); this.option1.setBackground(Color.WHITE);
+        this.opt1= new JLabel("Balance por Dia"); this.opt1.setFont(font2);
+        this.opt1.setForeground(Color.BLACK); this.opt1.setVerticalAlignment(SwingConstants.CENTER);
+        this.option1.add(this.opt1);
+        
+        this.option2 = new JPanel(); this.option2.setBackground(Color.WHITE);
+        this.opt2 = new JLabel("Balance por Mes"); this.opt2.setFont(font2);
+        this.opt2.setForeground(Color.black); this.opt2.setVerticalAlignment(SwingConstants.CENTER);
+        this.option2.add(this.opt2);
+        
+        subPanel.add(this.option1);
+        subPanel.add(this.option2);
+        
+        JPanel soutPanel = new JPanel(); soutPanel.setBackground(Color.white);
+        
+        panel.add(sPanel, BorderLayout.NORTH);
+        panel.add(subPanel, BorderLayout.CENTER);
+        panel.add(soutPanel, BorderLayout.SOUTH);
+        
+        this.contenedor.add(panel, BorderLayout.CENTER);
+    }
+    
+    public void funcionalidad(){
+        option1.addMouseListener(this);
+        option2.addMouseListener(this);
+     }
+
+    @Override
+    public void mouseClicked(MouseEvent c) {
+        if(c.getSource() == this.option1){
+               JOptionPane.showMessageDialog(null, "Balance Por Dia");
+            }else if(c.getSource() == this.option2){
+                JOptionPane.showMessageDialog(null, "Balance Por Mes");
+            }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent c) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent c) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent c) {
+            if(c.getSource() == this.option1){
+               this.option1.setBackground(c1);
+               this.opt1.setFont(font1);
+               this.opt1.setForeground(Color.white);
+            }else if(c.getSource() == this.option2){
+                this.option2.setBackground(c1);
+               this.opt2.setFont(font1);
+               this.opt2.setForeground(Color.white);
+            }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent c) {
+        if(c.getSource() == this.option1){
+                this.option1.setBackground(Color.WHITE);
+                this.opt1.setFont(font2);
+                this.opt1.setForeground(Color.BLACK);
+            }else if(c.getSource() == this.option2){
+                this.option2.setBackground(Color.WHITE);
+                this.opt2.setFont(font2);
+                this.opt2.setForeground(Color.BLACK);
+            }
     }
     
 }

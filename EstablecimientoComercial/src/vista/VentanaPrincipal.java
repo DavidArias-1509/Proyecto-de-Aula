@@ -170,7 +170,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
             JOptionPane.showMessageDialog(null, opcion4.getText());
             JDAsistencia dialog = new JDAsistencia(null, "Registro de Asistencia", true);
         }else if(e.getSource() == this.op5){
-            JOptionPane.showMessageDialog(null, opcion4.getText());
+            JOptionPane.showMessageDialog(null, opcion5.getText());
             JDBalance dialog = new JDBalance(null, "Opciones de Balance", true);
         }else if(e.getSource() == this.op6){
             JOptionPane.showMessageDialog(null, opcion6.getText());
