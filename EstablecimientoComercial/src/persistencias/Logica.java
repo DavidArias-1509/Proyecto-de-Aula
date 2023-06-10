@@ -20,8 +20,9 @@ public interface Logica {
     /**
      *
      * @param item
+     * @throws java.io.IOException
      */
-    void guardarItem(Object item) throws IOException;
+    void agregarItem(Object item) throws IOException;
     
     List generarInforme() throws IOException;
 }

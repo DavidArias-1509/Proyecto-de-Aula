@@ -10,6 +10,9 @@ import static java.awt.Frame.HAND_CURSOR;
 import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -159,7 +162,11 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         
         if(e.getSource() == this.op1){
               JOptionPane.showMessageDialog(null, opcion1.getText());
-              JDInventario dialog = new JDInventario(null,  "Inventario", true);
+            try {
+                JDInventario dialog = new JDInventario(null,  "Inventario", true);
+            } catch (IOException ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }else if(e.getSource() == this.op2){
             JOptionPane.showMessageDialog(null, opcion2.getText());
             JDRegistroVenta dialog = new JDRegistroVenta(null, "Registro Venta", true);

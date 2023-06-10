@@ -103,7 +103,7 @@ public class Compra {
     
     public void realizarCompra() throws IOException{
         for(Producto p : this.productos){
-            I1.guardarItem(p);
+            I1.agregarItem(p);
         }
         for(Dia d : mes.getDias()){
             if(this.fechaCompra.equals(d.getFecha())){

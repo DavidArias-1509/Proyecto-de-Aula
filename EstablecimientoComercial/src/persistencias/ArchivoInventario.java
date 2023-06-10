@@ -42,6 +42,12 @@ public class ArchivoInventario implements Logica{
             }
         }
     }
+    
+    public void sacarItem (List<Producto> receta) throws IOException{
+        this.leerInventario();
+        this.list.sacarItem(receta);
+        this.guardarLista();
+    }
 
     @Override
     public Producto buscarItem(String id) {
@@ -76,9 +82,9 @@ public class ArchivoInventario implements Logica{
     }
     
     @Override
-    public void guardarItem(Object item) throws IOException {
+    public void agregarItem(Object item) throws IOException {
         this.leerInventario();
-        this.list.guardarItem(item);
+        this.list.agregarItem(item);
         this.guardarLista();
     }
 

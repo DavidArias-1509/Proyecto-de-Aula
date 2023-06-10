@@ -76,6 +76,27 @@ public class ListaInventario implements Logica{
 //        return Item;
 //    }
 
+    public void sacarItem (List<Producto> receta) throws IOException{
+        char posible = 'n';
+        for(Producto p: receta){
+            posible = 'n';
+            for(Producto p1 : this.list){
+                if(p1.getCodigo().equals(p.getCodigo()) && ((p1.getCnatidadDisponible()-p.getCnatidadDisponible())>=0)){
+                    posible = 's';
+                }
+            }
+            if(posible == 'n'){
+                throw new IOException("Ingredientes en el inventario insuficientes");
+            }
+        }
+        for(Producto p: receta){
+            for(Producto p1 : this.list){
+                if(p1.getCodigo().equals(p.getCodigo())){
+                    p1.setCnatidadDisponible(p1.getCnatidadDisponible()-p.getCnatidadDisponible());
+                }
+            }
+        }
+    }
     @Override
     public Producto buscarItem(String id) {
         for (Producto p : this.list){
@@ -101,7 +122,7 @@ public class ListaInventario implements Logica{
      * @throws IOException
      */
     @Override
-    public void guardarItem(Object item) throws IOException {
+    public void agregarItem(Object item) throws IOException {
         char encontro = 'n';
         Producto p = (Producto) item;
         for (Producto p1 :this.list){

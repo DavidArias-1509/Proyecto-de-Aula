@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author karla
  */
-public class ListEmpleados implements Logica {
+public class ArchivoPlato implements Logica {
 
     @Override
     public Object buscarItem(String id) {
