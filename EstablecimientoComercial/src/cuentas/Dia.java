@@ -100,7 +100,6 @@ public class Dia implements Serializable{
                 }
                 op = Entrada.leerCaracter("Desea agregar otra asistencia: ");
             }while(op == 'n'||op == 'N');
-            
         }
        
     }

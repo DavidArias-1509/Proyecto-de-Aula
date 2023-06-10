@@ -177,13 +177,12 @@ public class JDCompraIngredientes extends JDialog implements MouseListener{
 //        this.cEmail = new JFormattedTextField(); this.cEmail.setText("Example@mail.com");
 //        subPanel.add(this.email); 
 //        subPanel.add(this.cEmail);
-        
                 
-        subPanel.add(new JLabel("Platos"));
+        subPanel.add(new JLabel("Ingredientes"));
         subPanel.add(new JLabel());
         
         this.adicion = new JButton(); 
-        this.adicion.setText("+ Añadir Plato");
+        this.adicion.setText("+ Añadir Ingrediente");
         this.adicion.setForeground(Color.WHITE);
         this.adicion.setBackground(c1);
         this.adicion.addMouseListener(this);
