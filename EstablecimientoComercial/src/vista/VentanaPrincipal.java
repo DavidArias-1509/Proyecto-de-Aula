@@ -22,9 +22,7 @@ import jdialogs.JDInventario;
 public class VentanaPrincipal extends JFrame implements MouseListener {
     private Container contenedor; 
     private JPanel op1, op2, op3, op4, op5, op6;
-    private JPanel contenedorVentana;
     private JLabel opcion1,opcion2,opcion3,opcion4,opcion5,opcion6;
-    private JPanel panelCentral;
     
     public VentanaPrincipal(String title){
         setTitle(title);
@@ -56,14 +54,20 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
         JPanel panelTitle = new JPanel();
         panelTitle.setBackground(c1);
         panelTitle.setLayout(new GridLayout(2, 1, 1, 1));
+        
         JLabel t1 = new JLabel("Restaurante: La Góndola");
         t1.setFont(font3);
         t1.setForeground(Color.BLACK);
+        t1.setHorizontalAlignment(SwingConstants.CENTER);
+        
         JLabel t2 = new JLabel("Sistema de Contabilidad");
         t2.setFont(font3);
         t2.setForeground(Color.BLACK);
+        t2.setHorizontalAlignment(SwingConstants.CENTER);
+        
         panelTitle.add(t1, BorderLayout.EAST);
         panelTitle.add(t2, BorderLayout.EAST);
+        
         this.contenedor.add(panelTitle, BorderLayout.NORTH);
     }
     
@@ -176,7 +180,7 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
     public void mouseEntered(MouseEvent e) {
        if (e.getSource() instanceof JLabel) {
             JLabel label = (JLabel) e.getSource();
-            label.setForeground(Color.WHITE); // Cambiar el color del texto al entrar
+            label.setForeground(c1); // Cambiar el color del texto al entrar
         }
     }
 
