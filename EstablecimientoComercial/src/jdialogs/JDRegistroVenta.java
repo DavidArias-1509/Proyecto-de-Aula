@@ -205,9 +205,4 @@ public class JDRegistroVenta extends JDialog {
         this.contenedor.add(panel, BorderLayout.CENTER);
     }
     
-//    public void botones(){
-//        
-//                
-//        this.contenedor.add(panel, BorderLayout.SOUTH);
-//    }
 }

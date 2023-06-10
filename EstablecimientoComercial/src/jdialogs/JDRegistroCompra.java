@@ -7,14 +7,21 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class JDRegistroCompra extends JDialog {
+public class JDRegistroCompra extends JDialog implements MouseListener{
         private Container contenedor; 
+        private JLabel Titulo; 
+        
+        private JPanel option1, option2;
+        private JLabel opt1, opt2; 
         
     public JDRegistroCompra(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
@@ -56,7 +63,7 @@ public class JDRegistroCompra extends JDialog {
         t1.setFont(font3);
         t1.setForeground(Color.BLACK);
         t1.setHorizontalAlignment(SwingConstants.CENTER);
-        
+   
         JLabel t2 = new JLabel("Sistema de Contabilidad");
         t2.setFont(font3);
         t2.setForeground(Color.BLACK);
@@ -96,6 +103,91 @@ public class JDRegistroCompra extends JDialog {
     }
     
     public void crearPanel(){
+        JPanel panel = new JPanel();
+        panel.setBackground(c1);
+        JPanel sPanel = new JPanel();
+        sPanel.setBackground(Color.WHITE);
+        this.Titulo = new JLabel ("Venta");
+        this.Titulo.setFont(font2);
+        sPanel.add(this.Titulo);
+        this.Titulo.setForeground(Color.black);
+        panel.setLayout(new BorderLayout());
+        panel.add(sPanel, BorderLayout.NORTH);
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
+        JPanel subPanel = new JPanel();
+        subPanel.setBackground(Color.WHITE);
+        subPanel.setLayout(new GridLayout(2, 1, 10,5));
+        
+        this.option1 = new JPanel(); this.option1.setBackground(Color.WHITE);
+        this.opt1= new JLabel("Compra de Ingredientes"); this.opt1.setFont(font2);
+        this.opt1.setForeground(Color.BLACK); this.opt1.setVerticalAlignment(SwingConstants.CENTER);
+        this.option1.add(this.opt1);
+        
+        this.option2 = new JPanel(); this.option2.setBackground(Color.WHITE);
+        this.opt2 = new JLabel("Otras compras"); this.opt2.setFont(font2);
+        this.opt2.setForeground(Color.black); this.opt2.setVerticalAlignment(SwingConstants.CENTER);
+        this.option2.add(this.opt2);
+        
+        subPanel.add(this.option1);
+        subPanel.add(this.option2);
+        
+        JPanel soutPanel = new JPanel(); soutPanel.setBackground(Color.white);
+        
+        panel.add(sPanel, BorderLayout.NORTH);
+        panel.add(subPanel, BorderLayout.CENTER);
+        panel.add(soutPanel, BorderLayout.SOUTH);
+        
+        this.contenedor.add(panel, BorderLayout.CENTER);
+    }
+    
+    public void funcionalidad(){
+        this.option1.addMouseListener(this);
+        this.option2.addMouseListener(this);
+     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == this.option1){
+               JOptionPane.showMessageDialog(null, "Compra de ingredientes");
+            }else if(e.getSource() == this.option2){
+                JOptionPane.showMessageDialog(null, "Otras compras");
+            }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+            if(e.getSource() == this.option1){
+               this.option1.setBackground(c1);
+               this.opt1.setFont(font1);
+               this.opt1.setForeground(Color.white);
+            }else if(e.getSource() == this.option2){
+                this.option2.setBackground(c1);
+               this.opt2.setFont(font1);
+               this.opt2.setForeground(Color.white);
+            }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        if(e.getSource() == this.option1){
+                this.option1.setBackground(Color.WHITE);
+                this.opt1.setFont(font2);
+                this.opt1.setForeground(Color.BLACK);
+            }else if(e.getSource() == this.option2){
+                this.option2.setBackground(Color.WHITE);
+                this.opt2.setFont(font2);
+                this.opt2.setForeground(Color.BLACK);
+            }
     }
 }
