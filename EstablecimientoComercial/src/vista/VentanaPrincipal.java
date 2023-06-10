@@ -146,20 +146,22 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
     }
     
     public void funcionalidad(){
-        opcion1.addMouseListener(this);
-        opcion2.addMouseListener(this);
-        opcion3.addMouseListener(this);
-        opcion4.addMouseListener(this);
-        opcion5.addMouseListener(this);
-        opcion6.addMouseListener(this);
+        op1.addMouseListener(this);
+        op2.addMouseListener(this);
+        op3.addMouseListener(this);
+        op4.addMouseListener(this);
+        op5.addMouseListener(this);
+        op6.addMouseListener(this);
         }
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
-        if(e.getSource() == this.opcion1){
+        if(e.getSource() == this.op1){
               JOptionPane.showMessageDialog(null, opcion1.getText());
               JDInventario dialog = new JDInventario(null,  "Inventario", true);
+        }else if(e.getSource() == this.op2){
+            
         }else{
             JOptionPane.showMessageDialog(null, "Opcion");
         }
@@ -178,18 +180,60 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-       if (e.getSource() instanceof JLabel) {
-            JLabel label = (JLabel) e.getSource();
-            label.setForeground(c1); // Cambiar el color del texto al entrar
+       if(e.getSource() == this.op1){
+             this.op1.setBackground(c1);
+             this.opcion1.setForeground(Color.WHITE);
+             this.opcion1.setFont(font1);
+        }else if(e.getSource() == this.op2){
+            this.op2.setBackground(c1);
+             this.opcion2.setForeground(Color.WHITE);
+             this.opcion2.setFont(font1);
+        }else if(e.getSource() == this.op3){
+            this.op3.setBackground(c1);
+             this.opcion3.setForeground(Color.WHITE);
+             this.opcion3.setFont(font1);
+        }else if(e.getSource() == this.op4){
+            this.op4.setBackground(c1);
+             this.opcion4.setForeground(Color.WHITE);
+             this.opcion4.setFont(font1);
+        }else if(e.getSource() == this.op5){
+            this.op5.setBackground(c1);
+             this.opcion5.setForeground(Color.WHITE);
+             this.opcion5.setFont(font1);
+        }else if(e.getSource() == this.op6){
+            this.op6.setBackground(c1);
+             this.opcion6.setForeground(Color.WHITE);
+             this.opcion6.setFont(font1);
         }
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        if (e.getSource() instanceof JLabel) {
-            JLabel label = (JLabel) e.getSource();
-            label.setForeground(Color.BLACK); // Restaurar el color del texto al salir
-        } 
+        if(e.getSource() == this.op1){
+             this.op1.setBackground(Color.white);
+             this.opcion1.setForeground(Color.BLACK);
+             this.opcion1.setFont(font2);
+        }else if(e.getSource() == this.op2){
+            this.op2.setBackground(Color.white);
+             this.opcion2.setForeground(Color.BLACK);
+             this.opcion2.setFont(font2);
+        }else if(e.getSource() == this.op3){
+            this.op3.setBackground(Color.white);
+             this.opcion3.setForeground(Color.BLACK);
+             this.opcion3.setFont(font2);
+        }else if(e.getSource() == this.op4){
+            this.op4.setBackground(Color.white);
+             this.opcion4.setForeground(Color.BLACK);
+             this.opcion4.setFont(font2);
+        }else if(e.getSource() == this.op5){
+            this.op5.setBackground(Color.white);
+             this.opcion5.setForeground(Color.BLACK);
+             this.opcion5.setFont(font2);
+        }else if(e.getSource() == this.op6){
+            this.op6.setBackground(Color.white);
+             this.opcion6.setForeground(Color.BLACK);
+             this.opcion6.setFont(font2);
+        }
     }
     
 }

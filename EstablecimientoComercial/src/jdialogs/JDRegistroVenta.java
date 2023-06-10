@@ -3,7 +3,6 @@ package jdialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -11,25 +10,21 @@ import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
 
-public class JDInventario extends JDialog {
+public class JDRegistroVenta extends JDialog {
     private JLabel Titulo;
     private Container contenedor;  
-    private JTable tabla;
-    private String[][] datos = new String[5][4];
-    private String[] titulo = {"Codigo","Producto", "Cantidad Disponible", "Precio"};
-    private DefaultTableModel modeloTabla ;
+    
+    private JLabel fecha, codVenta, empleado, idEmpleado, nombre, cliente, idCliente, nombreCliente, email;
+    private JTextField cFecha, cCodVenta, cIdEmpleado, cNombre, cIdCliente, cNombreCliente, cEmail;
 
-    public JDInventario(Frame owner, String title, boolean modal) {
+    public JDRegistroVenta(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
-        this.initComponents();
     }
     
-   public void initComponents(){
+     public void initComponents(){
         this.contenedor = this.getContentPane();
         this.contenedor.setLayout(new BorderLayout());
         this.crear();
@@ -39,8 +34,8 @@ public class JDInventario extends JDialog {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-    
-    public void crear(){
+     
+     public void crear(){
         this.panelTitulo();
         this.crearPanelLateral();
         this.crearPanel();
@@ -68,7 +63,7 @@ public class JDInventario extends JDialog {
         t2.setForeground(Color.BLACK);
         t2.setHorizontalAlignment(SwingConstants.CENTER);
         
-        JLabel t3 = new JLabel("Inventario");
+        JLabel t3 = new JLabel("Registro de Ventas");
         t3.setFont(font3);
         t3.setForeground(Color.BLACK);
         t3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -103,21 +98,33 @@ public class JDInventario extends JDialog {
     
     public void crearPanel(){
         JPanel panel = new JPanel();
-        this.Titulo = new JLabel ("Productos");
+        this.Titulo = new JLabel ("Venta");
         this.Titulo.setFont(font2);
         panel.setLayout(new BorderLayout());
         panel.add(this.Titulo, BorderLayout.NORTH);
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        this.contenedor.add(panel, BorderLayout.CENTER);
         
-        this.tabla = new JTable();
-        this.modeloTabla = new DefaultTableModel(this.datos, this.titulo);
-        this.tabla.setModel(this.modeloTabla);
-        this.tabla.setPreferredSize(new Dimension(950, 400));
-        JScrollPane sPanel = new JScrollPane(this.tabla);
-        sPanel.setPreferredSize(new Dimension(950, 400));
-        panel.add(sPanel);
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JPanel subPanel = new JPanel();
+        subPanel.setLayout(new GridLayout(10, 2, 5, 5));
+        
+        JLabel wite = new JLabel("  ");
+        
+        this.fecha = new JLabel("Fecha: ");
+        this.cFecha = new JTextField(); this.cFecha.setText("dd-mm-aaaa");
+        subPanel.add(this.fecha); subPanel.add(this.cFecha);
+                
+        this.codVenta = new JLabel("Codigo de venta: ");
+        this.cCodVenta = new JTextField(); this.cCodVenta.setText("xxxxxxxx");
+        subPanel.add(this.codVenta); subPanel.add(this.cCodVenta);
+        
+        this.empleado = new JLabel("Empleado");
+        this.idEmpleado = new JLabel("Identificación: ");
+        this.nombre = new JLabel("Nombre: ");
+        this.cliente = new JLabel("Cliente");
+        this.idCliente = new JLabel("Identificacion");
+        this.nombreCliente = new JLabel("Nombre: ");
+        this.email = new JLabel("Email: ");
+        
         this.contenedor.add(panel, BorderLayout.CENTER);
     }
 }
