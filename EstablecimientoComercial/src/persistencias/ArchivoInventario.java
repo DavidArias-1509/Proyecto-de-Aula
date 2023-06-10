@@ -5,7 +5,6 @@
 package persistencias;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import cuentas.Producto;
 
@@ -13,15 +12,16 @@ import cuentas.Producto;
  *
  * @author karla
  */
-public class ArchivoInventario implements Logica{
-    private File arch;
-    private ObjectOutputStream aEscritura;
-    private ObjectInputStream aLectura;
+public class ArchivoInventario extends Archivo implements Logica{
     private ListaInventario list;
-    
-    public ArchivoInventario(String name){
-        this.arch = new File(DIREC + name);
+
+    public ArchivoInventario(){
+        this("Inventario.obj");
     }
+    
+    public ArchivoInventario(String name) {
+        super(name);
+    }    
     
     public void leerInventario() throws IOException{
         if(!this.arch.exists()){

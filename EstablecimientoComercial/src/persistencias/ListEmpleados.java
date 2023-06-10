@@ -4,7 +4,9 @@
  */
 package persistencias;
 
+import empleados.Empleado;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,25 +14,47 @@ import java.util.List;
  * @author karla
  */
 public class ListEmpleados implements Logica {
+    
+    private List<Empleado> list;
 
+    public ListEmpleados() {
+        this.list = new ArrayList();
+    }
+    
     @Override
     public Object buscarItem(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for (Empleado e : this.list){
+            if(String.valueOf(e.getIdentificacion()).equals(id)){
+                return e;
+            }
+        }
+        return null;
     }
 
     @Override
     public void borrarItem(String id) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        for(Empleado e : this.list){
+            if(String.valueOf(e.getIdentificacion()).equals(id)){
+                this.list.remove(e);
+            }
+        }
     }
 
     @Override
     public void agregarItem(Object item) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        char encontro = 'n';
+        Empleado e = (Empleado) item;
+        for (Empleado e1 :this.list){
+            if (e.getIdentificacion() == e1.getIdentificacion()){
+                throw new IOException("Identificacion se encuentra en sistema");
+            }
+        }
+        this.list.add(e);
     }
 
     @Override
-    public List generarInforme() throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Empleado> generarInforme() throws IOException {
+        return this.list;
     }
     
 }

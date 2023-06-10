@@ -133,7 +133,7 @@ public class ListaInventario implements Logica{
         }
         if(encontro != 's'){
             this.list.add(p);
-        } 
+        }
     }
 
     @Override
