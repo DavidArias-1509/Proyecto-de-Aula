@@ -45,6 +45,7 @@ public class JDRegistroCompra extends JDialog implements MouseListener{
         this.panelTitulo();
         this.crearPanelLateral();
         this.crearPanel();
+        this.funcionalidad(); //Para registrar eventos
     }
     
      public Font font1= new Font("Lucida Console", Font.BOLD, 18);
@@ -142,36 +143,36 @@ public class JDRegistroCompra extends JDialog implements MouseListener{
     }
     
     public void funcionalidad(){
-        this.option1.addMouseListener(this);
-        this.option2.addMouseListener(this);
+        option1.addMouseListener(this);
+        option2.addMouseListener(this);
      }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-        if(e.getSource() == this.option1){
+    public void mouseClicked(MouseEvent c) {
+        if(c.getSource() == this.option1){
                JOptionPane.showMessageDialog(null, "Compra de ingredientes");
-            }else if(e.getSource() == this.option2){
+            }else if(c.getSource() == this.option2){
                 JOptionPane.showMessageDialog(null, "Otras compras");
             }
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
+    public void mousePressed(MouseEvent c) {
         
     }
 
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(MouseEvent c) {
         
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {
-            if(e.getSource() == this.option1){
+    public void mouseEntered(MouseEvent c) {
+            if(c.getSource() == this.option1){
                this.option1.setBackground(c1);
                this.opt1.setFont(font1);
                this.opt1.setForeground(Color.white);
-            }else if(e.getSource() == this.option2){
+            }else if(c.getSource() == this.option2){
                 this.option2.setBackground(c1);
                this.opt2.setFont(font1);
                this.opt2.setForeground(Color.white);
@@ -179,12 +180,12 @@ public class JDRegistroCompra extends JDialog implements MouseListener{
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
-        if(e.getSource() == this.option1){
+    public void mouseExited(MouseEvent c) {
+        if(c.getSource() == this.option1){
                 this.option1.setBackground(Color.WHITE);
                 this.opt1.setFont(font2);
                 this.opt1.setForeground(Color.BLACK);
-            }else if(e.getSource() == this.option2){
+            }else if(c.getSource() == this.option2){
                 this.option2.setBackground(Color.WHITE);
                 this.opt2.setFont(font2);
                 this.opt2.setForeground(Color.BLACK);
