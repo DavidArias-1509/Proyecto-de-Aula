@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/cuentas/Compra.java</file>
             <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/cuentas/Venta.java</file>
-            <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/vista/Main_Principal.java</file>
             <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/persistencias/ArchivoInventario.java</file>
-            <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/persistencias/Mes.java</file>
+            <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/vista/Main_Principal.java</file>
+            <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/persistencias/ListaInventario.java</file>
+            <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/persistencias/ListaMes.java</file>
+            <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/persistencias/Logica.java</file>
             <file>file:/C:/Users/karla/Documents/GitHub/Proyecto-de-Aula/EstablecimientoComercial/src/vista/VentanaPrincipal.java</file>
         </group>
     </open-files>

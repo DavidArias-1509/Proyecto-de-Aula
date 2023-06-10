@@ -1,6 +1,7 @@
 package cuentas;
 
 public class Producto {
+    private String codigo;
     private String nombre;
     private int cantidadDisponible;
     private double precio;
@@ -8,13 +9,23 @@ public class Producto {
 
     public Producto(String nombre, int cantidadDisponible, double precio, String descripcion) {
         this.nombre = nombre;
+        this.codigo = nombre.toUpperCase();
         this.cantidadDisponible = cantidadDisponible;
         this.precio = precio;
         this.descripcion = descripcion;
     }
 
+    public String getCodigo() {
+        return this.codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
+
     public String getDescripcion() {
-        return descripcion;
+        return this.descripcion;
     }
 
     public void setDescripcion(String descripcion) {

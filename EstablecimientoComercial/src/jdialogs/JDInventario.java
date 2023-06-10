@@ -1,5 +1,6 @@
 package jdialogs;
 
+import cuentas.Producto;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -7,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -15,17 +17,29 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
+import persistencias.ArchivoInventario;
+import persistencias.Logica;
 
 public class JDInventario extends JDialog {
     private JLabel Titulo;
     private Container contenedor;  
     private JTable tabla;
-    private String[][] datos = new String[5][4];
+    Logica log = new ArchivoInventario("inventario.obj");
+    private String[][] datos;
     private String[] titulo = {"Codigo","Producto", "Cantidad Disponible", "Precio"};
     private DefaultTableModel modeloTabla ;
 
-    public JDInventario(Frame owner, String title, boolean modal) {
+    public JDInventario(Frame owner, String title, boolean modal) throws IOException {
         super(owner, title, modal);
+        this.datos = new String[log.generarInforme().size()][4];
+        int i=0;
+        for (Object p : log.generarInforme()){
+            Producto p1 = (Producto) p;
+            this.datos[i][0]= p1.getCodigo();
+            this.datos[i][1]= p1.getNombre();
+            this.datos[i][2]= String.valueOf(p1.getCnatidadDisponible());
+            this.datos[i][3]= String.valueOf(p1.getPrecio());
+        }
         this.initComponents();
     }
     

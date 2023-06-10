@@ -4,6 +4,7 @@ import cuentas.*;
 import empleados.Administrador;
 import empleados.Empleado;
 import empleados.Normal;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -103,7 +104,7 @@ public class Main_Principal {
         VentanaPrincipal window = new VentanaPrincipal("La Góndola");
     }
     
-    public static void ejecucionPrincipal(){
+    public static void ejecucionPrincipal() throws IOException{
         char op='S';
             
        while(op=='S'){

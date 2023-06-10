@@ -9,9 +9,6 @@ import java.util.*;
 import cuentas.Producto;
 import java.io.IOException;
 
-import java.util.*;
-import preparaciones.Ingrediente;
-
 /**
  *+
  * @author karla
@@ -27,26 +24,36 @@ public class ListaInventario implements Logica{
     
     
 //    public void agregarItem(Producto p){
-//        char Encontro = 'n';
-//        int adicion;
-//        Iterator<String> i = this.Item.keySet().iterator();
-//        if((this.Item!= null)){
-//            while(i.hasNext()){
-//                String key = i.next();
-//                if (this.Item.get(key).equals(p.getNombre())){
-//                    Encontro = 's';
-//                    adicion = this.Item.get(key).getCnatidadDisponible() + p.getCnatidadDisponible();
-//                    this.Item.get(key).setCnatidadDisponible(adicion);
-//                    this.Item.get(key).setPrecio(p.getPrecio());
-//                }
+//        char encontro = 'n';
+//        for (Producto p1 :this.list){
+//            if(p1.getCodigo().equals(p.getCodigo())){
+//                p1.setCnatidadDisponible(p1.getCnatidadDisponible()+p.getCnatidadDisponible());
+//                encontro = 's';
 //            }
 //        }
-//        
-//        if(Encontro == 'n'){
-//            this.Item.put(p.getNombre(), p);
+//        if(encontro != 's'){
+//            this.list.add(p);
 //        }
+////        char Encontro = 'n';
+////        int adicion;
+////        Iterator<String> i = this.Item.keySet().iterator();
+////        if((this.Item!= null)){
+////            while(i.hasNext()){
+////                String key = i.next();
+////                if (this.Item.get(key).equals(p.getNombre())){
+////                    Encontro = 's';
+////                    adicion = this.Item.get(key).getCnatidadDisponible() + p.getCnatidadDisponible();
+////                    this.Item.get(key).setCnatidadDisponible(adicion);
+////                    this.Item.get(key).setPrecio(p.getPrecio());
+////                }
+////            }
+////        }
+////        
+////        if(Encontro == 'n'){
+////            this.Item.put(p.getNombre(), p);
+////        }
 //    }
-//    
+    
 //    public void reducirItem(Ingrediente i){
 //        char Encontro = 'n';
 //        int reduccion;
@@ -88,9 +95,24 @@ public class ListaInventario implements Logica{
         }
     }
 
+    /**
+     *
+     * @param item
+     * @throws IOException
+     */
     @Override
     public void guardarItem(Object item) throws IOException {
-        this.list.add((Producto) item);
+        char encontro = 'n';
+        Producto p = (Producto) item;
+        for (Producto p1 :this.list){
+            if(p1.getCodigo().equals(p.getCodigo())){
+                p1.setCnatidadDisponible(p1.getCnatidadDisponible()+p.getCnatidadDisponible());
+                encontro = 's';
+            }
+        }
+        if(encontro != 's'){
+            this.list.add(p);
+        } 
     }
 
     @Override
