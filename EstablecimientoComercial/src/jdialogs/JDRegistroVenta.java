@@ -4,23 +4,25 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 public class JDRegistroVenta extends JDialog {
     private JLabel Titulo;
     private Container contenedor;  
-    private JPanel adicion; 
+    private JButton adicion, guardar, cancelar; 
     
-    private JLabel fecha, codVenta, empleado, idEmpleado, nombre, cliente, idCliente, nombreCliente, email;
+    private JLabel fecha, codVenta, empleado, idEmpleado, nombre, cliente, idCliente, nombreCliente, email, total, precio;
     private JFormattedTextField cFecha, cCodVenta, cIdEmpleado, cNombre, cIdCliente, cNombreCliente, cEmail;
 
     public JDRegistroVenta(Frame owner, String title, boolean modal) {
@@ -34,7 +36,7 @@ public class JDRegistroVenta extends JDialog {
         this.contenedor.setLayout(new BorderLayout());
         this.crear();
         this.setSize(1000,1000);
-        this.setPreferredSize(new Dimension(900, 600));
+        this.setPreferredSize(new Dimension(900, 650));
         this.pack();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -116,7 +118,7 @@ public class JDRegistroVenta extends JDialog {
         
         JPanel subPanel = new JPanel();
         subPanel.setBackground(Color.WHITE);
-        subPanel.setLayout(new GridLayout(12, 2, 5, 5));
+        subPanel.setLayout(new GridLayout(12, 4, 5, 5));
         
         
         this.fecha = new JLabel("Fecha: ");
@@ -166,17 +168,46 @@ public class JDRegistroVenta extends JDialog {
         subPanel.add(this.email); 
         subPanel.add(this.cEmail);
         
-        subPanel.add(new JLabel()); subPanel.add(new JLabel());
                 
         subPanel.add(new JLabel("Platos"));
         subPanel.add(new JLabel());
         
-        this.adicion = new JPanel(); this.adicion.add(new JLabel("+"));
+        this.adicion = new JButton(); 
+        this.adicion.setText("+ Añadir Plato");
         this.adicion.setForeground(Color.WHITE);
         this.adicion.setBackground(c1);
-        subPanel.add(this.adicion);
+        subPanel.add(this.adicion); subPanel.add(new JLabel());
+        
+        this.total = new JLabel("Valor total");
+        this.precio = new JLabel("");
+        this.precio.setBorder(BorderFactory.createLineBorder(c1, 2));
+        subPanel.add(this.total); subPanel.add(this.precio);
         
         panel.add(subPanel, BorderLayout.CENTER);
+        
+        JPanel panels = new JPanel();
+        panels.setBackground(Color.white);
+        panels.setLayout(new GridLayout(1 , 1,0, 20));
+        this.guardar = new JButton();
+        this.cancelar = new JButton();
+        this.guardar.setText("Guardar");
+        this.guardar.setBackground(c1);
+        this.guardar.setForeground(Color.white);
+        this.cancelar.setText("Cancelar");
+        this.cancelar.setBackground(c1);
+        this.cancelar.setForeground(Color.white);
+        
+        panels.add(this.guardar);
+        panels.add(this.cancelar);
+        
+        panel.add(panels, BorderLayout.SOUTH);
+        
         this.contenedor.add(panel, BorderLayout.CENTER);
     }
+    
+//    public void botones(){
+//        
+//                
+//        this.contenedor.add(panel, BorderLayout.SOUTH);
+//    }
 }
