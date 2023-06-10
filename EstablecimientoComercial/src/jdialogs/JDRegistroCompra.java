@@ -151,6 +151,7 @@ public class JDRegistroCompra extends JDialog implements MouseListener{
     public void mouseClicked(MouseEvent c) {
         if(c.getSource() == this.option1){
                JOptionPane.showMessageDialog(null, "Compra de ingredientes");
+               JDCompraIngredientes dialog = new JDCompraIngredientes(null,"Compra de Ingredientes",true);
             }else if(c.getSource() == this.option2){
                 JOptionPane.showMessageDialog(null, "Otras compras");
             }
