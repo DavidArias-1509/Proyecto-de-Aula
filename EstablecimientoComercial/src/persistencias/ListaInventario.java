@@ -139,7 +139,5 @@ public class ListaInventario implements Logica{
     @Override
     public List<Producto> generarInforme() throws IOException {
         return this.list;
-    }
-
-    
+    } 
 }

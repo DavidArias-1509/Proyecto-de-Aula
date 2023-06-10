@@ -7,13 +7,12 @@ package persistencias;
 import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import static persistencias.Logica.DIREC;
 
 /**
  *
  * @author karla
  */
-public abstract class Archivo {
+public abstract class Archivo implements Logica {
     protected File arch;
     protected ObjectOutputStream aEscritura;
     protected ObjectInputStream aLectura;

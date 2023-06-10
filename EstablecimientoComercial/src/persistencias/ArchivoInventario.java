@@ -12,7 +12,7 @@ import cuentas.Producto;
  *
  * @author karla
  */
-public class ArchivoInventario extends Archivo implements Logica{
+public class ArchivoInventario extends Archivo{
     private ListaInventario list;
 
     public ArchivoInventario(){
