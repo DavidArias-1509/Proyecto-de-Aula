@@ -3,6 +3,7 @@ package jdialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -32,6 +33,7 @@ public class JDRegistroVenta extends JDialog {
         this.contenedor.setLayout(new BorderLayout());
         this.crear();
         this.setSize(1000,1000);
+        this.setPreferredSize(new Dimension(1000, 600));
         this.pack();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
