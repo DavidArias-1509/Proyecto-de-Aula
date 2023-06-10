@@ -8,6 +8,7 @@ import java.awt.Frame;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -22,6 +23,7 @@ public class JDRegistroVenta extends JDialog {
 
     public JDRegistroVenta(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
+        this.initComponents();
     }
     
      public void initComponents(){
@@ -110,21 +112,48 @@ public class JDRegistroVenta extends JDialog {
         JLabel wite = new JLabel("  ");
         
         this.fecha = new JLabel("Fecha: ");
-        this.cFecha = new JTextField(); this.cFecha.setText("dd-mm-aaaa");
+        this.cFecha = new JFormattedTextField(); 
+        this.cFecha.setText("dd-mm-aaaa");
         subPanel.add(this.fecha); subPanel.add(this.cFecha);
                 
         this.codVenta = new JLabel("Codigo de venta: ");
-        this.cCodVenta = new JTextField(); this.cCodVenta.setText("xxxxxxxx");
+        this.cCodVenta = new JFormattedTextField(); this.cCodVenta.setText("xxxxxxxx");
         subPanel.add(this.codVenta); subPanel.add(this.cCodVenta);
         
         this.empleado = new JLabel("Empleado");
-        this.idEmpleado = new JLabel("Identificación: ");
-        this.nombre = new JLabel("Nombre: ");
-        this.cliente = new JLabel("Cliente");
-        this.idCliente = new JLabel("Identificacion");
-        this.nombreCliente = new JLabel("Nombre: ");
-        this.email = new JLabel("Email: ");
+        subPanel.add(this.empleado); 
+        subPanel.add(wite);
         
+        this.idEmpleado = new JLabel("Identificación: ");
+        this.cIdCliente = new JFormattedTextField();
+        subPanel.add(this.idEmpleado); 
+        subPanel.add(this.cIdEmpleado);
+        
+        this.nombre = new JLabel("Nombre: ");
+        this.cNombre = new JFormattedTextField();
+        subPanel.add(this.nombre); 
+        subPanel.add(this.cNombre);
+        
+        this.cliente = new JLabel("Cliente");
+        subPanel.add(this.cliente); 
+        subPanel.add(wite);
+        
+        this.idCliente = new JLabel("Identificacion");
+        this.cIdCliente = new JFormattedTextField();
+        subPanel.add(this.idCliente); 
+        subPanel.add(this.cIdCliente);
+        
+        this.nombreCliente = new JLabel("Nombre: ");
+        this.cNombreCliente = new JFormattedTextField();
+        subPanel.add(this.nombreCliente); 
+        subPanel.add(this.cNombreCliente);
+        
+        this.email = new JLabel("Email: ");
+        this.cEmail = new JFormattedTextField(); this.cEmail.setText("Example@mail.com");
+        subPanel.add(this.email); 
+        subPanel.add(this.cEmail);
+        
+        panel.add(subPanel, BorderLayout.CENTER);
         this.contenedor.add(panel, BorderLayout.CENTER);
     }
 }

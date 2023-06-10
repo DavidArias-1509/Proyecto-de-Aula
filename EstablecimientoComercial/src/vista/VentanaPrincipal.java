@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import jdialogs.JDInventario;
+import jdialogs.JDRegistroVenta;
 
 public class VentanaPrincipal extends JFrame implements MouseListener {
     private Container contenedor; 
@@ -161,9 +162,10 @@ public class VentanaPrincipal extends JFrame implements MouseListener {
               JOptionPane.showMessageDialog(null, opcion1.getText());
               JDInventario dialog = new JDInventario(null,  "Inventario", true);
         }else if(e.getSource() == this.op2){
-            
+            JOptionPane.showMessageDialog(null, opcion2.getText());
+            JDRegistroVenta dialog = new JDRegistroVenta(null, "Registro Venta", true);
         }else{
-            JOptionPane.showMessageDialog(null, "Opcion");
+            
         }
        
      }  

@@ -111,6 +111,7 @@ public class JDInventario extends JDialog {
         this.contenedor.add(panel, BorderLayout.CENTER);
         
         this.tabla = new JTable();
+        //this.tabla.setBackground(new Color(242, 188,133));
         this.modeloTabla = new DefaultTableModel(this.datos, this.titulo);
         this.tabla.setModel(this.modeloTabla);
         this.tabla.setPreferredSize(new Dimension(950, 400));
