@@ -17,7 +17,7 @@ public class ArchivoInventario implements Logica{
     private File arch;
     private ObjectOutputStream aEscritura;
     private ObjectInputStream aLectura;
-    private List<Producto> list;
+    private ListaInventario list;
     
     public ArchivoInventario(String name){
         this.arch = new File(DIREC + name);
@@ -25,12 +25,12 @@ public class ArchivoInventario implements Logica{
     
     public void leerInventario() throws IOException{
         if(!this.arch.exists()){
-            this.list = new ArrayList();
+            this.list = new ListaInventario();
         }else{
             this.aLectura=null;
             try{
                this.aLectura = new ObjectInputStream(new FileInputStream(this.arch));
-               this.list = (List<Producto>) this.aLectura.readObject();
+               this.list = (ListaInventario) this.aLectura.readObject();
             }catch(IOException ex){
                 throw new IOException("Archivo no entocntrado");
             } catch (ClassNotFoundException ex) {
@@ -47,11 +47,7 @@ public class ArchivoInventario implements Logica{
     public Producto buscarItem(String id) {
         try {
             this.leerInventario();
-            for (Producto p : this.list){
-                if(p.getNombre().equals(id)){
-                    return p;
-                }
-            }
+            return this.list.buscarItem(id);
         } catch (IOException ex) {
             System.err.println("Erro: "+ ex);
         }
@@ -75,24 +71,20 @@ public class ArchivoInventario implements Logica{
     @Override
     public void borrarItem(String id) throws IOException {
         this.leerInventario();
-        for(Producto p : this.list){
-            if(p.getNombre().equals(id)){
-                this.list.remove(p);
-            }
-        }
+        this.list.borrarItem(id);
         this.guardarLista();
     }
     
     @Override
     public void guardarItem(Object item) throws IOException {
         this.leerInventario();
-        this.list.add((Producto) item);
+        this.list.guardarItem(item);
         this.guardarLista();
     }
 
     @Override
     public List<Producto> generarInforme() throws IOException {
         this.leerInventario();
-        return this.list;
+        return this.list.generarInforme();
     }
 }

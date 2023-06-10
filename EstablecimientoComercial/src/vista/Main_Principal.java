@@ -22,8 +22,8 @@ import preparaciones.Receta;
 
 public class Main_Principal {
     
-    public static Inventario I1 = new Inventario();
-    public static Mes mes = new Mes();
+    public static ListaInventario I1 = new ListaInventario();
+    public static ListaMes mes = new ListaMes();
     public static List<Empleado> personal = new ArrayList();
     public static List<Receta> libroReceta = new ArrayList();
     
@@ -109,8 +109,8 @@ public class Main_Principal {
        while(op=='S'){
            int option = menuInicial();
             switch(option){
-                case 1: mostrarInventario();
-                    break;
+                //case 1: mostrarInventario();
+//                    break;
                    
                case 2:
                    Venta.RegistroVenta();
@@ -212,10 +212,10 @@ public class Main_Principal {
                             break;
                         case 2:verDetalleCompra();
                             break;
-                        case 3: modificarInventario();
-                            break;
-                        case 4: agregarReceta();
-                            break;
+//                        case 3: modificarInventario();
+//                            break;
+//                        case 4: agregarReceta();
+//                            break;
                         case 5:eliminarVenta();
                             break;
                         case 6:eliminarCompra();
@@ -284,21 +284,21 @@ public class Main_Principal {
         }
     }
     
-    public static void mostrarInventario(){
-        System.out.println("Inventario de Ingredientes");
-        if(I1==null){
-            System.out.println("Al parecer hay Ingredientes");
-        }else{
-            System.out.println("Ingrediente             Cantidad Disponible");
-            Iterator<String> c = I1.getItem().keySet().iterator();
-            while(c.hasNext()){
-                String key = c.next();
-                System.out.println(I1.getItem().get(key));
-            }
-            System.out.println("\nNO hay mas ingredientes");
-            System.out.println("********************");
-        }
-    }
+//    public static void mostrarInventario(){
+//        System.out.println("Inventario de Ingredientes");
+//        if(I1==null){
+//            System.out.println("Al parecer hay Ingredientes");
+//        }else{
+//            System.out.println("Ingrediente             Cantidad Disponible");
+//            //Iterator<String> c = I1.getItem().keySet().iterator();
+//            while(c.hasNext()){
+//                String key = c.next();
+//                System.out.println(I1.getItem().get(key));
+//            }
+//            System.out.println("\nNO hay mas ingredientes");
+//            System.out.println("********************");
+//        }
+//    }
 
     private static void verDetalleVenta() {
        LocalDate buscar = Entrada.leerFecha("Dia de la venta: ");
@@ -330,32 +330,32 @@ public class Main_Principal {
        }
     }
 
-    private static void modificarInventario() {
-        
-        char opc = Entrada.leerCaracter("Desea agregar(A) o eliminar(E): ");
-          String ingrediente = Entrada.leerString("Nombre del ingrediente: ");
-          int cantidad;
-          if(opc=='A'){
-              cantidad=Entrada.leerEntero("Cantidad para agregar: ");
-          }else{
-              cantidad=Entrada.leerEntero("Cantidad para eliminar: ");
-          }
-          Iterator<String> c = I1.getItem().keySet().iterator();
-        while(c.hasNext()){
-            String key = c.next();
-            if(ingrediente.equals(I1.getItem().get(key).getNombre())){
-                System.out.println("Ingrediente encontrado ");
-                if(opc=='A'){
-                    int nuevo = I1.getItem().get(key).getCnatidadDisponible()+cantidad;
-                    I1.getItem().get(key).setCnatidadDisponible(nuevo);
-                }else{
-                    int nuevo = I1.getItem().get(key).getCnatidadDisponible()-cantidad;
-                    I1.getItem().get(key).setCnatidadDisponible(nuevo);
-                }
-                System.out.println("Nueva cantidad: "+I1.getItem().get(key).getCnatidadDisponible());
-            }
-        }       
-    }
+//    private static void modificarInventario() {
+//        
+//        char opc = Entrada.leerCaracter("Desea agregar(A) o eliminar(E): ");
+//          String ingrediente = Entrada.leerString("Nombre del ingrediente: ");
+//          int cantidad;
+//          if(opc=='A'){
+//              cantidad=Entrada.leerEntero("Cantidad para agregar: ");
+//          }else{
+//              cantidad=Entrada.leerEntero("Cantidad para eliminar: ");
+//          }
+//          //Iterator<String> c = I1.getItem().keySet().iterator();
+//        while(c.hasNext()){
+//            String key = c.next();
+//            if(ingrediente.equals(I1.getItem().get(key).getNombre())){
+//                System.out.println("Ingrediente encontrado ");
+//                if(opc=='A'){
+//                    int nuevo = I1.getItem().get(key).getCnatidadDisponible()+cantidad;
+//                    I1.getItem().get(key).setCnatidadDisponible(nuevo);
+//                }else{
+//                    int nuevo = I1.getItem().get(key).getCnatidadDisponible()-cantidad;
+//                    I1.getItem().get(key).setCnatidadDisponible(nuevo);
+//                }
+//                System.out.println("Nueva cantidad: "+I1.getItem().get(key).getCnatidadDisponible());
+//            }
+//        }       
+//    }
 
     private static void eliminarVenta() {
      LocalDate buscar = Entrada.leerFecha("Dia de la venta: ");
@@ -450,9 +450,9 @@ public class Main_Principal {
                     if(d.getFecha().equals(fecha)){
                         mes.mesBalance(fecha.getMonthValue(), fecha.getYear());
                         //double balance  = mes.calcularBalance();
-                        System.out.println("Producido por Ventas: "+  Mes.producidoVenta(mes));
-                        System.out.println("Gastos de Compras: "+ Mes.gastosCompra(mes));
-                        System.out.println("Pago Nomina: "+Mes.nomina(mes));
+                        System.out.println("Producido por Ventas: "+  ListaMes.producidoVenta(mes));
+                        System.out.println("Gastos de Compras: "+ ListaMes.gastosCompra(mes));
+                        System.out.println("Pago Nomina: "+ListaMes.nomina(mes));
                         //System.out.println("Balance Final: "+balance);
                     }
                 }
@@ -500,51 +500,50 @@ public class Main_Principal {
         return fecha;
     }
 
-    private static void agregarReceta() {
-        String name = Entrada.leerString("Nombre de la receta: ");
-        boolean continuar=false;
-        if(libroReceta==null){
-            continuar = true;
-        }else{
-            for(Receta r: libroReceta){
-                if(r.getNombre().equals(name)){
-                    continuar=false;
-                    break;
-                }
-            }
-        }
-        if(continuar==false){
-            System.out.println("La receta ya existe...");
-        }else{
-            Receta R = new Receta (name);
-            char op='S';
-            while(op=='S'){
-                double precio=0;
-                boolean encontro=false;
-                String ingrediente = Entrada.leerString("Ingrediente: ");
-                Iterator<String> b = I1.getItem().keySet().iterator();
-                
-                while(b.hasNext()){
-                    String key = b.next();
-                    if(ingrediente.equals(I1.getItem().get(key))){
-                        precio= I1.getItem().get(key).getPrecio();
-                        encontro=true;
-                        break;
-                    }
-                }
-                
-                if(encontro==true){
-                    int cantidad = Entrada.leerEntero("Cantidad Necesaria: ");
-                    Ingrediente I = new Ingrediente(ingrediente, precio, cantidad);
-                    R.agregarIngrediente(I);
-                }
-                else{
-                    System.out.println("Ese producto no esta en el inventario");
-                }
-                op=Entrada.leerCaracter("Desea Agregar un Ingediente mas? (S/N): ");
-            }
-            libroReceta.add(R);
-        }
-    }
-    
+//    private static void agregarReceta() {
+//        String name = Entrada.leerString("Nombre de la receta: ");
+//        boolean continuar=false;
+//        if(libroReceta==null){
+//            continuar = true;
+//        }else{
+//            for(Receta r: libroReceta){
+//                if(r.getNombre().equals(name)){
+//                    continuar=false;
+//                    break;
+//                }
+//            }
+//        }
+//        if(continuar==false){
+//            System.out.println("La receta ya existe...");
+//        }else{
+//            Receta R = new Receta (name);
+//            char op='S';
+//            while(op=='S'){
+//                double precio=0;
+//                boolean encontro=false;
+//                String ingrediente = Entrada.leerString("Ingrediente: ");
+//                Iterator<String> b = I1.getItem().keySet().iterator();
+//                
+//                while(b.hasNext()){
+//                    String key = b.next();
+//                    if(ingrediente.equals(I1.getItem().get(key))){
+//                        precio= I1.getItem().get(key).getPrecio();
+//                        encontro=true;
+//                        break;
+//                    }
+//                }
+//                
+//                if(encontro==true){
+//                    int cantidad = Entrada.leerEntero("Cantidad Necesaria: ");
+//                    Ingrediente I = new Ingrediente(ingrediente, precio, cantidad);
+//                    R.agregarIngrediente(I);
+//                }
+//                else{
+//                    System.out.println("Ese producto no esta en el inventario");
+//                }
+//                op=Entrada.leerCaracter("Desea Agregar un Ingediente mas? (S/N): ");
+//            }
+//            libroReceta.add(R);
+//        }
+//    }    
 }
