@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class JDCompraIngredientes extends JDialog {
+public class JDCompraIngredientes extends JDialog  {
     private JLabel Titulo;
     private Container contenedor;  
     private JButton adicion, guardar, cancelar; 
@@ -126,7 +126,6 @@ public class JDCompraIngredientes extends JDialog {
                 
         this.codVenta = new JLabel("Codigo de Compra: ");
         this.cCodVenta = new JFormattedTextField(); this.cCodVenta.setText("xxxxxxxx");
-        this.cCodVenta.setEnabled(false);
         subPanel.add(this.codVenta); 
         subPanel.add(this.cCodVenta);
         
