@@ -31,7 +31,10 @@ public class Compra implements Serializable{
             mes.agregarItem(new Dia(fecha));
             
             d = (Dia) mes.buscarItem(fecha.toString());
-            System.out.println(d.getFecha().toString());
+            
+        }
+        if(d==null){
+            System.out.println("Sigo nullo");
         }
         this.productos = new ArrayList();
         //this.codigoCompra = ""+ this.fechaCompra.getYear() + this.fechaCompra.getMonthValue() + this.fechaCompra.getDayOfMonth() + "0" + String.valueOf(d.getCompras().size()+1) + "";
