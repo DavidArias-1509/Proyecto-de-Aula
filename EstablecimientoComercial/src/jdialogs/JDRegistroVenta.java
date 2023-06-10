@@ -27,10 +27,11 @@ public class JDRegistroVenta extends JDialog {
     }
     
      public void initComponents(){
+        this.setResizable(false);
         this.contenedor = this.getContentPane();
         this.contenedor.setLayout(new BorderLayout());
         this.crear();
-        this.setSize(400,400);
+        this.setSize(1000,1000);
         this.pack();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -100,16 +101,20 @@ public class JDRegistroVenta extends JDialog {
     
     public void crearPanel(){
         JPanel panel = new JPanel();
+        panel.setBackground(c1);
+        JPanel sPanel = new JPanel();
+        sPanel.setBackground(Color.WHITE);
         this.Titulo = new JLabel ("Venta");
         this.Titulo.setFont(font2);
+        sPanel.add(this.Titulo);
         panel.setLayout(new BorderLayout());
-        panel.add(this.Titulo, BorderLayout.NORTH);
+        panel.add(sPanel, BorderLayout.NORTH);
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
         JPanel subPanel = new JPanel();
+        subPanel.setBackground(Color.WHITE);
         subPanel.setLayout(new GridLayout(10, 2, 5, 5));
         
-        JLabel wite = new JLabel("  ");
         
         this.fecha = new JLabel("Fecha: ");
         this.cFecha = new JFormattedTextField(); 
@@ -123,11 +128,11 @@ public class JDRegistroVenta extends JDialog {
         
         this.empleado = new JLabel("Empleado");
         subPanel.add(this.empleado); 
-        subPanel.add(wite);
+        subPanel.add(new JLabel("          "));
         
         this.idEmpleado = new JLabel("Identificación: ");
-        this.cIdCliente = new JFormattedTextField();
-        this.cIdCliente.setValue("");
+        this.cIdEmpleado = new JFormattedTextField();
+        this.cIdEmpleado.setValue("");
         subPanel.add(this.idEmpleado); 
         subPanel.add(this.cIdEmpleado);
         
@@ -139,7 +144,7 @@ public class JDRegistroVenta extends JDialog {
         
         this.cliente = new JLabel("Cliente");
         subPanel.add(this.cliente); 
-        subPanel.add(wite);
+        subPanel.add(new JLabel("      "));
         
         this.idCliente = new JLabel("Identificacion");
         this.cIdCliente = new JFormattedTextField();
