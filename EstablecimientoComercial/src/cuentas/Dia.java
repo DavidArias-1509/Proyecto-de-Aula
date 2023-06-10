@@ -8,7 +8,7 @@ import empleados.Normal;
 import java.io.Serializable;
 import static vista.Main_Principal.pedirFecha;
 
-public class Dia implements Balance,Serializable{
+public class Dia implements Serializable{
     private ArrayList<Venta> ventas;
     private ArrayList<Compra> compras;
     private ArrayList<Empleado> asistencia;
@@ -105,18 +105,18 @@ public class Dia implements Balance,Serializable{
        
     }
     
-    @Override
-    public double calcularBalance() {
-       double balance=0;
-        for(Venta v : this.ventas){
-            this.balanceVenta += v.calcularPrecio();
-        }
-        balance += this.balanceVenta; 
-        for(Compra c: this.compras){
-            this.balanceCompra+=c.getValorTotal();
-        }
-        System.out.println("Gastos en Compras: "+this.balanceCompra);
-        balance -= this.balanceCompra;
-       return balance; 
-    }
+//    @Override
+//    public double calcularBalance() {
+//       double balance=0;
+//        for(Venta v : this.ventas){
+//            this.balanceVenta += v.calcularPrecio();
+//        }
+//        balance += this.balanceVenta; 
+//        for(Compra c: this.compras){
+//            this.balanceCompra+=c.getValorTotal();
+//        }
+//        System.out.println("Gastos en Compras: "+this.balanceCompra);
+//        balance -= this.balanceCompra;
+//       return balance; 
+//    }
 }

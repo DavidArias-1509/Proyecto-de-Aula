@@ -29,10 +29,12 @@ public class Compra implements Serializable{
         Dia d = (Dia) mes.buscarItem(fecha.toString());
         if(d == null){
             mes.agregarItem(new Dia(fecha));
+            
             d = (Dia) mes.buscarItem(fecha.toString());
+            System.out.println(d.getFecha().toString());
         }
         this.productos = new ArrayList();
-        this.codigoCompra = ""+ this.fechaCompra.getYear() + this.fechaCompra.getMonthValue() + this.fechaCompra.getDayOfMonth() + "0" + String.valueOf(d.getCompras().size()+1) + "";
+        //this.codigoCompra = ""+ this.fechaCompra.getYear() + this.fechaCompra.getMonthValue() + this.fechaCompra.getDayOfMonth() + "0" + String.valueOf(d.getCompras().size()+1) + "";
         this.valorTotal = 0;
     }
 

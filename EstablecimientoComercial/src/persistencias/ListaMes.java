@@ -106,7 +106,11 @@ public class ListaMes implements Logica , Serializable{
 
     @Override
     public void borrarItem(String id) throws IOException {
-        
+        for(Dia d : this.dia){
+            if(d.getFecha().toString().equals(id)){
+                this.dia.remove(d);
+            }
+        }
     }
 
     @Override

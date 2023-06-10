@@ -1,5 +1,6 @@
 package jdialogs;
 
+import cuentas.Compra;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -7,24 +8,35 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class JDCompraIngredientes extends JDialog  {
+public class JDCompraIngredientes extends JDialog implements MouseListener{
     private JLabel Titulo;
     private Container contenedor;  
     private JButton adicion, guardar, cancelar; 
+    private Compra compra;
+    private DateTimeFormatter formato;
     
-    private JLabel fecha, codVenta, empleado, idEmpleado, nombre, cliente, idCliente, nombreCliente, email, total, precio;
-    private JFormattedTextField cFecha, cCodVenta, cIdEmpleado, cNombre, cIdCliente, cNombreCliente, cEmail;
+    private JLabel fecha, lbCodCompra, empleado, lbIngrediente, lbCantidad, cliente, txtPrecioUnidad, nombreCliente, email, total, precio;
+    private JFormattedTextField cFecha, cCodCompra, cIngrediente, cCantidad, cPrecioUnidad, cNombreCliente, cEmail;
 
     public JDCompraIngredientes(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
+        this.formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         this.initComponents();
     }
     
@@ -124,47 +136,47 @@ public class JDCompraIngredientes extends JDialog  {
         this.cFecha.setText("dd-mm-aaaa");
         subPanel.add(this.fecha); subPanel.add(this.cFecha);
                 
-        this.codVenta = new JLabel("Codigo de Compra: ");
-        this.cCodVenta = new JFormattedTextField(); this.cCodVenta.setText("xxxxxxxx");
-        subPanel.add(this.codVenta); 
-        subPanel.add(this.cCodVenta);
+        this.lbCodCompra = new JLabel("Codigo de Compra: ");
+        this.cCodCompra = new JFormattedTextField(); this.cCodCompra.setText("xxxxxxxx");
+        subPanel.add(this.lbCodCompra); 
+        subPanel.add(this.cCodCompra);
         
-        this.empleado = new JLabel("Empleado");
-        subPanel.add(this.empleado); 
-        subPanel.add(new JLabel("          "));
+//        this.empleado = new JLabel("Empleado");
+//        subPanel.add(this.empleado); 
+//        subPanel.add(new JLabel("          "));
         
-        this.idEmpleado = new JLabel("Identificación: ");
-        this.cIdEmpleado = new JFormattedTextField();
-        this.cIdEmpleado.setValue("");
-        subPanel.add(this.idEmpleado); 
-        subPanel.add(this.cIdEmpleado);
+        this.lbIngrediente = new JLabel("Ingrediente: ");
+        this.cIngrediente = new JFormattedTextField();
+        this.cIngrediente.setValue("");
+        subPanel.add(this.lbIngrediente); 
+        subPanel.add(this.cIngrediente);
         
-        this.nombre = new JLabel("Nombre: ");
-        this.cNombre = new JFormattedTextField();
-        this.cNombre.setText(" ");
-        subPanel.add(this.nombre); 
-        subPanel.add(this.cNombre);
+        this.lbCantidad = new JLabel("Cantidad: ");
+        this.cCantidad = new JFormattedTextField();
+        this.cCantidad.setText("");
+        subPanel.add(this.lbCantidad); 
+        subPanel.add(this.cCantidad);
         
-        this.cliente = new JLabel("Cliente");
-        subPanel.add(this.cliente); 
-        subPanel.add(new JLabel("      "));
+//        this.cliente = new JLabel("Precio por unidad");
+//        subPanel.add(this.cliente); 
+//        subPanel.add(new JLabel("      "));
         
-        this.idCliente = new JLabel("Identificacion");
-        this.cIdCliente = new JFormattedTextField();
-        this.cIdCliente.setText(" ");
-        subPanel.add(this.idCliente); 
-        subPanel.add(this.cIdCliente);
+        this.txtPrecioUnidad = new JLabel("Precio por unidad");
+        this.cPrecioUnidad = new JFormattedTextField();
+        this.cPrecioUnidad.setText("");
+        subPanel.add(this.txtPrecioUnidad); 
+        subPanel.add(this.cPrecioUnidad);
         
-        this.nombreCliente = new JLabel("Nombre: ");
-        this.cNombreCliente = new JFormattedTextField();
-        this.cNombreCliente.setText(" ");
-        subPanel.add(this.nombreCliente); 
-        subPanel.add(this.cNombreCliente);
-        
-        this.email = new JLabel("Email: ");
-        this.cEmail = new JFormattedTextField(); this.cEmail.setText("Example@mail.com");
-        subPanel.add(this.email); 
-        subPanel.add(this.cEmail);
+//        this.nombreCliente = new JLabel("Nombre: ");
+//        this.cNombreCliente = new JFormattedTextField();
+//        this.cNombreCliente.setText(" ");
+//        subPanel.add(this.nombreCliente); 
+//        subPanel.add(this.cNombreCliente);
+//        
+//        this.email = new JLabel("Email: ");
+//        this.cEmail = new JFormattedTextField(); this.cEmail.setText("Example@mail.com");
+//        subPanel.add(this.email); 
+//        subPanel.add(this.cEmail);
         
                 
         subPanel.add(new JLabel("Platos"));
@@ -174,6 +186,7 @@ public class JDCompraIngredientes extends JDialog  {
         this.adicion.setText("+ Añadir Plato");
         this.adicion.setForeground(Color.WHITE);
         this.adicion.setBackground(c1);
+        this.adicion.addMouseListener(this);
         subPanel.add(this.adicion); subPanel.add(new JLabel());
         
         this.total = new JLabel("Valor total");
@@ -189,6 +202,7 @@ public class JDCompraIngredientes extends JDialog  {
         this.guardar = new JButton();
         this.cancelar = new JButton();
         this.guardar.setText("Guardar");
+        this.guardar.addMouseListener(this);
         this.guardar.setBackground(c1);
         this.guardar.setForeground(Color.white);
         this.cancelar.setText("Cancelar");
@@ -201,6 +215,58 @@ public class JDCompraIngredientes extends JDialog  {
         panel.add(panels, BorderLayout.SOUTH);
         
         this.contenedor.add(panel, BorderLayout.CENTER);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        LocalDate date;
+        date = LocalDate.parse(this.cFecha.getText(),this.formato);
+        if(e.getSource() == this.adicion){
+            try {
+                if(this.compra==null){
+                    this.compra = new Compra(date);
+                }
+                String ingre= this.cIngrediente.getText();
+                int canti= Integer.parseInt(this.cCantidad.getText());
+                double precio = Double.parseDouble(this.cPrecioUnidad.getText());
+                this.compra.agregaACarrito(ingre, canti, precio, "");
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, ex, "Error", HEIGHT);
+            }
+        }else if(e.getSource() == this.guardar){
+            try {
+                if(this.compra==null){
+                    this.compra = new Compra(date);
+                }
+                String ingre= this.cIngrediente.getText();
+                int canti= Integer.parseInt(this.cCantidad.getText());
+                double precio = Double.parseDouble(this.cPrecioUnidad.getText());
+                this.compra.agregaACarrito(ingre, canti, precio, "");
+                this.compra.realizarCompra();
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, ex, "Error", HEIGHT);
+            }
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        
     }
     
 }
