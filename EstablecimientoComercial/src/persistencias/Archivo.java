@@ -7,12 +7,13 @@ package persistencias;
 import java.io.File;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 /**
  *
  * @author karla
  */
-public abstract class Archivo implements Logica {
+public abstract class Archivo implements Logica, Serializable{
     protected File arch;
     protected ObjectOutputStream aEscritura;
     protected ObjectInputStream aLectura;

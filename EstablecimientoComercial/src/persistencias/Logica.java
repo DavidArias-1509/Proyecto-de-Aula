@@ -5,13 +5,14 @@
 package persistencias;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author karla
  */
-public interface Logica {
+public interface Logica{
     String DIREC ="src/archivo/";
     
     Object buscarItem(String id);

@@ -8,12 +8,13 @@ package persistencias;
 import java.util.*;
 import cuentas.Producto;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  *+
  * @author karla
  */
-public class ListaInventario implements Logica{
+public class ListaInventario implements Logica, Serializable{
     private Map<String ,Producto> Item;
     private List<Producto> list;
 

@@ -7,49 +7,37 @@ import static modelos.Entrada.leerFecha;
 import empleados.Administrador;
 import empleados.Empleado;
 import java.io.IOException;
-import preparaciones.Ingrediente;
-import static vista.Main_Principal.I1;
-import static vista.Main_Principal.mes;
+import java.io.Serializable;
+import persistencias.*;
 import static vista.Main_Principal.pedirFecha;
 import static vista.Main_Principal.personal;
 
-public class Compra {
+public class Compra implements Serializable{
    private String codigoCompra;
    private double valorTotal;
    private ArrayList<Producto> productos;
    private LocalDate fechaCompra;
-
-    public Compra(){
+   Logica mes = new ArchivoMes();
+   Logica inv = new ArchivoInventario();
+   
+    public Compra() throws IOException{
         this(LocalDate.now());
     }
     
-    public Compra(LocalDate fecha){
-        char encontro='n';
-         int secuencia = 1;
-        this.fechaCompra = LocalDate.now();
-        for(Dia d: mes.getDias()){
-            if(d.getFecha().equals(this.fechaCompra )){
-                encontro = 's';
-                secuencia = d.getVentas().size()+1;
-                break;
-            }
-        }
-        for(Dia d: mes.getDias()){
-            if(this.fechaCompra.equals(d.getFecha())){
-                encontro = 's';
-            }
-        }
-        if (encontro == 'n'){
-            Dia d1 = new Dia();
-            mes.agregarDia(d1);
+    public Compra(LocalDate fecha) throws IOException{
+        this.fechaCompra = fecha;
+        Dia d = (Dia) mes.buscarItem(fecha.toString());
+        if(d == null){
+            mes.agregarItem(new Dia(fecha));
+            d = (Dia) mes.buscarItem(fecha.toString());
         }
         this.productos = new ArrayList();
-        this.codigoCompra = ""+ this.fechaCompra.getYear() + this.fechaCompra.getMonthValue() + this.fechaCompra.getDayOfMonth() + secuencia + "";
+        this.codigoCompra = ""+ this.fechaCompra.getYear() + this.fechaCompra.getMonthValue() + this.fechaCompra.getDayOfMonth() + "0" + String.valueOf(d.getCompras().size()+1) + "";
         this.valorTotal = 0;
     }
 
     public LocalDate getFechaCompra() {
-        return fechaCompra;
+        return this.fechaCompra;
     }
 
     public void setFechaCompra(LocalDate fechaCompra) {
@@ -57,11 +45,11 @@ public class Compra {
     }
 
     public double getValorTotal() {
-        return valorTotal;
+        return this.valorTotal;
     }
 
     public ArrayList<Producto> getIngredientes() {
-        return productos;
+        return this.productos;
     }
 
     public void setValorTotal(double valorTotal) {
@@ -103,13 +91,11 @@ public class Compra {
     
     public void realizarCompra() throws IOException{
         for(Producto p : this.productos){
-            I1.agregarItem(p);
+            inv.agregarItem(p);
         }
-        for(Dia d : mes.getDias()){
-            if(this.fechaCompra.equals(d.getFecha())){
-                d.agregarCompra(this);
-            }
-        }
+        Dia d = (Dia) mes.buscarItem(this.fechaCompra.toString());
+        d.agregarCompra(this);
+        mes.agregarItem(d);
     }
 
     public static void RegistroCompra() throws IOException{

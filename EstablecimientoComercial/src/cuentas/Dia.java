@@ -3,14 +3,12 @@ package cuentas;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import modelos.Entrada;
-import static modelos.Entrada.leerFecha;
 import empleados.Empleado;
 import empleados.Normal;
-import static vista.Main_Principal.mes;
+import java.io.Serializable;
 import static vista.Main_Principal.pedirFecha;
-import static vista.Main_Principal.personal;
 
-public class Dia implements Balance{
+public class Dia implements Balance,Serializable{
     private ArrayList<Venta> ventas;
     private ArrayList<Compra> compras;
     private ArrayList<Empleado> asistencia;

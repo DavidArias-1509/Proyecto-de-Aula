@@ -6,6 +6,7 @@ package persistencias;
 
 import cuentas.Producto;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import preparaciones.Receta;
@@ -14,7 +15,7 @@ import preparaciones.Receta;
  *
  * @author karla
  */
-public class ListaPlato implements Logica {
+public class ListaPlato implements Logica , Serializable{
     
     private List<Receta> plato;
 
