@@ -6,6 +6,7 @@ import modelos.Entrada;
 import static modelos.Entrada.leerFecha;
 import empleados.Administrador;
 import empleados.Empleado;
+import java.io.IOException;
 import preparaciones.Ingrediente;
 import static vista.Main_Principal.I1;
 import static vista.Main_Principal.mes;
@@ -100,9 +101,9 @@ public class Compra {
         }
     }
     
-    public void realizarCompra(){
+    public void realizarCompra() throws IOException{
         for(Producto p : this.productos){
-            I1.agregarItem(p);
+            I1.guardarItem(p);
         }
         for(Dia d : mes.getDias()){
             if(this.fechaCompra.equals(d.getFecha())){
@@ -111,7 +112,7 @@ public class Compra {
         }
     }
 
-    public static void RegistroCompra(){
+    public static void RegistroCompra() throws IOException{
         if(validacion()){
             int opc = 0;
             System.out.println("rRegistro de Compra");

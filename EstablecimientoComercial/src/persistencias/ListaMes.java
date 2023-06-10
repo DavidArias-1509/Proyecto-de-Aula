@@ -8,16 +8,16 @@ import cuentas.Venta;
 import java.util.ArrayList;
 import empleados.Empleado;
 
-public class Mes {
+public class ListaMes {
     private ArrayList<Dia> balanceMes;
     private ArrayList<Dia> dias;
     
 
-    public Mes() {
+    public ListaMes() {
         this(new ArrayList());
     }
 
-    public Mes(ArrayList<Dia> dias) {
+    public ListaMes(ArrayList<Dia> dias) {
         this.dias = dias;
 //        this.empleados = empleados;
         this.balanceMes = new ArrayList();
@@ -56,7 +56,7 @@ public class Mes {
             }
         }
     }
-    public static double producidoVenta(Mes m){
+    public static double producidoVenta(ListaMes m){
         double producido = 0;
         for(Dia d : m.getBalanceMes()){
             for(Venta v : d.getVentas()){
@@ -66,7 +66,7 @@ public class Mes {
         return producido;
     }
     
-    public static double gastosCompra(Mes m){
+    public static double gastosCompra(ListaMes m){
         double gastos = 0;
             for(Dia d : m.getBalanceMes()){
                 for(Compra c : d.getCompras()){
@@ -76,7 +76,7 @@ public class Mes {
         return gastos;
     }
     
-    public static double nomina(Mes m){
+    public static double nomina(ListaMes m){
         double nomi =0;
         for(Dia d : m.getBalanceMes()){
             for(Empleado e: d.getAsistencia()){
