@@ -19,7 +19,7 @@ public class JDRegistroVenta extends JDialog {
     private Container contenedor;  
     
     private JLabel fecha, codVenta, empleado, idEmpleado, nombre, cliente, idCliente, nombreCliente, email;
-    private JTextField cFecha, cCodVenta, cIdEmpleado, cNombre, cIdCliente, cNombreCliente, cEmail;
+    private JFormattedTextField cFecha, cCodVenta, cIdEmpleado, cNombre, cIdCliente, cNombreCliente, cEmail;
 
     public JDRegistroVenta(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
@@ -118,7 +118,8 @@ public class JDRegistroVenta extends JDialog {
                 
         this.codVenta = new JLabel("Codigo de venta: ");
         this.cCodVenta = new JFormattedTextField(); this.cCodVenta.setText("xxxxxxxx");
-        subPanel.add(this.codVenta); subPanel.add(this.cCodVenta);
+        subPanel.add(this.codVenta); 
+        subPanel.add(this.cCodVenta);
         
         this.empleado = new JLabel("Empleado");
         subPanel.add(this.empleado); 
@@ -126,11 +127,13 @@ public class JDRegistroVenta extends JDialog {
         
         this.idEmpleado = new JLabel("Identificación: ");
         this.cIdCliente = new JFormattedTextField();
+        this.cIdCliente.setValue("");
         subPanel.add(this.idEmpleado); 
         subPanel.add(this.cIdEmpleado);
         
         this.nombre = new JLabel("Nombre: ");
         this.cNombre = new JFormattedTextField();
+        this.cNombre.setText(" ");
         subPanel.add(this.nombre); 
         subPanel.add(this.cNombre);
         
@@ -140,11 +143,13 @@ public class JDRegistroVenta extends JDialog {
         
         this.idCliente = new JLabel("Identificacion");
         this.cIdCliente = new JFormattedTextField();
+        this.cIdCliente.setText(" ");
         subPanel.add(this.idCliente); 
         subPanel.add(this.cIdCliente);
         
         this.nombreCliente = new JLabel("Nombre: ");
         this.cNombreCliente = new JFormattedTextField();
+        this.cNombreCliente.setText(" ");
         subPanel.add(this.nombreCliente); 
         subPanel.add(this.cNombreCliente);
         
