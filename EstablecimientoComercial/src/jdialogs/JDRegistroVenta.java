@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 public class JDRegistroVenta extends JDialog {
     private JLabel Titulo;
     private Container contenedor;  
+    private JPanel adicion; 
     
     private JLabel fecha, codVenta, empleado, idEmpleado, nombre, cliente, idCliente, nombreCliente, email;
     private JFormattedTextField cFecha, cCodVenta, cIdEmpleado, cNombre, cIdCliente, cNombreCliente, cEmail;
@@ -33,7 +34,7 @@ public class JDRegistroVenta extends JDialog {
         this.contenedor.setLayout(new BorderLayout());
         this.crear();
         this.setSize(1000,1000);
-        this.setPreferredSize(new Dimension(1000, 600));
+        this.setPreferredSize(new Dimension(900, 600));
         this.pack();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -115,7 +116,7 @@ public class JDRegistroVenta extends JDialog {
         
         JPanel subPanel = new JPanel();
         subPanel.setBackground(Color.WHITE);
-        subPanel.setLayout(new GridLayout(10, 2, 5, 5));
+        subPanel.setLayout(new GridLayout(12, 2, 5, 5));
         
         
         this.fecha = new JLabel("Fecha: ");
@@ -164,6 +165,16 @@ public class JDRegistroVenta extends JDialog {
         this.cEmail = new JFormattedTextField(); this.cEmail.setText("Example@mail.com");
         subPanel.add(this.email); 
         subPanel.add(this.cEmail);
+        
+        subPanel.add(new JLabel()); subPanel.add(new JLabel());
+                
+        subPanel.add(new JLabel("Platos"));
+        subPanel.add(new JLabel());
+        
+        this.adicion = new JPanel(); this.adicion.add(new JLabel("+"));
+        this.adicion.setForeground(Color.WHITE);
+        this.adicion.setBackground(c1);
+        subPanel.add(this.adicion);
         
         panel.add(subPanel, BorderLayout.CENTER);
         this.contenedor.add(panel, BorderLayout.CENTER);
