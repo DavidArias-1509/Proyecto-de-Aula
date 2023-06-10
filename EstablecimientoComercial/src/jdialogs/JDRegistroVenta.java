@@ -3,23 +3,27 @@ package jdialogs;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.Border;
 
 public class JDRegistroVenta extends JDialog {
     private JLabel Titulo;
     private Container contenedor;  
+    private JButton adicion, guardar, cancelar; 
     
-    private JLabel fecha, codVenta, empleado, idEmpleado, nombre, cliente, idCliente, nombreCliente, email;
-    private JTextField cFecha, cCodVenta, cIdEmpleado, cNombre, cIdCliente, cNombreCliente, cEmail;
+    private JLabel fecha, codVenta, empleado, idEmpleado, nombre, cliente, idCliente, nombreCliente, email, total, precio;
+    private JFormattedTextField cFecha, cCodVenta, cIdEmpleado, cNombre, cIdCliente, cNombreCliente, cEmail;
 
     public JDRegistroVenta(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
@@ -27,10 +31,12 @@ public class JDRegistroVenta extends JDialog {
     }
     
      public void initComponents(){
+        this.setResizable(false);
         this.contenedor = this.getContentPane();
         this.contenedor.setLayout(new BorderLayout());
         this.crear();
-        this.setSize(400,400);
+        this.setSize(1000,1000);
+        this.setPreferredSize(new Dimension(900, 650));
         this.pack();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -100,16 +106,20 @@ public class JDRegistroVenta extends JDialog {
     
     public void crearPanel(){
         JPanel panel = new JPanel();
+        panel.setBackground(c1);
+        JPanel sPanel = new JPanel();
+        sPanel.setBackground(Color.WHITE);
         this.Titulo = new JLabel ("Venta");
         this.Titulo.setFont(font2);
+        sPanel.add(this.Titulo);
         panel.setLayout(new BorderLayout());
-        panel.add(this.Titulo, BorderLayout.NORTH);
+        panel.add(sPanel, BorderLayout.NORTH);
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
         JPanel subPanel = new JPanel();
-        subPanel.setLayout(new GridLayout(10, 2, 5, 5));
+        subPanel.setBackground(Color.WHITE);
+        subPanel.setLayout(new GridLayout(12, 4, 5, 5));
         
-        JLabel wite = new JLabel("  ");
         
         this.fecha = new JLabel("Fecha: ");
         this.cFecha = new JFormattedTextField(); 
@@ -118,33 +128,38 @@ public class JDRegistroVenta extends JDialog {
                 
         this.codVenta = new JLabel("Codigo de venta: ");
         this.cCodVenta = new JFormattedTextField(); this.cCodVenta.setText("xxxxxxxx");
-        subPanel.add(this.codVenta); subPanel.add(this.cCodVenta);
+        subPanel.add(this.codVenta); 
+        subPanel.add(this.cCodVenta);
         
         this.empleado = new JLabel("Empleado");
         subPanel.add(this.empleado); 
-        subPanel.add(wite);
+        subPanel.add(new JLabel("          "));
         
         this.idEmpleado = new JLabel("Identificación: ");
-        this.cIdCliente = new JFormattedTextField();
+        this.cIdEmpleado = new JFormattedTextField();
+        this.cIdEmpleado.setValue("");
         subPanel.add(this.idEmpleado); 
         subPanel.add(this.cIdEmpleado);
         
         this.nombre = new JLabel("Nombre: ");
         this.cNombre = new JFormattedTextField();
+        this.cNombre.setText(" ");
         subPanel.add(this.nombre); 
         subPanel.add(this.cNombre);
         
         this.cliente = new JLabel("Cliente");
         subPanel.add(this.cliente); 
-        subPanel.add(wite);
+        subPanel.add(new JLabel("      "));
         
         this.idCliente = new JLabel("Identificacion");
         this.cIdCliente = new JFormattedTextField();
+        this.cIdCliente.setText(" ");
         subPanel.add(this.idCliente); 
         subPanel.add(this.cIdCliente);
         
         this.nombreCliente = new JLabel("Nombre: ");
         this.cNombreCliente = new JFormattedTextField();
+        this.cNombreCliente.setText(" ");
         subPanel.add(this.nombreCliente); 
         subPanel.add(this.cNombreCliente);
         
@@ -153,7 +168,41 @@ public class JDRegistroVenta extends JDialog {
         subPanel.add(this.email); 
         subPanel.add(this.cEmail);
         
+                
+        subPanel.add(new JLabel("Platos"));
+        subPanel.add(new JLabel());
+        
+        this.adicion = new JButton(); 
+        this.adicion.setText("+ Añadir Plato");
+        this.adicion.setForeground(Color.WHITE);
+        this.adicion.setBackground(c1);
+        subPanel.add(this.adicion); subPanel.add(new JLabel());
+        
+        this.total = new JLabel("Valor total");
+        this.precio = new JLabel("");
+        this.precio.setBorder(BorderFactory.createLineBorder(c1, 2));
+        subPanel.add(this.total); subPanel.add(this.precio);
+        
         panel.add(subPanel, BorderLayout.CENTER);
+        
+        JPanel panels = new JPanel();
+        panels.setBackground(Color.white);
+        panels.setLayout(new GridLayout(1 , 1,0, 20));
+        this.guardar = new JButton();
+        this.cancelar = new JButton();
+        this.guardar.setText("Guardar");
+        this.guardar.setBackground(c1);
+        this.guardar.setForeground(Color.white);
+        this.cancelar.setText("Cancelar");
+        this.cancelar.setBackground(c1);
+        this.cancelar.setForeground(Color.white);
+        
+        panels.add(this.guardar);
+        panels.add(this.cancelar);
+        
+        panel.add(panels, BorderLayout.SOUTH);
+        
         this.contenedor.add(panel, BorderLayout.CENTER);
     }
+    
 }

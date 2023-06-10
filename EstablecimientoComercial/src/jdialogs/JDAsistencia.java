@@ -1,6 +1,5 @@
 package jdialogs;
 
-import cuentas.Producto;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -8,54 +7,34 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import java.io.IOException;
 import javax.swing.BorderFactory;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableModel;
-import persistencias.ArchivoInventario;
-import persistencias.Logica;
 
-public class JDInventario extends JDialog {
-    private JLabel Titulo;
-    private Container contenedor;  
-    private JTable tabla;
-    Logica log = new ArchivoInventario("inventario.obj");
-    private String[][] datos;
-    private String[] titulo = {"Codigo","Producto", "Cantidad Disponible", "Precio"};
-    private DefaultTableModel modeloTabla ;
+public class JDAsistencia extends JDialog {
+    private Container contenedor;
 
-    public JDInventario(Frame owner, String title, boolean modal) throws IOException {
+    public JDAsistencia(Frame owner, String title, boolean modal) {
         super(owner, title, modal);
-        this.datos = new String[log.generarInforme().size()][4];
-        int i=0;
-        for (Object p : log.generarInforme()){
-            Producto p1 = (Producto) p;
-            this.datos[i][0]= p1.getCodigo();
-            this.datos[i][1]= p1.getNombre();
-            this.datos[i][2]= String.valueOf(p1.getCnatidadDisponible());
-            this.datos[i][3]= String.valueOf(p1.getPrecio());
-        }
         this.initComponents();
     }
     
-   public void initComponents(){
+    public void initComponents(){
         this.setResizable(false);
         this.contenedor = this.getContentPane();
         this.contenedor.setLayout(new BorderLayout());
         this.crear();
-        this.setSize(400,400);
+        this.setSize(1000,1000);
+        this.setPreferredSize(new Dimension(900, 650));
         this.pack();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }
-    
-    public void crear(){
+     
+     public void crear(){
         this.panelTitulo();
         this.crearPanelLateral();
         this.crearPanel();
@@ -83,7 +62,7 @@ public class JDInventario extends JDialog {
         t2.setForeground(Color.BLACK);
         t2.setHorizontalAlignment(SwingConstants.CENTER);
         
-        JLabel t3 = new JLabel("Inventario");
+        JLabel t3 = new JLabel("Registro de Asistencia");
         t3.setFont(font3);
         t3.setForeground(Color.BLACK);
         t3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -117,23 +96,6 @@ public class JDInventario extends JDialog {
     }
     
     public void crearPanel(){
-        JPanel panel = new JPanel();
-        this.Titulo = new JLabel ("Productos");
-        this.Titulo.setFont(font2);
-        panel.setLayout(new BorderLayout());
-        panel.add(this.Titulo, BorderLayout.NORTH);
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        this.contenedor.add(panel, BorderLayout.CENTER);
         
-        this.tabla = new JTable();
-        this.tabla.setBackground(Color.white);
-        this.modeloTabla = new DefaultTableModel(this.datos, this.titulo);
-        this.tabla.setModel(this.modeloTabla);
-        this.tabla.setPreferredSize(new Dimension(950, 400));
-        JScrollPane sPanel = new JScrollPane(this.tabla);
-        sPanel.setPreferredSize(new Dimension(950, 400));
-        panel.add(sPanel);
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        this.contenedor.add(panel, BorderLayout.CENTER);
     }
 }
